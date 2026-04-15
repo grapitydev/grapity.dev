@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grapity — Gravity for APIs</title>
+  <meta name="description" content="Where every API contract is validated, versioned, and ready to ship — across specs, gateways, and teams.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            surface: {
+              DEFAULT: '#0a0a0f',
+              50: '#12121a',
+              100: '#1a1a28',
+              200: '#1e1e2e',
+            },
+            accent: {
+              indigo: '#6366f1',
+              cyan: '#06b6d4',
+              green: '#a5f3c4',
+            },
+            text: {
+              primary: '#e4e4ed',
+              secondary: '#8888a0',
+            }
+          },
+          fontFamily: {
+            display: ['Space Grotesk', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-surface text-text-primary font-body antialiased">
+
+  <nav class="fixed top-0 left-0 right-0 z-50 border-b border-surface-200/50 bg-surface/80 backdrop-blur-xl">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3 group">
+        <svg class="w-7 h-7" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="nav-g" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#6366f1"/>
+              <stop offset="100%" style="stop-color:#06b6d4"/>
+            </linearGradient>
+          </defs>
+          <path d="M7 24 L16 6 L25 24 L21 24 L16 14 L11 24 Z" fill="url(#nav-g)"/>
+          <circle cx="16" cy="24" r="2.5" fill="url(#nav-g)"/>
+        </svg>
+        <span class="font-display font-semibold text-lg tracking-tight">grapity</span>
+      </a>
+      <div class="flex items-center gap-6">
+        <a href="#how-it-works" class="text-text-secondary hover:text-text-primary transition-colors text-sm font-medium hidden sm:block">How it works</a>
+        <a href="#pricing" class="text-text-secondary hover:text-text-primary transition-colors text-sm font-medium hidden sm:block">Pricing</a>
+        <a href="https://github.com/grapitydev" target="_blank" rel="noopener noreferrer" class="text-text-secondary hover:text-text-primary transition-colors flex items-center gap-2">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          <span class="hidden sm:inline font-medium text-sm">GitHub</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section id="hero" class="relative min-h-[75vh] flex items-center justify-center overflow-hidden pt-16">
+      <div class="absolute inset-0 hero-gradient"></div>
+      <div class="absolute inset-0 grid-overlay"></div>
+      <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-surface-200 bg-surface-50/50 backdrop-blur-sm mb-8">
+          <span class="w-2 h-2 rounded-full bg-accent-green animate-pulse-subtle"></span>
+          <span class="text-sm text-text-secondary font-medium">Pre-launch &middot; Building in public</span>
+        </div>
+        <h1 class="font-display text-5xl sm:text-7xl font-bold tracking-tight mb-6 leading-[1.1]">
+          <span class="gradient-text">Gravity</span> for APIs.
+        </h1>
+        <p class="text-xl sm:text-2xl text-text-secondary max-w-2xl mx-auto mb-4 leading-relaxed font-light">
+          Where every API contract is validated, versioned, and ready to ship, across specs, gateways, and teams.
+        </p>
+        <p class="text-base text-text-secondary/70 max-w-xl mx-auto mb-12">
+          A spec that breaks backward compatibility doesn't enter the registry. A spec without proper versioning doesn't enter the registry. Everything downstream is derived from contracts you can trust.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="https://github.com/grapitydev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-white text-surface font-semibold text-base hover:bg-gray-100 transition-colors">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            Star on GitHub
+          </a>
+          <a href="#how-it-works" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-surface-200 text-text-primary font-semibold text-base hover:border-surface-100 hover:bg-surface-50 transition-colors">
+            See how it works
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="problem" class="relative py-16 sm:py-20">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="max-w-2xl mb-16">
+          <p class="text-sm font-mono text-accent-cyan uppercase tracking-widest mb-3">The problem</p>
+          <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight mb-4">
+            The API contract is defined once, filed somewhere, and then disconnected from everything that depends on it.
+          </h2>
+          <p class="text-text-secondary text-lg">
+            Six symptoms, one root cause. If you've lived any of these, you've felt the gap.
+          </p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="problem-card problem-card-highlight p-6 rounded-xl border border-surface-200 bg-surface-50/50">
+            <div class="flex items-center gap-3 mb-3">
+              <svg class="w-5 h-5 text-accent-indigo shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4.5v15m0 0l-6-6m6 6l6-6"/></svg>
+              <h3 class="font-display font-semibold text-text-primary">Specs are scattered</h3>
+            </div>
+            <p class="text-text-secondary text-sm leading-relaxed">OpenAPI and AsyncAPI files live across repos, owned by different teams, sometimes absent. No single place answers "what APIs do we have?"</p>
+          </div>
+          <div class="problem-card problem-card-highlight p-6 rounded-xl border border-surface-200 bg-surface-50/50">
+            <div class="flex items-center gap-3 mb-3">
+              <svg class="w-5 h-5 text-red-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+              <h3 class="font-display font-semibold text-text-primary">Breaking changes ship silently</h3>
+            </div>
+            <p class="text-text-secondary text-sm leading-relaxed">A developer removes a required field, changes a schema, or renames a channel. No CI gate. No notification. Downstream teams discover it during an incident.</p>
+          </div>
+          <div class="problem-card p-6 rounded-xl border border-surface-200 bg-surface-50/50">
+            <div class="flex items-center gap-3 mb-3">
+              <svg class="w-5 h-5 text-accent-cyan shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/></svg>
+              <h3 class="font-display font-semibold text-text-primary">Consuming APIs is manual</h3>
+            </div>
+            <p class="text-text-secondary text-sm leading-relaxed">Teams write HTTP clients, Kafka consumers, and WebSocket boilerplate by hand. The spec that describes exactly how to connect exists, but nothing generates typed code from it.</p>
+          </div>
+          <div class="problem-card p-6 rounded-xl border border-surface-200 bg-surface-50/50">
+            <div class="flex items-center gap-3 mb-3">
+              <svg class="w-5 h-5 text-accent-cyan shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5.25 6.375l4.5-4.5 4.5 4.5m-9 11.25l4.5 4.5 4.5-4.5M3.75 12h16.5"/></svg>
+              <h3 class="font-display font-semibold text-text-primary">The gateway is disconnected</h3>
+            </div>
+            <p class="text-text-secondary text-sm leading-relaxed">Auth schemes, rate limits, and routing rules are configured separately from the specs that define the API. When the spec changes, nobody tells the gateway.</p>
+          </div>
+          <div class="problem-card p-6 rounded-xl border border-surface-200 bg-surface-50/50">
+            <div class="flex items-center gap-3 mb-3">
+              <svg class="w-5 h-5 text-accent-cyan shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611M5 14.5l-1.402 1.402c-1.232 1.232-.65 3.318 1.067 3.611"/></svg>
+              <h3 class="font-display font-semibold text-text-primary">AI tools work from stale context</h3>
+            </div>
+            <p class="text-text-secondary text-sm leading-relaxed">Coding assistants hallucinate endpoints, use deprecated fields, and generate code that doesn't match the spec. No compact, LLM-optimised representation exists.</p>
+          </div>
+          <div class="problem-card p-6 rounded-xl border border-surface-200 bg-surface-50/50">
+            <div class="flex items-center gap-3 mb-3">
+              <svg class="w-5 h-5 text-accent-cyan shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.98 8.223A10.477 10.477 0 001.934 12c1.292 4.338 5.31 7.5 10.066 7.5.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88"/></svg>
+              <h3 class="font-display font-semibold text-text-primary">No audit trail</h3>
+            </div>
+            <p class="text-text-secondary text-sm leading-relaxed">When a breaking change causes an incident, nobody can answer who changed it, when, or whether it was reviewed. Contract evolution is ungoverned.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="solution" class="relative pt-6 pb-16 sm:pt-8 sm:pb-20">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="max-w-2xl mb-16">
+          <p class="text-sm font-mono text-accent-cyan uppercase tracking-widest mb-3">The solution</p>
+          <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight mb-4">
+            A spec that enters Grapity Registry has earned its place.
+          </h2>
+          <p class="text-text-secondary text-lg">
+            The spec is the source of truth. The registry is the gatekeeper. Everything else derives from both.
+          </p>
+        </div>
+
+        <div class="space-y-3 mb-4">
+          <div class="layer-card p-5 sm:p-6 rounded-xl border border-surface-200 bg-surface-50/50 flex flex-col sm:flex-row sm:items-center gap-4">
+            <div class="flex items-center gap-4 sm:w-72 shrink-0">
+              <span class="font-mono text-sm text-accent-indigo bg-accent-indigo/10 px-2 py-0.5 rounded">L1</span>
+              <h3 class="font-display font-semibold text-lg">Grapity Registry</h3>
+            </div>
+            <p class="text-text-secondary text-sm">The contract guardian. Validates backward compatibility, enforces semver, manages deprecation lifecycles. A spec that doesn't meet the bar doesn't get in.</p>
+          </div>
+          <div class="layer-card p-5 sm:p-6 rounded-xl border border-surface-200 bg-surface-50/50 flex flex-col sm:flex-row sm:items-center gap-4">
+            <div class="flex items-center gap-4 sm:w-72 shrink-0">
+              <span class="font-mono text-sm text-accent-indigo bg-accent-indigo/10 px-2 py-0.5 rounded">L2</span>
+              <h3 class="font-display font-semibold text-lg">Grapity Gateway</h3>
+            </div>
+            <p class="text-text-secondary text-sm">From spec to production without the ticket. Generates Kong/APISIX config from specs, with policy profiles, environment overlays, and drift detection.</p>
+          </div>
+        </div>
+
+        <div class="border-t border-dashed border-surface-200 my-8"></div>
+
+        <div class="flex items-center gap-2 mb-4">
+          <span class="text-xs font-mono text-text-secondary/60 uppercase tracking-widest">Roadmap</span>
+          <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono text-text-secondary/60 border border-surface-200">Coming later</span>
+        </div>
+
+        <div class="space-y-3 opacity-50">
+          <div class="layer-card-upcoming p-5 sm:p-6 rounded-xl border border-surface-200 bg-surface-50/50 flex flex-col sm:flex-row sm:items-center gap-4">
+            <div class="flex items-center gap-4 sm:w-72 shrink-0">
+              <span class="font-mono text-sm text-text-secondary bg-surface-200 px-2 py-0.5 rounded">L3</span>
+              <h3 class="font-display font-semibold text-lg text-text-secondary">Grapity Forge</h3>
+            </div>
+            <p class="text-text-secondary text-sm">Typed clients and consumers, forged from specs. Wraps existing generators into a unified pipeline per service across languages and protocols.</p>
+          </div>
+          <div class="layer-card-upcoming p-5 sm:p-6 rounded-xl border border-surface-200 bg-surface-50/50 flex flex-col sm:flex-row sm:items-center gap-4">
+            <div class="flex items-center gap-4 sm:w-72 shrink-0">
+              <span class="font-mono text-sm text-text-secondary bg-surface-200 px-2 py-0.5 rounded">L4</span>
+              <h3 class="font-display font-semibold text-lg text-text-secondary">Grapity Schema</h3>
+            </div>
+            <p class="text-text-secondary text-sm">Bridges AsyncAPI specs with schema registries (Confluent, AWS Glue, Apicurio). Producers and consumers share the same version.</p>
+          </div>
+          <div class="layer-card-upcoming p-5 sm:p-6 rounded-xl border border-surface-200 bg-surface-50/50 flex flex-col sm:flex-row sm:items-center gap-4">
+            <div class="flex items-center gap-4 sm:w-72 shrink-0">
+              <span class="font-mono text-sm text-text-secondary bg-surface-200 px-2 py-0.5 rounded">L5</span>
+              <h3 class="font-display font-semibold text-lg text-text-secondary">Grapity Hub</h3>
+            </div>
+            <p class="text-text-secondary text-sm">Every API your team has built, in one place. Browse, explore, diff versions, see gateway status, and consume with confidence.</p>
+          </div>
+          <div class="layer-card-upcoming p-5 sm:p-6 rounded-xl border border-surface-200 bg-surface-50/50 flex flex-col sm:flex-row sm:items-center gap-4">
+            <div class="flex items-center gap-4 sm:w-72 shrink-0">
+              <span class="font-mono text-sm text-text-secondary bg-surface-200 px-2 py-0.5 rounded">L6</span>
+              <h3 class="font-display font-semibold text-lg text-text-secondary">Grapity Mind</h3>
+            </div>
+            <p class="text-text-secondary text-sm">Specs compressed for AI. Auto-generated LLM-optimised representations. Breaking change explanations in plain language.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="registry" class="relative py-16 sm:py-20">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="max-w-2xl mb-12">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="font-mono text-sm text-accent-indigo bg-accent-indigo/10 px-2 py-0.5 rounded">L1</span>
+            <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight">Grapity Registry</h2>
+          </div>
+          <p class="text-text-secondary text-lg mt-4">
+            A spec that breaks backward compatibility doesn't enter. <span class="text-text-primary font-medium">Period.</span>
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-3 gap-4 mb-12">
+          <div class="deep-dive-card p-6 rounded-xl border border-surface-200 bg-surface-50/50">
+            <div class="flex items-center gap-2 mb-3">
+              <svg class="w-5 h-5 text-accent-indigo" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+              <h3 class="font-display font-semibold">Backward compat enforcement</h3>
+            </div>
+            <p class="text-text-secondary text-sm leading-relaxed">Every push is diffed against the previous version. Breaking changes are blocked with a precise explanation of what changed and which consumers are affected. Not just rejected. Explained.</p>
+          </div>
+          <div class="deep-dive-card p-6 rounded-xl border border-surface-200 bg-surface-50/50">
+            <div class="flex items-center gap-2 mb-3">
+              <svg class="w-5 h-5 text-accent-indigo" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7.5L7.5 3m0 0L12 7.5M7.5 3v13.5m13.5-3L16.5 18m0 0L12 13.5m4.5 4.5V4.5"/></svg>
+              <h3 class="font-display font-semibold">Semver discipline</h3>
+            </div>
+            <p class="text-text-secondary text-sm leading-relaxed">Grapity Registry enforces version increments and suggests the correct bump based on what changed. You can't ship v1.2.0 when you removed a required field. The registry knows, and it won't let you.</p>
+          </div>
+          <div class="deep-dive-card p-6 rounded-xl border border-surface-200 bg-surface-50/50">
+            <div class="flex items-center gap-2 mb-3">
+              <svg class="w-5 h-5 text-accent-indigo" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <h3 class="font-display font-semibold">Deprecation lifecycle</h3>
+            </div>
+            <p class="text-text-secondary text-sm leading-relaxed">When a version is deprecated, Grapity Registry tracks which consumers depend on it, when the sunset date is, and what the migration path is. Sunset is enforced by the registry, not by whoever happens to remember.</p>
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4 mb-12">
+          <div class="p-5 rounded-xl border border-surface-200 bg-surface-50/50">
+            <h4 class="font-mono text-sm text-red-400 mb-3 flex items-center gap-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+              Breaking changes (blocked)
+            </h4>
+            <ul class="space-y-2 text-sm text-text-secondary">
+              <li>Removing an endpoint or HTTP method</li>
+              <li>Removing or renaming a required field</li>
+              <li>Changing a field type</li>
+              <li>Adding a new required request field</li>
+              <li>Narrowing an enum by removing values</li>
+            </ul>
+          </div>
+          <div class="p-5 rounded-xl border border-surface-200 bg-surface-50/50">
+            <h4 class="font-mono text-sm text-green-400 mb-3 flex items-center gap-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              Safe changes (accepted)
+            </h4>
+            <ul class="space-y-2 text-sm text-text-secondary">
+              <li>Adding new optional fields to responses</li>
+              <li>Adding new endpoints or methods</li>
+              <li>Adding optional request parameters</li>
+              <li>Widening an enum (adding values)</li>
+              <li>Improving descriptions or examples</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="bg-surface rounded-lg p-4 overflow-x-auto">
+          <pre class="font-mono text-sm leading-relaxed"><code><span class="text-accent-cyan">$</span> <span class="text-text-primary">grapity registry push</span> <span class="text-text-secondary">./openapi.yaml --name payments-api</span>
+
+<span class="text-accent-green">✓</span> <span class="text-text-primary">Spec validated</span>
+<span class="text-accent-green">✓</span> <span class="text-text-primary">Backward compatibility: 0 breaking, 2 safe changes</span>
+<span class="text-accent-green">✓</span> <span class="text-text-primary">Version 1.1.0 registered</span></code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section id="gateway" class="relative py-16 sm:py-20 border-t border-surface-200/30">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="max-w-2xl mb-12">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="font-mono text-sm text-accent-indigo bg-accent-indigo/10 px-2 py-0.5 rounded">L2</span>
+            <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight">Grapity Gateway</h2>
+          </div>
+          <p class="text-text-secondary text-lg mt-4">
+            From spec to production, <span class="text-text-primary font-medium">without the ticket.</span>
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-3 gap-4 mb-12">
+          <div class="deep-dive-card p-6 rounded-xl border border-surface-200 bg-surface-50/50">
+            <div class="flex items-center gap-2 mb-3">
+              <svg class="w-5 h-5 text-accent-indigo" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.69-2.7m2.7 2.7l.311-.06m0 0l2.69 2.7m-2.69-2.7a15.09 15.09 0 00-2.69 2.7"/></svg>
+              <h3 class="font-display font-semibold">Self-service provisioning</h3>
+            </div>
+            <p class="text-text-secondary text-sm leading-relaxed">One command. The spec becomes routes, services, and plugins in Kong. No ticket, no handoff, no config drift. Platform engineers become policy architects instead of ticket processors.</p>
+          </div>
+          <div class="deep-dive-card p-6 rounded-xl border border-surface-200 bg-surface-50/50">
+            <div class="flex items-center gap-2 mb-3">
+              <svg class="w-5 h-5 text-accent-indigo" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.594 3.94c.09-.542.29-.994.59-1.34.502-.51 1.17-.81 1.916-.81.744 0 1.414.3 1.916.81.3.346.5.798.59 1.34.116.59.218 1.258.218 1.916m-4.23 0c0 .658.102 1.326.218 1.916.09.542.29.994.59 1.34M12 6v6m4.5-2.5c0 .658-.102 1.326-.218 1.916-.09.542-.29.994-.59 1.34M7.5 7.5c0-.658.102-1.326.218-1.916.09-.542.29-.994.59-1.34m9.402 0c.502.51.81 1.17.81 1.916 0 .744-.308 1.414-.81 1.916M7.5 7.5c0-.658.102-1.326.218-1.916"/></svg>
+              <h3 class="font-display font-semibold">Policy profiles</h3>
+            </div>
+            <p class="text-text-secondary text-sm leading-relaxed">Define once, apply everywhere. A policy profile specifies which plugins apply (JWT, rate-limiting, CORS) and their defaults. Update the profile, and every service using it picks up the change on the next provision.</p>
+          </div>
+          <div class="deep-dive-card p-6 rounded-xl border border-surface-200 bg-surface-50/50">
+            <div class="flex items-center gap-2 mb-3">
+              <svg class="w-5 h-5 text-accent-indigo" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4.5h6.75M3 9h6.75M3 13.5h6.75m6.75-9H21m-4.5 4.5H21m-4.5 4.5H21M3 19.5h18"/></svg>
+              <h3 class="font-display font-semibold">Environment promotion</h3>
+            </div>
+            <p class="text-text-secondary text-sm leading-relaxed">Diff staging against prod and see exactly what differs. Every gateway change is traceable to a spec version, a policy profile, and a human decision. No more maintaining three separate YAML files that drift apart.</p>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-center gap-3 sm:gap-4 flex-wrap mb-12 text-sm">
+          <span class="font-mono text-text-primary bg-surface-50 border border-surface-200 px-3 py-1.5 rounded">OAS spec</span>
+          <svg class="w-4 h-4 flow-arrow shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+          <span class="font-mono text-text-secondary bg-surface-50 border border-surface-200 px-3 py-1.5 rounded">gateway.config.yaml</span>
+          <span class="text-text-secondary/50">+</span>
+          <span class="font-mono text-text-secondary bg-surface-50 border border-surface-200 px-3 py-1.5 rounded">policy profile</span>
+          <svg class="w-4 h-4 flow-arrow shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+          <span class="font-mono text-accent-green bg-surface-50 border border-surface-200 px-3 py-1.5 rounded">decK YAML</span>
+          <svg class="w-4 h-4 flow-arrow shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+          <span class="font-mono text-text-primary font-semibold">Kong</span>
+        </div>
+
+        <div class="bg-surface rounded-lg p-4 overflow-x-auto">
+          <pre class="font-mono text-sm leading-relaxed"><code><span class="text-accent-cyan">$</span> <span class="text-text-primary">grapity gateway provision</span> <span class="text-text-secondary">--spec payments-api@1.1.0 \</span>
+<span class="text-text-secondary">  --env staging --profile public-api</span>
+
+<span class="text-accent-green">✓</span> <span class="text-text-primary">Generated decK config for Kong</span>
+<span class="text-accent-green">✓</span> <span class="text-text-primary">Applied policy profile: public-api</span>
+<span class="text-accent-green">✓</span> <span class="text-text-primary">Provisioned to staging</span></code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section id="how-it-works" class="relative py-16 sm:py-20 border-t border-surface-200/30">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="max-w-2xl mb-16">
+          <p class="text-sm font-mono text-accent-cyan uppercase tracking-widest mb-3">How it works</p>
+          <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight mb-4">
+            Push. Provision. Stay in sync.
+          </h2>
+          <p class="text-text-secondary text-lg">
+            Three commands. No ticket queue. The spec drives everything downstream.
+          </p>
+        </div>
+        <div class="max-w-2xl mx-auto space-y-0">
+          <div class="step-connector">
+            <div class="step-card p-6 rounded-xl border border-surface-200 bg-surface-50/50">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="font-mono text-sm text-accent-green bg-accent-green/10 px-2.5 py-0.5 rounded font-semibold">01</span>
+                <h3 class="font-display font-semibold text-lg">Your spec earns its place</h3>
+              </div>
+              <div class="bg-surface rounded-lg p-4 overflow-x-auto">
+                <pre class="font-mono text-sm leading-relaxed"><code><span class="text-accent-cyan">$</span> <span class="text-text-primary">grapity registry push</span> <span class="text-text-secondary">./openapi.yaml --name payments-api</span>
+
+<span class="text-accent-green">✓</span> <span class="text-text-primary">Spec validated</span>
+<span class="text-accent-green">✓</span> <span class="text-text-primary">Backward compatibility: 0 breaking, 2 safe changes</span>
+<span class="text-accent-green">✓</span> <span class="text-text-primary">Version 1.1.0 registered</span></code></pre>
+              </div>
+              <p class="text-text-secondary text-sm mt-4">Every push is diffed against the previous version. Breaking changes are blocked with a precise explanation. The spec earns its place.</p>
+            </div>
+          </div>
+
+          <div class="step-arrow">&#8595;</div>
+
+          <div class="step-connector">
+            <div class="step-card p-6 rounded-xl border border-surface-200 bg-surface-50/50">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="font-mono text-sm text-accent-green bg-accent-green/10 px-2.5 py-0.5 rounded font-semibold">02</span>
+                <h3 class="font-display font-semibold text-lg">Production, without the ticket</h3>
+              </div>
+              <div class="bg-surface rounded-lg p-4 overflow-x-auto">
+                <pre class="font-mono text-sm leading-relaxed"><code><span class="text-accent-cyan">$</span> <span class="text-text-primary">grapity gateway provision</span> <span class="text-text-secondary">--spec payments-api@1.1.0 \</span>
+<span class="text-text-secondary">  --env staging --profile public-api</span>
+
+<span class="text-accent-green">✓</span> <span class="text-text-primary">Generated decK config for Kong</span>
+<span class="text-accent-green">✓</span> <span class="text-text-primary">Applied policy profile: public-api</span>
+<span class="text-accent-green">✓</span> <span class="text-text-primary">Provisioned to staging</span></code></pre>
+              </div>
+              <p class="text-text-secondary text-sm mt-4">One command. The spec becomes routes, services, and plugins in Kong. No ticket, no handoff, no config drift.</p>
+            </div>
+          </div>
+
+          <div class="step-arrow">&#8595;</div>
+
+          <div class="step-connector">
+            <div class="step-card p-6 rounded-xl border border-surface-200 bg-surface-50/50">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="font-mono text-sm text-accent-green bg-accent-green/10 px-2.5 py-0.5 rounded font-semibold">03</span>
+                <h3 class="font-display font-semibold text-lg">Know exactly what changed</h3>
+              </div>
+              <div class="bg-surface rounded-lg p-4 overflow-x-auto">
+                <pre class="font-mono text-sm leading-relaxed"><code><span class="text-accent-cyan">$</span> <span class="text-text-primary">grapity gateway diff</span> <span class="text-text-secondary">--spec payments-api --env staging --env prod</span>
+
+<span class="text-text-primary">  staging → prod differences:</span>
+<span class="text-accent-green">  +</span> <span class="text-text-primary">rate-limit.requests: 5,000 → 50,000</span>
+<span class="text-accent-green">  +</span> <span class="text-text-primary">upstream: .staging. → .prod.</span>
+<span class="text-accent-cyan">  ~</span> <span class="text-text-primary">jwt-signing-key: injected from Vault</span></code></pre>
+              </div>
+              <p class="text-text-secondary text-sm mt-4">Every change is explicit, intentional, and traceable. Diff environments. Detect drift. Promote with confidence.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing" class="relative py-16 sm:py-20 border-t border-surface-200/30">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="max-w-2xl mb-16">
+          <p class="text-sm font-mono text-accent-cyan uppercase tracking-widest mb-3">Pricing</p>
+          <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight mb-4">
+            Free forever for local use. Paid tiers for teams.
+          </h2>
+          <p class="text-text-secondary text-lg">
+            The CLI and local registry are unlimited. No API count restrictions. All standard validation rules. When you need shared access, audit trails, or approval workflows, the paid tiers kick in.
+          </p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="pricing-card p-6 rounded-xl border border-surface-200 bg-surface-50/50 flex flex-col">
+            <h3 class="font-display font-semibold text-lg mb-1">Free</h3>
+            <p class="text-text-secondary text-sm mb-6">Local development, unlimited use</p>
+            <ul class="space-y-3 text-sm flex-1">
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-accent-green mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Unlimited APIs, SQLite</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-accent-green mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Full compat engine (standard rules)</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-accent-green mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Gateway config generation</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-accent-green mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Drift detection (CLI)</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-accent-green mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Define your own policy profiles</span>
+              </li>
+            </ul>
+            <div class="mt-8 pt-6 border-t border-surface-200 flex flex-col gap-3">
+              <span class="font-display text-2xl font-bold">$0</span>
+              <span class="text-text-secondary text-sm">Free forever</span>
+              <a href="https://github.com/grapitydev" target="_blank" rel="noopener noreferrer" class="mt-2 inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg border border-surface-200 text-text-primary font-semibold text-sm hover:bg-surface-50 transition-colors">
+                Install the CLI
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="pricing-card p-6 rounded-xl border border-surface-200 bg-surface-50/50 flex flex-col">
+            <h3 class="font-display font-semibold text-lg mb-1">Starter</h3>
+            <p class="text-text-secondary text-sm mb-6">Shared team access and collaboration</p>
+            <ul class="space-y-3 text-sm flex-1">
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-accent-green mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>20 APIs, managed PostgreSQL</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-accent-green mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Gateway provision history</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-accent-green mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Basic audit trail</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-accent-green mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Drift detection + email alerts</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-accent-green mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>5 team members</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-accent-green mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Hosted developer portal</span>
+              </li>
+            </ul>
+            <div class="mt-8 pt-6 border-t border-surface-200 flex flex-col gap-3">
+              <span class="font-display text-2xl font-bold">$149<span class="text-base font-normal text-text-secondary">/mo</span></span>
+              <a href="#hero" class="mt-2 inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg border border-surface-200 text-text-primary font-semibold text-sm hover:bg-surface-50 transition-colors">
+                Get early access
+              </a>
+            </div>
+          </div>
+
+          <div class="pricing-card pricing-card-featured p-6 rounded-xl border border-accent-indigo/40 bg-surface-50/80 flex flex-col relative">
+            <span class="absolute -top-3 left-6 px-3 py-0.5 rounded-full bg-accent-indigo text-white text-xs font-semibold">Growth</span>
+            <h3 class="font-display font-semibold text-lg mb-1 mt-1">Growth</h3>
+            <p class="text-text-secondary text-sm mb-6">Governance, audit, and compliance</p>
+            <ul class="space-y-3 text-sm flex-1">
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-accent-green mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Unlimited APIs, managed PostgreSQL</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-accent-green mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Custom compat rules (define your own breaking change policies)</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-accent-green mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Environment promotion (staging to prod with review)</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-accent-green mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Full audit trail + compliance export</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-accent-green mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Breaking change sign-off (approval workflows)</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-accent-green mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Vault + AWS SM secrets</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-accent-green mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>25 team members</span>
+              </li>
+            </ul>
+            <div class="mt-8 pt-6 border-t border-surface-200 flex flex-col gap-3">
+              <span class="font-display text-2xl font-bold">$499<span class="text-base font-normal text-text-secondary">/mo</span></span>
+              <a href="mailto:hello@grapity.dev" class="mt-2 inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-white text-surface font-semibold text-sm hover:bg-gray-100 transition-colors">
+                Get in touch
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="mt-8 text-center">
+          <p class="text-text-secondary/60 text-sm">Need custom policies, SSO, or SIEM integration? <a href="mailto:hello@grapity.dev" class="text-text-secondary underline hover:text-text-primary transition-colors">Talk to us.</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-surface-200 py-12">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <svg class="w-6 h-6" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="footer-g" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#6366f1"/>
+                <stop offset="100%" style="stop-color:#06b6d4"/>
+              </linearGradient>
+            </defs>
+            <path d="M7 24 L16 6 L25 24 L21 24 L16 14 L11 24 Z" fill="url(#footer-g)"/>
+            <circle cx="16" cy="24" r="2.5" fill="url(#footer-g)"/>
+          </svg>
+          <span class="font-display font-medium text-sm">Grapity</span>
+        </div>
+        <div class="flex items-center gap-6">
+          <a href="https://github.com/grapitydev" target="_blank" rel="noopener noreferrer" class="text-text-secondary hover:text-text-primary transition-colors flex items-center gap-2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            <span class="text-sm">GitHub</span>
+          </a>
+          <span class="text-text-secondary/40">&middot;</span>
+          <span class="text-text-secondary/60 text-sm">Pre-launch &middot; Building in public</span>
+        </div>
+        <span class="text-text-secondary/40 text-sm">&copy; 2026 Grapity</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
