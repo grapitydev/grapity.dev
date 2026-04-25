@@ -3,6 +3,146 @@
   50% { opacity: 0.5; }
 }
 
+/* ─── Grapity animation library ─── */
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+@keyframes logo-glow {
+  0%, 100% { filter: drop-shadow(0 0 3px #6366f188); }
+  50% { filter: drop-shadow(0 0 10px #06b6d488); }
+}
+@keyframes logo-mark {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+.anim-logo { animation: logo-glow 2s ease-in-out infinite; }
+.anim-logo .mark { animation: logo-mark 2s ease-in-out infinite; }
+
+@keyframes logo-ring {
+  0% { r: 10; opacity: 0.55; stroke-width: 1.5; }
+  100% { r: 20; opacity: 0; stroke-width: 0.5; }
+}
+.anim-logo .logo-ring {
+  animation: logo-ring 2.5s ease-out infinite;
+}
+
+@keyframes dot-bounce {
+  0%, 80%, 100% { transform: translateY(0); opacity: 0.4; }
+  40% { transform: translateY(-4px); opacity: 1; }
+}
+.anim-waiting .dot {
+  animation: dot-bounce 1.2s ease-in-out infinite;
+  transform-origin: center;
+}
+.anim-waiting .dot:nth-child(2) { animation-delay: 0.2s; }
+.anim-waiting .dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes check-draw {
+  0%   { stroke-dashoffset: 40; opacity: 0; }
+  10%  { opacity: 1; }
+  40%  { stroke-dashoffset: 0; opacity: 1; }
+  70%  { stroke-dashoffset: 0; opacity: 1; }
+  85%  { stroke-dashoffset: 40; opacity: 0; }
+  100% { stroke-dashoffset: 40; opacity: 0; }
+}
+@keyframes ring-pop {
+  0% { r: 0; opacity: 0.8; stroke-width: 3; }
+  100% { r: 20; opacity: 0; stroke-width: 0.5; }
+}
+.anim-success .check {
+  stroke-dasharray: 40;
+  stroke-dashoffset: 40;
+  animation: check-draw 3s ease-in-out infinite;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.anim-success .ring-pulse {
+  fill: none;
+  animation: ring-pop 1.4s ease-out 0.3s infinite;
+}
+
+@keyframes shield-pulse {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 0.35; }
+}
+@keyframes slash-draw {
+  0% { stroke-dashoffset: 20; }
+  50% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -20; }
+}
+@keyframes blocked-glow {
+  0%, 100% { filter: drop-shadow(0 0 2px #f43f5e44); }
+  50% { filter: drop-shadow(0 0 6px #f43f5e88); }
+}
+.anim-blocked { animation: blocked-glow 2s ease-in-out infinite; }
+.anim-blocked .shield-bg { animation: shield-pulse 2s ease-in-out infinite; }
+.anim-blocked .slash {
+  stroke-dasharray: 20;
+  animation: slash-draw 2s ease-in-out infinite;
+  fill: none;
+  stroke-linecap: round;
+}
+
+@keyframes arrow-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-1.5px); }
+}
+@keyframes dot-travel-up {
+  0% { offset-distance: 0%; opacity: 0; }
+  10% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { offset-distance: 100%; opacity: 0; }
+}
+.anim-upload .arrow-group {
+  animation: arrow-bob 1.2s ease-in-out infinite;
+  transform-origin: center;
+}
+.anim-upload .trail-dot {
+  offset-path: path('M16 26 L16 8');
+  animation: dot-travel-up 1.2s ease-in infinite;
+}
+.anim-upload .trail-dot:nth-child(2) { animation-delay: 0.4s; }
+.anim-upload .trail-dot:nth-child(3) { animation-delay: 0.8s; }
+
+@keyframes rocket-rise {
+  0%, 100% { transform: translateY(0) rotate(-45deg); }
+  50% { transform: translateY(-2px) rotate(-45deg); }
+}
+@keyframes exhaust {
+  0% { offset-distance: 0%; opacity: 1; transform: scale(1); }
+  100% { offset-distance: 100%; opacity: 0; transform: scale(0.3); }
+}
+.anim-deploy .rocket {
+  animation: rocket-rise 1s ease-in-out infinite;
+  transform-origin: center;
+}
+.anim-deploy .exhaust-dot {
+  offset-path: path('M16 20 Q14 24 10 28');
+  animation: exhaust 0.8s ease-in infinite;
+}
+.anim-deploy .exhaust-dot:nth-child(2) { animation-delay: 0.27s; }
+.anim-deploy .exhaust-dot:nth-child(3) { animation-delay: 0.54s; }
+
+@keyframes orbit { to { transform: rotate(360deg); } }
+@keyframes orbit-rev { to { transform: rotate(-360deg); } }
+@keyframes center-pulse {
+  0%, 100% { opacity: 0.4; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1); }
+}
+.anim-sync .orbit-group {
+  transform-origin: 16px 16px;
+  animation: orbit 1.8s linear infinite;
+}
+.anim-sync .orbit-group-rev {
+  transform-origin: 16px 16px;
+  animation: orbit-rev 2.4s linear infinite;
+}
+.anim-sync .center-dot {
+  animation: center-pulse 1.8s ease-in-out infinite;
+  transform-origin: 16px 16px;
+}
+
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-8px); }
