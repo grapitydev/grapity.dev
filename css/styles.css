@@ -3,7 +3,7 @@
   50% { opacity: 0.5; }
 }
 
-/* ─── Grapity animation library ─── */
+/* ─── grapity animation library ─── */
 
 @keyframes spin { to { transform: rotate(360deg); } }
 
