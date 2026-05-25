@@ -2,7 +2,7 @@ import { defineConfig } from "vitepress";
 import grapityDark from "./theme/grapity-dark.json";
 
 export default defineConfig({
-  title: "grapity",
+  title: "grapity docs",
   description: "Documentation for Grapity — the API contract guardian",
   base: "/docs/",
   outDir: "../dist/docs",
