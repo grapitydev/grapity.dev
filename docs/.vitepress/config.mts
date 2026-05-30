@@ -112,7 +112,7 @@ export default defineConfig({
 
     editLink: {
       pattern:
-        "https://github.com/grapitydev/grapity/edit/main/grapity.dev/docs/:path",
+        "https://github.com/grapitydev/grapity.dev/edit/main/docs/:path",
       text: "Edit this page on GitHub",
     },
 
