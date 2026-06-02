@@ -21,3 +21,9 @@ The contract guardian. Every spec passes through it before it can be consumed.
 The developer portal where teams browse, explore, and compare API specs.
 
 - [Using the Hub](/platform/hub/using-the-hub) — Browse specs, diff versions, and explore endpoints
+
+## Gateway
+
+Generates Kong config from the registered spec and ingests gateway logs for traffic analysis.
+
+- [Overview](/platform/gateway/overview) — How the Gateway module works

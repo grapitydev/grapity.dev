@@ -207,6 +207,71 @@
   transform: translateX(2px);
 }
 
+/* ─── expandable product cards ─── */
+
+.layer-card[data-expandable] {
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+}
+
+.layer-card[data-expandable].active {
+  border-color: rgba(99, 102, 241, 0.5);
+}
+
+/* Chevron indicator */
+.card-chevron {
+  display: inline-block;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: rgba(136, 136, 160, 0.4);
+  transition: transform 0.3s ease, color 0.2s ease, opacity 0.15s ease;
+  margin-right: 0.5rem;
+}
+
+.layer-card[data-expandable]:hover .card-chevron {
+  color: rgba(99, 102, 241, 0.7);
+}
+
+.layer-card.active .card-chevron {
+  transform: rotate(90deg);
+  opacity: 0;
+  color: rgba(99, 102, 241, 0.8);
+}
+
+/* Summary fades and collapses when active */
+.card-summary {
+  transition: opacity 0.25s ease, max-height 0.35s ease 0.05s, gap 0.35s ease 0.05s;
+  max-height: 200px;
+  opacity: 1;
+  overflow: hidden;
+  gap: 1rem;
+}
+
+.layer-card.active .card-summary {
+  opacity: 0;
+  max-height: 0;
+  gap: 0;
+}
+
+/* Detail replaces summary */
+.card-detail {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 0.45s ease 0.1s, opacity 0.35s ease 0.2s;
+}
+
+.card-detail > .detail-inner {
+  overflow: hidden;
+}
+
+.layer-card.active .card-detail {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
 .step-card {
   transition: border-color 0.2s ease;
 }
@@ -289,6 +354,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px;
 }
 
 ::selection {

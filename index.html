@@ -133,7 +133,7 @@
         <div class="max-w-2xl mb-10 sm:mb-16">
           <p class="text-sm font-body font-semibold text-accent-cyan uppercase tracking-widest mb-3">The problem</p>
           <h2 class="font-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight mb-4">
-            The API contract is defined once, filed somewhere, and immediately starts lying.
+            Your API is governed by memory, not by code.
           </h2>
           <p class="text-text-secondary text-lg">
             Six symptoms, one root cause. You've likely dealt with all of them.
@@ -199,34 +199,195 @@
         </div>
 
         <div class="space-y-3 mb-4">
-          <div class="layer-card p-5 sm:p-6 rounded-xl border border-surface-200 bg-surface-50/50 flex flex-col sm:flex-row sm:items-center gap-4">
-            <div class="flex items-center gap-4 sm:w-72 shrink-0">
-              <h3 class="font-display font-semibold text-lg"><span class="text-text-primary">grapity</span> <span class="text-text-secondary">Registry</span></h3>
+          <button class="layer-card p-5 sm:p-6 rounded-xl border border-surface-200 bg-surface-50/50 flex flex-col" data-expandable type="button">
+            <div class="card-summary flex flex-col sm:flex-row sm:items-center gap-4">
+              <div class="flex items-center gap-4 sm:w-72 shrink-0">
+                <span class="card-chevron">›</span>
+                <h3 class="font-display font-semibold text-lg"><span class="text-text-primary">grapity</span> <span class="text-text-secondary">Registry</span></h3>
+              </div>
+              <p class="text-text-secondary text-sm">The contract guardian. Validates backward compatibility, enforces semver, manages deprecation lifecycles. A spec that doesn't meet the bar doesn't get in.</p>
             </div>
-            <p class="text-text-secondary text-sm">The contract guardian. Validates backward compatibility, enforces semver, manages deprecation lifecycles. A spec that doesn't meet the bar doesn't get in.</p>
-          </div>
-          <div class="layer-card p-5 sm:p-6 rounded-xl border border-surface-200 bg-surface-50/50 flex flex-col sm:flex-row sm:items-center gap-4">
-            <div class="flex items-center gap-4 sm:w-72 shrink-0">
-              <h3 class="font-display font-semibold text-lg"><span class="text-text-primary">grapity</span> <span class="text-text-secondary">Hub</span></h3>
+            <div class="card-detail">
+              <div class="detail-inner">
+                <div class="mb-6 sm:mb-8">
+                  <div class="flex items-center gap-3 mb-4">
+                    <h2 class="font-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight"><span class="text-text-primary">grapity</span> <span class="text-text-secondary">Registry</span></h2>
+                  </div>
+                  <p class="text-text-secondary text-lg mt-4">
+                    A spec that breaks backward compatibility doesn't enter. <span class="text-text-primary font-medium">Period.</span>
+                  </p>
+                </div>
+
+                <div class="grid sm:grid-cols-3 gap-4 mb-6 sm:mb-8">
+                  <div class="deep-dive-card p-5 sm:p-6 rounded-xl border border-surface-200 bg-surface/50">
+                    <div class="flex items-center gap-2 mb-3">
+                      <svg class="w-5 h-5 text-accent-indigo" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+                      <h3 class="font-display font-semibold">Backward compat enforcement</h3>
+                    </div>
+                    <p class="text-text-secondary text-sm leading-relaxed">Every push is diffed against the previous version. Breaking changes are blocked with a precise explanation of what changed and which consumers are affected. Not just rejected. Explained.</p>
+                  </div>
+                  <div class="deep-dive-card p-5 sm:p-6 rounded-xl border border-surface-200 bg-surface/50">
+                    <div class="flex items-center gap-2 mb-3">
+                      <svg class="w-5 h-5 text-accent-indigo" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7.5L7.5 3m0 0L12 7.5M7.5 3v13.5m13.5-3L16.5 18m0 0L12 13.5m4.5 4.5V4.5"/></svg>
+                      <h3 class="font-display font-semibold">Semver discipline</h3>
+                    </div>
+                    <p class="text-text-secondary text-sm leading-relaxed">grapity Registry enforces version increments and suggests the correct bump based on what changed. You can't ship v1.2.0 when you removed a required field. The registry knows, and it won't let you.</p>
+                  </div>
+                  <div class="deep-dive-card p-5 sm:p-6 rounded-xl border border-surface-200 bg-surface/50">
+                    <div class="flex items-center gap-2 mb-3">
+                      <svg class="w-5 h-5 text-accent-indigo" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                      <h3 class="font-display font-semibold">Deprecation lifecycle</h3>
+                    </div>
+                    <p class="text-text-secondary text-sm leading-relaxed">When a version is deprecated, grapity Registry tracks which consumers depend on it, when the sunset date is, and what the migration path is. Sunset is enforced by the registry, not by whoever happens to remember.</p>
+                  </div>
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-4">
+                  <div class="p-5 rounded-xl border border-surface-200 bg-surface/50">
+                    <h4 class="font-mono text-sm text-red-400 mb-3 flex items-center gap-2">
+                      <svg class="anim-blocked shrink-0" viewBox="0 0 32 32" width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+                        <polygon class="shield-bg" points="16,4 26,8 26,18 16,28 6,18 6,8" fill="#f43f5e" stroke="none"/>
+                        <polygon points="16,4 26,8 26,18 16,28 6,18 6,8" fill="none" stroke="#f43f5e" stroke-width="1.5" stroke-linejoin="round"/>
+                        <line class="slash" x1="20" y1="12" x2="12" y2="20" stroke="#f43f5e" stroke-width="2.2"/>
+                      </svg>
+                      Breaking changes (blocked)
+                    </h4>
+                    <ul class="space-y-2 text-sm text-text-secondary">
+                      <li>Removing an endpoint or HTTP method</li>
+                      <li>Removing or renaming a required field</li>
+                      <li>Changing a field type</li>
+                      <li>Adding a new required request field</li>
+                      <li>Narrowing an enum by removing values</li>
+                    </ul>
+                  </div>
+                  <div class="p-5 rounded-xl border border-surface-200 bg-surface/50">
+                    <h4 class="font-mono text-sm text-green-400 mb-3 flex items-center gap-2">
+                      <svg class="anim-success shrink-0" viewBox="0 0 32 32" width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="16" cy="16" r="11" fill="#22d3a512"/>
+                        <circle class="ring-pulse" cx="16" cy="16" r="0" stroke="#22d3a5" stroke-width="2"/>
+                        <polyline class="check" points="10,16 14,20 22,12" stroke="#22d3a5" stroke-width="2.5"/>
+                      </svg>
+                      Safe changes (accepted)
+                    </h4>
+                    <ul class="space-y-2 text-sm text-text-secondary">
+                      <li>Adding new optional fields to responses</li>
+                      <li>Adding new endpoints or methods</li>
+                      <li>Adding optional request parameters</li>
+                      <li>Widening an enum (adding values)</li>
+                      <li>Improving descriptions or examples</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
-            <p class="text-text-secondary text-sm">Every API your team has built, in one place. Browse specs, explore endpoints, diff versions, and consume with confidence.</p>
-          </div>
+          </button>
+
+          <button class="layer-card p-5 sm:p-6 rounded-xl border border-surface-200 bg-surface-50/50 flex flex-col" data-expandable type="button">
+            <div class="card-summary flex flex-col sm:flex-row sm:items-center gap-4">
+              <div class="flex items-center gap-4 sm:w-72 shrink-0">
+                <span class="card-chevron">›</span>
+                <h3 class="font-display font-semibold text-lg"><span class="text-text-primary">grapity</span> <span class="text-text-secondary">Hub</span></h3>
+              </div>
+              <p class="text-text-secondary text-sm">Every API your team has built, in one place. Browse specs, explore endpoints, diff versions, and consume with confidence.</p>
+            </div>
+            <div class="card-detail">
+              <div class="detail-inner">
+                <div class="mb-6 sm:mb-8">
+                  <div class="flex items-center gap-3 mb-4">
+                    <h2 class="font-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight"><span class="text-text-primary">grapity</span> <span class="text-text-secondary">Hub</span></h2>
+                  </div>
+                  <p class="text-text-secondary text-lg mt-4">
+                    Every API your team has built, <span class="text-text-primary font-medium">in one place.</span>
+                  </p>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                  <div class="deep-dive-card p-5 sm:p-6 rounded-xl border border-surface-200 bg-surface/50">
+                    <div class="flex items-center gap-2 mb-3">
+                      <svg class="w-5 h-5 text-accent-indigo" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2.5-6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z"/></svg>
+                      <h3 class="font-display font-semibold">Browse all APIs</h3>
+                    </div>
+                    <p class="text-text-secondary text-sm leading-relaxed">See every spec your team owns in one searchable list. Filter by type, owner, or tags. No more hunting through repos.</p>
+                  </div>
+                  <div class="deep-dive-card p-5 sm:p-6 rounded-xl border border-surface-200 bg-surface/50">
+                    <div class="flex items-center gap-2 mb-3">
+                      <svg class="w-5 h-5 text-accent-indigo" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                      <h3 class="font-display font-semibold">Explore endpoints</h3>
+                    </div>
+                    <p class="text-text-secondary text-sm leading-relaxed">Click into any spec to see its OpenAPI endpoints rendered with schemas, parameters, and example requests. Understand an API without reading YAML.</p>
+                  </div>
+                  <div class="deep-dive-card p-5 sm:p-6 rounded-xl border border-surface-200 bg-surface/50">
+                    <div class="flex items-center gap-2 mb-3">
+                      <svg class="w-5 h-5 text-accent-indigo" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+                      <h3 class="font-display font-semibold">Compare versions</h3>
+                    </div>
+                    <p class="text-text-secondary text-sm leading-relaxed">Side-by-side version comparison with compatibility reports. See exactly what changed between v1.0 and v1.1 before you upgrade.</p>
+                  </div>
+                  <div class="deep-dive-card p-5 sm:p-6 rounded-xl border border-surface-200 bg-surface/50">
+                    <div class="flex items-center gap-2 mb-3">
+                      <svg class="w-5 h-5 text-accent-indigo" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                      <h3 class="font-display font-semibold">Version timeline</h3>
+                    </div>
+                    <p class="text-text-secondary text-sm leading-relaxed">Visual timeline of every version pushed. See at a glance which versions are safe to upgrade to and which introduced breaking changes.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </button>
+
+          <button class="layer-card p-5 sm:p-6 rounded-xl border border-surface-200 bg-surface-50/50 flex flex-col" data-expandable type="button">
+            <div class="card-summary flex flex-col sm:flex-row sm:items-center gap-4">
+              <div class="flex items-center gap-4 sm:w-72 shrink-0">
+                <span class="card-chevron">›</span>
+                <h3 class="font-display font-semibold text-lg"><span class="text-text-primary">grapity</span> <span class="text-text-secondary">Gateway</span></h3>
+              </div>
+              <p class="text-text-secondary text-sm">Generates Kong config from the registered spec. Routes, plugins, and upstream services are declared in a gateway config file and pushed to the gateway. Drift detected.</p>
+            </div>
+            <div class="card-detail">
+              <div class="detail-inner">
+                <div class="mb-8">
+                  <div class="flex items-center gap-3 mb-4">
+                    <h2 class="font-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight"><span class="text-text-primary">grapity</span> <span class="text-text-secondary">Gateway</span></h2>
+                  </div>
+                  <p class="text-text-secondary text-lg mt-4">
+                    Write the spec once. <span class="text-text-primary font-medium">Provision everywhere.</span>
+                  </p>
+                </div>
+
+                <div class="grid sm:grid-cols-3 gap-4 mb-8">
+                  <div class="deep-dive-card p-5 sm:p-6 rounded-xl border border-surface-200 bg-surface/50">
+                    <div class="flex items-center gap-2 mb-3">
+                      <svg class="w-5 h-5 text-accent-indigo" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.69-2.7m2.7 2.7l.311-.06m0 0l2.69 2.7m-2.69-2.7a15.09 15.09 0 00-2.69 2.7"/></svg>
+                      <h3 class="font-display font-semibold">Spec-driven config</h3>
+                    </div>
+                    <p class="text-text-secondary text-sm leading-relaxed">Declare routes, upstreams, and plugins in a gateway config file. The CLI validates every route against the registered spec on push. If the route doesn't exist in the spec, the push is blocked.</p>
+                  </div>
+                  <div class="deep-dive-card p-5 sm:p-6 rounded-xl border border-surface-200 bg-surface/50">
+                    <div class="flex items-center gap-2 mb-3">
+                      <svg class="w-5 h-5 text-accent-indigo" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                      <h3 class="font-display font-semibold">Log ingestion</h3>
+                    </div>
+                    <p class="text-text-secondary text-sm leading-relaxed">Kong pushes access logs to the registry via the http-log plugin. The registry normalizes payloads, resolves caller identity, and stores structured gateway logs. Query traffic, debug issues, and compute stats on demand.</p>
+                  </div>
+                  <div class="deep-dive-card p-5 sm:p-6 rounded-xl border border-surface-200 bg-surface/50">
+                    <div class="flex items-center gap-2 mb-3">
+                      <svg class="w-5 h-5 text-accent-indigo" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4.5h6.75M3 9h6.75M3 13.5h6.75m6.75-9H21m-4.5 4.5H21m-4.5 4.5H21M3 19.5h18"/></svg>
+                      <h3 class="font-display font-semibold">Environment promotion</h3>
+                    </div>
+                    <p class="text-text-secondary text-sm leading-relaxed">Diff staging against prod and see exactly what differs. Every gateway change is traceable to a spec version, a gateway config version, and a human decision. No more maintaining three separate YAML files that drift apart.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </button>
         </div>
 
-        <div class="border-t border-dashed border-surface-200 my-8"></div>
-
-        <div class="flex items-center gap-2 mb-4">
+        <div class="flex items-center gap-2 mb-4 mt-8">
           <span class="text-xs font-mono text-text-secondary/60 uppercase tracking-widest">Roadmap</span>
           <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono text-text-secondary/60 border border-surface-200">Coming later</span>
         </div>
 
         <div class="space-y-3 opacity-50">
-          <div class="layer-card-upcoming p-5 sm:p-6 rounded-xl border border-surface-200 bg-surface-50/50 flex flex-col sm:flex-row sm:items-center gap-4">
-            <div class="flex items-center gap-4 sm:w-72 shrink-0">
-              <h3 class="font-display font-semibold text-lg text-text-secondary"><span class="text-text-primary">grapity</span> <span class="text-text-secondary">Gateway</span></h3>
-            </div>
-            <p class="text-text-secondary text-sm">Generates Kong and APISIX config from the registered spec. Policies applied. Drift detected.</p>
-          </div>
           <div class="layer-card-upcoming p-5 sm:p-6 rounded-xl border border-surface-200 bg-surface-50/50 flex flex-col sm:flex-row sm:items-center gap-4">
             <div class="flex items-center gap-4 sm:w-72 shrink-0">
               <h3 class="font-display font-semibold text-lg text-text-secondary"><span class="text-text-primary">grapity</span> <span class="text-text-secondary">Forge</span></h3>
@@ -249,202 +410,15 @@
       </div>
     </section>
 
-    <section id="registry" class="relative py-6 sm:py-14">
-      <div class="max-w-6xl mx-auto px-6">
-        <div class="max-w-2xl mb-6 sm:mb-10">
-          <div class="flex items-center gap-3 mb-4">
-            <h2 class="font-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight"><span class="text-text-primary">grapity</span> <span class="text-text-secondary">Registry</span></h2>
-          </div>
-          <p class="text-text-secondary text-lg mt-4">
-            A spec that breaks backward compatibility doesn't enter. <span class="text-text-primary font-medium">Period.</span>
-          </p>
-        </div>
-
-        <div class="grid sm:grid-cols-3 gap-4 mb-6 sm:mb-10">
-          <div class="deep-dive-card p-6 rounded-xl border border-surface-200 bg-surface-50/50">
-            <div class="flex items-center gap-2 mb-3">
-              <svg class="w-5 h-5 text-accent-indigo" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
-              <h3 class="font-display font-semibold">Backward compat enforcement</h3>
-            </div>
-            <p class="text-text-secondary text-sm leading-relaxed">Every push is diffed against the previous version. Breaking changes are blocked with a precise explanation of what changed and which consumers are affected. Not just rejected. Explained.</p>
-          </div>
-          <div class="deep-dive-card p-6 rounded-xl border border-surface-200 bg-surface-50/50">
-            <div class="flex items-center gap-2 mb-3">
-              <svg class="w-5 h-5 text-accent-indigo" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7.5L7.5 3m0 0L12 7.5M7.5 3v13.5m13.5-3L16.5 18m0 0L12 13.5m4.5 4.5V4.5"/></svg>
-              <h3 class="font-display font-semibold">Semver discipline</h3>
-            </div>
-            <p class="text-text-secondary text-sm leading-relaxed">grapity Registry enforces version increments and suggests the correct bump based on what changed. You can't ship v1.2.0 when you removed a required field. The registry knows, and it won't let you.</p>
-          </div>
-          <div class="deep-dive-card p-6 rounded-xl border border-surface-200 bg-surface-50/50">
-            <div class="flex items-center gap-2 mb-3">
-              <svg class="w-5 h-5 text-accent-indigo" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-              <h3 class="font-display font-semibold">Deprecation lifecycle</h3>
-            </div>
-            <p class="text-text-secondary text-sm leading-relaxed">When a version is deprecated, grapity Registry tracks which consumers depend on it, when the sunset date is, and what the migration path is. Sunset is enforced by the registry, not by whoever happens to remember.</p>
-          </div>
-        </div>
-
-        <div class="grid sm:grid-cols-2 gap-4">
-          <div class="p-5 rounded-xl border border-surface-200 bg-surface-50/50">
-            <h4 class="font-mono text-sm text-red-400 mb-3 flex items-center gap-2">
-              <svg class="anim-blocked shrink-0" viewBox="0 0 32 32" width="16" height="16" xmlns="http://www.w3.org/2000/svg">
-                <polygon class="shield-bg" points="16,4 26,8 26,18 16,28 6,18 6,8" fill="#f43f5e" stroke="none"/>
-                <polygon points="16,4 26,8 26,18 16,28 6,18 6,8" fill="none" stroke="#f43f5e" stroke-width="1.5" stroke-linejoin="round"/>
-                <line class="slash" x1="20" y1="12" x2="12" y2="20" stroke="#f43f5e" stroke-width="2.2"/>
-              </svg>
-              Breaking changes (blocked)
-            </h4>
-            <ul class="space-y-2 text-sm text-text-secondary">
-              <li>Removing an endpoint or HTTP method</li>
-              <li>Removing or renaming a required field</li>
-              <li>Changing a field type</li>
-              <li>Adding a new required request field</li>
-              <li>Narrowing an enum by removing values</li>
-            </ul>
-          </div>
-          <div class="p-5 rounded-xl border border-surface-200 bg-surface-50/50">
-            <h4 class="font-mono text-sm text-green-400 mb-3 flex items-center gap-2">
-              <svg class="anim-success shrink-0" viewBox="0 0 32 32" width="16" height="16" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="16" cy="16" r="11" fill="#22d3a512"/>
-                <circle class="ring-pulse" cx="16" cy="16" r="0" stroke="#22d3a5" stroke-width="2"/>
-                <polyline class="check" points="10,16 14,20 22,12" stroke="#22d3a5" stroke-width="2.5"/>
-              </svg>
-              Safe changes (accepted)
-            </h4>
-            <ul class="space-y-2 text-sm text-text-secondary">
-              <li>Adding new optional fields to responses</li>
-              <li>Adding new endpoints or methods</li>
-              <li>Adding optional request parameters</li>
-              <li>Widening an enum (adding values)</li>
-              <li>Improving descriptions or examples</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="hub" class="relative py-6 sm:py-14">
-      <div class="max-w-6xl mx-auto px-6">
-        <div class="max-w-2xl mb-6 sm:mb-10">
-          <div class="flex items-center gap-3 mb-4">
-            <h2 class="font-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight"><span class="text-text-primary">grapity</span> <span class="text-text-secondary">Hub</span></h2>
-          </div>
-          <p class="text-text-secondary text-lg mt-4">
-            Every API your team has built, <span class="text-text-primary font-medium">in one place.</span>
-          </p>
-        </div>
-
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div class="deep-dive-card p-6 rounded-xl border border-surface-200 bg-surface-50/50">
-            <div class="flex items-center gap-2 mb-3">
-              <svg class="w-5 h-5 text-accent-indigo" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2.5-6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z"/></svg>
-              <h3 class="font-display font-semibold">Browse all APIs</h3>
-            </div>
-            <p class="text-text-secondary text-sm leading-relaxed">See every spec your team owns in one searchable list. Filter by type, owner, or tags. No more hunting through repos.</p>
-          </div>
-          <div class="deep-dive-card p-6 rounded-xl border border-surface-200 bg-surface-50/50">
-            <div class="flex items-center gap-2 mb-3">
-              <svg class="w-5 h-5 text-accent-indigo" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-              <h3 class="font-display font-semibold">Explore endpoints</h3>
-            </div>
-            <p class="text-text-secondary text-sm leading-relaxed">Click into any spec to see its OpenAPI endpoints rendered with schemas, parameters, and example requests. Understand an API without reading YAML.</p>
-          </div>
-          <div class="deep-dive-card p-6 rounded-xl border border-surface-200 bg-surface-50/50">
-            <div class="flex items-center gap-2 mb-3">
-              <svg class="w-5 h-5 text-accent-indigo" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
-              <h3 class="font-display font-semibold">Compare versions</h3>
-            </div>
-            <p class="text-text-secondary text-sm leading-relaxed">Side-by-side version comparison with compatibility reports. See exactly what changed between v1.0 and v1.1 before you upgrade.</p>
-          </div>
-          <div class="deep-dive-card p-6 rounded-xl border border-surface-200 bg-surface-50/50">
-            <div class="flex items-center gap-2 mb-3">
-              <svg class="w-5 h-5 text-accent-indigo" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-              <h3 class="font-display font-semibold">Version timeline</h3>
-            </div>
-            <p class="text-text-secondary text-sm leading-relaxed">Visual timeline of every version pushed. See at a glance which versions are safe to upgrade to and which introduced breaking changes.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Gateway section - commented out until Gateway is built
-    <section id="gateway" class="relative py-6 sm:py-14 border-t border-surface-200/30">
-      <div class="max-w-6xl mx-auto px-6">
-        <div class="max-w-2xl mb-12">
-          <div class="flex items-center gap-3 mb-4">
-            <h2 class="font-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight"><span class="text-text-primary">grapity</span> <span class="text-text-secondary">Gateway</span></h2>
-          </div>
-          <p class="text-text-secondary text-lg mt-4">
-            From spec to production, <span class="text-text-primary font-medium">without the ticket.</span>
-          </p>
-        </div>
-
-        <div class="grid sm:grid-cols-3 gap-4 mb-12">
-          <div class="deep-dive-card p-6 rounded-xl border border-surface-200 bg-surface-50/50">
-            <div class="flex items-center gap-2 mb-3">
-              <svg class="w-5 h-5 text-accent-indigo" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.69-2.7m2.7 2.7l.311-.06m0 0l2.69 2.7m-2.69-2.7a15.09 15.09 0 00-2.69 2.7"/></svg>
-              <h3 class="font-display font-semibold">Self-service provisioning</h3>
-            </div>
-            <p class="text-text-secondary text-sm leading-relaxed">One command. The spec becomes routes, services, and plugins in Kong. No ticket, no handoff, no config drift. Platform engineers become policy architects instead of ticket processors.</p>
-          </div>
-          <div class="deep-dive-card p-6 rounded-xl border border-surface-200 bg-surface-50/50">
-            <div class="flex items-center gap-2 mb-3">
-              <svg class="w-5 h-5 text-accent-indigo" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.594 3.94c.09-.542.29-.994.59-1.34.502-.51 1.17-.81 1.916-.81.744 0 1.414.3 1.916.81.3.346.5.798.59 1.34.116.59.218 1.258.218 1.916m-4.23 0c0 .658.102 1.326.218 1.916.09.542.29.994.59 1.34M12 6v6m4.5-2.5c0 .658-.102 1.326-.218 1.916-.09.542-.29.994-.59 1.34M7.5 7.5c0-.658.102-1.326.218-1.916.09-.542.29-.994.59-1.34m9.402 0c.502.51.81 1.17.81 1.916 0 .744-.308 1.414-.81 1.916M7.5 7.5c0-.658.102-1.326.218-1.916"/></svg>
-              <h3 class="font-display font-semibold">Policy profiles</h3>
-            </div>
-            <p class="text-text-secondary text-sm leading-relaxed">Define once, apply everywhere. A policy profile specifies which plugins apply (JWT, rate-limiting, CORS) and their defaults. Update the profile, and every service using it picks up the change on the next provision.</p>
-          </div>
-          <div class="deep-dive-card p-6 rounded-xl border border-surface-200 bg-surface-50/50">
-            <div class="flex items-center gap-2 mb-3">
-              <svg class="w-5 h-5 text-accent-indigo" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4.5h6.75M3 9h6.75M3 13.5h6.75m6.75-9H21m-4.5 4.5H21m-4.5 4.5H21M3 19.5h18"/></svg>
-              <h3 class="font-display font-semibold">Environment promotion</h3>
-            </div>
-            <p class="text-text-secondary text-sm leading-relaxed">Diff staging against prod and see exactly what differs. Every gateway change is traceable to a spec version, a policy profile, and a human decision. No more maintaining three separate YAML files that drift apart.</p>
-          </div>
-        </div>
-
-        <div class="flex items-center justify-center gap-3 sm:gap-4 flex-wrap mb-12 text-sm">
-          <span class="font-mono text-text-primary bg-surface-50 border border-surface-200 px-3 py-1.5 rounded">OAS spec</span>
-          <svg class="w-4 h-4 flow-arrow shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
-          <span class="font-mono text-text-secondary bg-surface-50 border border-surface-200 px-3 py-1.5 rounded">gateway.config.yaml</span>
-          <span class="text-text-secondary/50">+</span>
-          <span class="font-mono text-text-secondary bg-surface-50 border border-surface-200 px-3 py-1.5 rounded">policy profile</span>
-          <svg class="w-4 h-4 flow-arrow shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
-          <span class="font-mono text-accent-green bg-surface-50 border border-surface-200 px-3 py-1.5 rounded">decK YAML</span>
-          <svg class="w-4 h-4 flow-arrow shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
-          <span class="font-mono text-text-primary font-semibold">Kong</span>
-        </div>
-
-        <div class="bg-surface rounded-lg p-4 overflow-x-auto">
-          <pre class="font-mono text-sm leading-relaxed"><code><span class="text-accent-cyan">$</span> <span class="text-text-primary">grapity gateway provision</span> <span class="text-text-secondary">--spec payments-api@1.1.0 \</span>
-<span class="text-text-secondary">  --env staging --profile public-api</span>
-
-<span class="text-accent-green">✓</span> <span class="text-text-primary">Generated decK config for Kong</span>
-<span class="text-accent-green">✓</span> <span class="text-text-primary">Applied policy profile: public-api</span>
-<span class="text-accent-green">✓</span> <span class="text-text-primary">Provisioned to staging</span></code></pre>
-        </div>
-
-        <div class="mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-4">
-          <a href="https://github.com/grapitydev/cli" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white text-surface font-semibold text-sm hover:bg-gray-100 transition-colors">
-            Get started on GitHub
-          </a>
-          <a href="mailto:contact@grapity.dev" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-white/20 text-text-secondary font-semibold text-sm hover:border-white/40 hover:text-text-primary transition-colors">
-            Contact us
-          </a>
-        </div>
-      </div>
-    </section>
-    -->
-
     <section id="how-it-works" class="relative py-6 sm:py-14 border-t border-surface-200/30">
       <div class="max-w-6xl mx-auto px-6">
         <div class="max-w-2xl mb-10 sm:mb-16">
           <p class="text-sm font-body font-semibold text-accent-cyan uppercase tracking-widest mb-3">How it works</p>
           <h2 class="font-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight mb-4">
-            Start. Push. Explore.
+            Start. Push. Provision. Explore.
           </h2>
           <p class="text-text-secondary text-lg">
-            Two commands. One running system. The spec drives everything downstream.
+            Four steps. One running system. The spec drives everything downstream.
           </p>
         </div>
         <div class="max-w-2xl mx-auto space-y-0">
@@ -512,6 +486,40 @@
             <div class="step-card p-6 rounded-xl border border-surface-200 bg-surface-50/50">
               <div class="flex items-center gap-3 mb-4">
                 <span class="font-mono text-sm text-accent-green bg-accent-green/10 px-2.5 py-0.5 rounded font-semibold">03</span>
+                <h3 class="font-display font-semibold text-lg">Provision the gateway</h3>
+                <svg class="anim-deploy ml-auto shrink-0" viewBox="0 0 32 32" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
+                  <g class="rocket" style="transform-origin:16px 16px">
+                    <path d="M16 6 C16 6 22 10 22 17 L16 22 L10 17 C10 10 16 6 16 6Z" fill="none" stroke="url(#anim-grad)" stroke-width="1.8" stroke-linejoin="round"/>
+                    <circle cx="16" cy="14" r="2" fill="url(#anim-grad)"/>
+                    <line x1="10" y1="17" x2="8" y2="21" stroke="#6366f1" stroke-width="1.5" stroke-linecap="round"/>
+                    <line x1="22" y1="17" x2="24" y2="21" stroke="#06b6d4" stroke-width="1.5" stroke-linecap="round"/>
+                  </g>
+                  <circle class="exhaust-dot" r="1.5" fill="#6366f1"/>
+                  <circle class="exhaust-dot" r="1" fill="#8060f0"/>
+                  <circle class="exhaust-dot" r="0.8" fill="#06b6d4"/>
+                </svg>
+              </div>
+              <div class="bg-surface rounded-lg p-4 overflow-x-auto">
+                <pre class="font-mono text-sm leading-relaxed"><code><span class="text-accent-cyan">$</span> <span class="text-text-primary">grapity gateway push</span> <span class="text-text-secondary">payments-gateway.config.yaml</span>
+
+<span class="text-accent-green">✓</span> <span class="text-text-primary">payments-gateway pushed</span>
+<span class="text-text-secondary">◆</span> <span class="text-text-secondary">Version 018f...</span>
+
+<span class="text-accent-cyan">$</span> <span class="text-text-primary">grapity gateway provision</span> <span class="text-text-secondary">--name payments-gateway --env staging --sync</span>
+
+<span class="text-text-secondary">Running deck gateway sync against http://localhost:8001…</span>
+<span class="text-accent-green">✓</span> <span class="text-text-primary">Applied for payments-gateway → staging</span></code></pre>
+              </div>
+              <p class="text-text-secondary text-sm mt-4">Push the gateway config to the registry, then provision it to Kong via decK. The CLI validates routes against the spec, generates decK YAML, and runs <code>deck gateway diff</code> (or <code>sync</code> with <code>--sync</code>). No handoff, no ticket.</p>
+            </div>
+          </div>
+
+          <div class="step-arrow">&#8595;</div>
+
+          <div class="step-connector">
+            <div class="step-card p-6 rounded-xl border border-surface-200 bg-surface-50/50">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="font-mono text-sm text-accent-green bg-accent-green/10 px-2.5 py-0.5 rounded font-semibold">04</span>
                 <h3 class="font-display font-semibold text-lg">Browse and explore</h3>
                 <svg class="anim-sync ml-auto shrink-0" viewBox="0 0 32 32" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
                   <g class="orbit-group">
@@ -758,6 +766,36 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    (function () {
+      const cards = document.querySelectorAll('.layer-card[data-expandable]');
+
+      function closeAll() {
+        cards.forEach((card) => card.classList.remove('active'));
+      }
+
+      cards.forEach((card) => {
+        card.addEventListener('click', () => {
+          const isActive = card.classList.contains('active');
+          closeAll();
+          if (!isActive) card.classList.add('active');
+        });
+      });
+
+      // Auto-open card from URL hash
+      if (window.location.hash) {
+        const hash = window.location.hash.slice(1);
+        const targets = { registry: 0, hub: 1, gateway: 2 };
+        if (targets[hash] !== undefined) {
+          setTimeout(() => {
+            closeAll();
+            cards[targets[hash]].classList.add('active');
+          }, 100);
+        }
+      }
+    })();
+  </script>
 
 </body>
 </html>

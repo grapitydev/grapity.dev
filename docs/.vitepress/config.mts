@@ -84,6 +84,12 @@ export default defineConfig({
                 { text: "Using the Hub", link: "/platform/hub/using-the-hub" },
               ],
             },
+            {
+              text: "Gateway",
+              items: [
+                { text: "Overview", link: "/platform/gateway/overview" },
+              ],
+            },
           ],
         },
       ],
@@ -94,6 +100,7 @@ export default defineConfig({
             { text: "grapity init", link: "/cli-reference/init" },
             { text: "grapity serve", link: "/cli-reference/serve" },
             { text: "grapity registry", link: "/cli-reference/registry" },
+            { text: "grapity gateway", link: "/cli-reference/gateway" },
           ],
         },
       ],
