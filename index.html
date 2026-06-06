@@ -534,63 +534,166 @@
                 </svg>
               </div>
 
-              <!-- Hub UI Reconstruction -->
-              <div class="bg-surface rounded-lg p-4 border border-surface-200">
-                <svg viewBox="0 0 560 320" class="w-full" xmlns="http://www.w3.org/2000/svg">
-                  <!-- Window chrome -->
-                  <rect x="0" y="0" width="560" height="28" rx="4" fill="#12121a" stroke="#1e1e2e" stroke-width="1"/>
-                  <circle cx="12" cy="14" r="3" fill="#f43f5e" opacity="0.8"/>
-                  <circle cx="22" cy="14" r="3" fill="#f59e0b" opacity="0.8"/>
-                  <circle cx="32" cy="14" r="3" fill="#22d3a5" opacity="0.8"/>
-                  <text x="48" y="17" font-family="JetBrains Mono, monospace" font-size="10" fill="#8888a0">http://localhost:3000</text>
+               <!-- Hub UI Reconstruction -->
+               <div class="bg-surface rounded-lg p-4 border border-surface-200">
+                  <svg viewBox="0 0 720 460" class="w-full" xmlns="http://www.w3.org/2000/svg">
+                   <!-- Window chrome -->
+                   <rect x="0" y="0" width="720" height="28" rx="4" fill="#12121a" stroke="#1e1e2e" stroke-width="1"/>
+                   <circle cx="12" cy="14" r="3" fill="#f43f5e" opacity="0.8"/>
+                   <circle cx="22" cy="14" r="3" fill="#f59e0b" opacity="0.8"/>
+                   <circle cx="32" cy="14" r="3" fill="#22d3a5" opacity="0.8"/>
+                   <text x="48" y="17" font-family="JetBrains Mono, monospace" font-size="10" fill="#8888a0">http://localhost:3000</text>
 
-                  <!-- Content area -->
-                  <rect x="0" y="28" width="560" height="292" rx="0" fill="#0a0a0f" stroke="#1e1e2e" stroke-width="1"/>
+                    <!-- App header -->
+                    <rect x="0" y="28" width="720" height="24" fill="#0c0c14" stroke="#1e1e2e" stroke-width="1"/>
+                    <defs>
+                      <linearGradient id="logo-g" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#6366f1" />
+                        <stop offset="100%" stop-color="#06b6d4" />
+                      </linearGradient>
+                    </defs>
+                    <g transform="translate(10, 30) scale(0.5)">
+                      <path d="M7 24 L16 6 L25 24 L21 24 L16 14 L11 24 Z" fill="url(#logo-g)" />
+                      <circle cx="16" cy="24" r="2.5" fill="url(#logo-g)" />
+                    </g>
+                    <text x="26" y="42" font-family="Space Grotesk, sans-serif" font-size="9" font-weight="600" fill="#e4e4ed">grapity</text>
+                    <text x="60" y="42" font-family="Space Grotesk, sans-serif" font-size="9" fill="#8888a0">Hub</text>
+                    <circle cx="700" cy="40" r="4" fill="none" stroke="#8888a0" stroke-width="1"/>
 
-                  <!-- Header -->
-                  <text x="16" y="56" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="600" fill="#e4e4ed">payments-api</text>
-                  <rect x="118" y="44" width="52" height="18" rx="3" fill="#6366f1" opacity="0.15"/>
-                  <text x="127" y="57" font-family="JetBrains Mono, monospace" font-size="9" fill="#6366f1" font-weight="500">openapi</text>
-                  <circle cx="184" cy="53" r="2.5" fill="#6366f1"/>
-                  <text x="192" y="57" font-family="JetBrains Mono, monospace" font-size="10" font-weight="600" fill="#e4e4ed">1.1.0</text>
-                  <text x="228" y="57" font-family="JetBrains Mono, monospace" font-size="9" fill="#22d3a5">initial</text>
+                    <!-- Content area -->
+                    <rect x="0" y="52" width="720" height="408" rx="0" fill="#0a0a0f" stroke="#1e1e2e" stroke-width="1"/>
 
-                  <!-- Tabs -->
-                  <line x1="16" y1="72" x2="544" y2="72" stroke="#1e1e2e" stroke-width="1"/>
-                  <text x="16" y="90" font-family="Space Grotesk, sans-serif" font-size="10" font-weight="600" fill="#e4e4ed">Overview</text>
-                  <line x1="16" y1="96" x2="62" y2="96" stroke="#6366f1" stroke-width="2"/>
-                  <text x="78" y="90" font-family="Space Grotesk, sans-serif" font-size="10" fill="#8888a0">Compat</text>
-                  <text x="132" y="90" font-family="Space Grotesk, sans-serif" font-size="10" fill="#8888a0">Versions</text>
-                  <text x="194" y="90" font-family="Space Grotesk, sans-serif" font-size="10" fill="#8888a0">Compare</text>
-                  <text x="258" y="90" font-family="Space Grotesk, sans-serif" font-size="10" fill="#8888a0">Raw Spec</text>
+                    <!-- Sidebar -->
+                    <rect x="0" y="52" width="150" height="408" fill="#0c0c14" stroke="#1e1e2e" stroke-width="1"/>
+                   <text x="16" y="74" font-family="JetBrains Mono, monospace" font-size="10" fill="#8888a0">← Back</text>
+                   <text x="16" y="96" font-family="Space Grotesk, sans-serif" font-size="9" font-weight="600" fill="#8888a0" letter-spacing="1">ENDPOINTS</text>
 
-                  <!-- Endpoint group -->
-                  <text x="16" y="124" font-family="Space Grotesk, sans-serif" font-size="10" font-weight="600" fill="#8888a0" text-transform="uppercase" letter-spacing="1">ACCOUNTS</text>
-                  <line x1="16" y1="130" x2="544" y2="130" stroke="#1e1e2e" stroke-width="1"/>
+                   <!-- Groups -->
+                   <text x="16" y="114" font-family="Space Grotesk, sans-serif" font-size="10" font-weight="600" fill="#e4e4ed">▼ Groups</text>
+                   <rect x="14" y="118" width="122" height="14" rx="2" fill="#6366f1" opacity="0.08"/>
+                   <text x="24" y="128" font-family="JetBrains Mono, monospace" font-size="8" font-weight="600" fill="#3b82f6">GET</text>
+                   <text x="44" y="128" font-family="JetBrains Mono, monospace" font-size="8" fill="#e4e4ed">/groups</text>
+                   <text x="24" y="142" font-family="JetBrains Mono, monospace" font-size="8" font-weight="600" fill="#22d3a5">POST</text>
+                   <text x="50" y="142" font-family="JetBrains Mono, monospace" font-size="8" fill="#8888a0">/groups</text>
+                   <text x="24" y="156" font-family="JetBrains Mono, monospace" font-size="8" font-weight="600" fill="#f43f5e">DELETE</text>
+                   <text x="60" y="156" font-family="JetBrains Mono, monospace" font-size="8" fill="#8888a0">/groups/{id}</text>
+                   <text x="24" y="170" font-family="JetBrains Mono, monospace" font-size="8" font-weight="600" fill="#3b82f6">GET</text>
+                   <text x="44" y="170" font-family="JetBrains Mono, monospace" font-size="8" fill="#8888a0">/groups/{id}</text>
+                   <text x="24" y="184" font-family="JetBrains Mono, monospace" font-size="8" font-weight="600" fill="#f59e0b">PUT</text>
+                   <text x="48" y="184" font-family="JetBrains Mono, monospace" font-size="8" fill="#8888a0">/groups/{id}</text>
 
-                  <!-- Endpoint 1 -->
-                  <rect x="16" y="142" width="528" height="48" rx="4" fill="#12121a" stroke="#1e1e2e" stroke-width="1"/>
-                  <rect x="24" y="154" width="32" height="16" rx="2" fill="#3b82f6" opacity="0.15"/>
-                  <text x="30" y="165" font-family="JetBrains Mono, monospace" font-size="9" font-weight="600" fill="#3b82f6">GET</text>
-                  <text x="64" y="165" font-family="JetBrains Mono, monospace" font-size="10" fill="#e4e4ed">/v1/accounts</text>
-                  <text x="24" y="180" font-family="Space Grotesk, sans-serif" font-size="9" fill="#8888a0">List all accounts</text>
+                   <!-- Permissions -->
+                   <text x="16" y="204" font-family="Space Grotesk, sans-serif" font-size="10" font-weight="600" fill="#e4e4ed">▼ Permissions</text>
+                   <text x="24" y="218" font-family="JetBrains Mono, monospace" font-size="8" font-weight="600" fill="#3b82f6">GET</text>
+                   <text x="44" y="218" font-family="JetBrains Mono, monospace" font-size="8" fill="#8888a0">/permissions</text>
+                   <text x="24" y="232" font-family="JetBrains Mono, monospace" font-size="8" font-weight="600" fill="#22d3a5">POST</text>
+                   <text x="50" y="232" font-family="JetBrains Mono, monospace" font-size="8" fill="#8888a0">/permissions</text>
+                   <text x="24" y="246" font-family="JetBrains Mono, monospace" font-size="8" font-weight="600" fill="#f43f5e">DELETE</text>
+                   <text x="60" y="246" font-family="JetBrains Mono, monospace" font-size="8" fill="#8888a0">/permissions/{id}</text>
+                   <text x="24" y="260" font-family="JetBrains Mono, monospace" font-size="8" font-weight="600" fill="#3b82f6">GET</text>
+                   <text x="44" y="260" font-family="JetBrains Mono, monospace" font-size="8" fill="#8888a0">/permissions/{id}</text>
 
-                  <!-- Endpoint 2 -->
-                  <rect x="16" y="198" width="528" height="48" rx="4" fill="#12121a" stroke="#1e1e2e" stroke-width="1"/>
-                  <rect x="24" y="210" width="36" height="16" rx="2" fill="#22d3a5" opacity="0.15"/>
-                  <text x="28" y="221" font-family="JetBrains Mono, monospace" font-size="9" font-weight="600" fill="#22d3a5">POST</text>
-                  <text x="68" y="221" font-family="JetBrains Mono, monospace" font-size="10" fill="#e4e4ed">/v1/accounts</text>
-                  <text x="24" y="236" font-family="Space Grotesk, sans-serif" font-size="9" fill="#8888a0">Create a new account</text>
+                   <!-- Users -->
+                   <text x="16" y="280" font-family="Space Grotesk, sans-serif" font-size="10" font-weight="600" fill="#e4e4ed">▼ Users</text>
+                   <text x="24" y="294" font-family="JetBrains Mono, monospace" font-size="8" font-weight="600" fill="#3b82f6">GET</text>
+                   <text x="44" y="294" font-family="JetBrains Mono, monospace" font-size="8" fill="#8888a0">/users</text>
+                   <text x="24" y="308" font-family="JetBrains Mono, monospace" font-size="8" font-weight="600" fill="#22d3a5">POST</text>
+                   <text x="50" y="308" font-family="JetBrains Mono, monospace" font-size="8" fill="#8888a0">/users</text>
+                   <text x="24" y="322" font-family="JetBrains Mono, monospace" font-size="8" font-weight="600" fill="#f43f5e">DELETE</text>
+                   <text x="60" y="322" font-family="JetBrains Mono, monospace" font-size="8" fill="#8888a0">/users/{id}</text>
+                   <text x="24" y="336" font-family="JetBrains Mono, monospace" font-size="8" font-weight="600" fill="#3b82f6">GET</text>
+                   <text x="44" y="336" font-family="JetBrains Mono, monospace" font-size="8" fill="#8888a0">/users/{id}</text>
+                   <text x="24" y="350" font-family="JetBrains Mono, monospace" font-size="8" font-weight="600" fill="#f59e0b">PUT</text>
+                   <text x="48" y="350" font-family="JetBrains Mono, monospace" font-size="8" fill="#8888a0">/users/{id}</text>
+                   <text x="24" y="364" font-family="JetBrains Mono, monospace" font-size="8" font-weight="600" fill="#a855f7">PATCH</text>
+                   <text x="58" y="364" font-family="JetBrains Mono, monospace" font-size="8" fill="#8888a0">/users/{id}/status</text>
 
-                  <!-- Schema preview -->
-                  <rect x="16" y="258" width="528" height="46" rx="4" fill="#0c0c14" stroke="#1e1e2e" stroke-width="1"/>
-                  <text x="24" y="274" font-family="Space Grotesk, sans-serif" font-size="9" font-weight="600" fill="#8888a0">Request Body</text>
-                  <text x="24" y="290" font-family="JetBrains Mono, monospace" font-size="9" fill="#e4e4ed">name</text>
-                  <text x="64" y="290" font-family="JetBrains Mono, monospace" font-size="9" fill="#8888a0">string</text>
-                  <text x="24" y="302" font-family="JetBrains Mono, monospace" font-size="9" fill="#e4e4ed">email</text>
-                  <text x="64" y="302" font-family="JetBrains Mono, monospace" font-size="9" fill="#8888a0">string</text>
-                </svg>
-              </div>
+                   <!-- Main header -->
+                   <text x="166" y="74" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="600" fill="#e4e4ed">users-api</text>
+                   <rect x="246" y="62" width="52" height="18" rx="3" fill="#22d3a5" opacity="0.15"/>
+                   <text x="254" y="75" font-family="JetBrains Mono, monospace" font-size="9" fill="#22d3a5" font-weight="500">openapi</text>
+                   <rect x="306" y="62" width="40" height="18" rx="3" fill="#6366f1" opacity="0.15"/>
+                   <text x="314" y="75" font-family="JetBrains Mono, monospace" font-size="9" fill="#6366f1" font-weight="600">1.0.0</text>
+                   <text x="356" y="75" font-family="JetBrains Mono, monospace" font-size="9" fill="#8888a0">initial</text>
+                   <text x="396" y="75" font-family="JetBrains Mono, monospace" font-size="9" fill="#8888a0">6/5/2026</text>
+
+                   <!-- Tabs -->
+                   <line x1="166" y1="90" x2="700" y2="90" stroke="#1e1e2e" stroke-width="1"/>
+                   <text x="166" y="108" font-family="Space Grotesk, sans-serif" font-size="10" font-weight="600" fill="#e4e4ed">Overview</text>
+                   <line x1="166" y1="114" x2="224" y2="114" stroke="#6366f1" stroke-width="2"/>
+                   <text x="240" y="108" font-family="Space Grotesk, sans-serif" font-size="10" fill="#8888a0">Changelog</text>
+                   <text x="316" y="108" font-family="Space Grotesk, sans-serif" font-size="10" fill="#8888a0">Versions</text>
+                   <text x="382" y="108" font-family="Space Grotesk, sans-serif" font-size="10" fill="#8888a0">Compare</text>
+                   <text x="448" y="108" font-family="Space Grotesk, sans-serif" font-size="10" fill="#8888a0">Raw Spec</text>
+
+                   <!-- Endpoints -->
+                   <text x="166" y="138" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="600" fill="#e4e4ed">Endpoints</text>
+                   <text x="166" y="158" font-family="Space Grotesk, sans-serif" font-size="9" font-weight="600" fill="#8888a0" letter-spacing="1">GROUPS</text>
+                   <line x1="166" y1="164" x2="700" y2="164" stroke="#1e1e2e" stroke-width="1"/>
+
+                   <!-- GET badge -->
+                   <rect x="166" y="172" width="32" height="18" rx="3" fill="#3b82f6"/>
+                   <text x="174" y="185" font-family="JetBrains Mono, monospace" font-size="9" font-weight="600" fill="#ffffff">GET</text>
+                   <text x="206" y="185" font-family="JetBrains Mono, monospace" font-size="11" fill="#e4e4ed">/groups</text>
+                   <text x="166" y="202" font-family="Space Grotesk, sans-serif" font-size="10" fill="#e4e4ed">List groups</text>
+
+                   <!-- Description -->
+                   <text x="166" y="218" font-family="Space Grotesk, sans-serif" font-size="7" fill="#8888a0">Retrieves all groups defined in the system. Groups are</text>
+                   <text x="166" y="228" font-family="Space Grotesk, sans-serif" font-size="7" fill="#8888a0">organizational units used to manage user collections.</text>
+
+                   <!-- RESPONSES -->
+                   <text x="166" y="246" font-family="Space Grotesk, sans-serif" font-size="8" font-weight="600" fill="#8888a0">RESPONSES</text>
+
+                   <!-- 200 -->
+                   <rect x="166" y="254" width="28" height="14" rx="2" fill="#22d3a5"/>
+                   <text x="172" y="264" font-family="JetBrains Mono, monospace" font-size="8" font-weight="600" fill="#0a0a0f">200</text>
+                   <text x="200" y="264" font-family="Space Grotesk, sans-serif" font-size="8" fill="#e4e4ed">A list of groups</text>
+
+                    <!-- JSON panel -->
+                     <rect x="460" y="248" width="240" height="210" rx="4" fill="#0c0c14" stroke="#1e1e2e" stroke-width="1"/>
+                    <!-- Copy icon -->
+                    <rect x="678" y="254" width="12" height="12" rx="1" fill="none" stroke="#8888a0" stroke-width="1"/>
+                    <rect x="674" y="258" width="12" height="12" rx="1" fill="none" stroke="#8888a0" stroke-width="1"/>
+
+                    <!-- JSON content - first object -->
+                    <text x="470" y="272" font-family="JetBrains Mono, monospace" font-size="7" fill="#e4e4ed">[</text>
+                    <text x="470" y="284" font-family="JetBrains Mono, monospace" font-size="7" fill="#e4e4ed">{</text>
+                    <text x="470" y="296" font-family="JetBrains Mono, monospace" font-size="7" fill="#e4e4ed">  "id": </text>
+                    <text x="502" y="296" font-family="JetBrains Mono, monospace" font-size="7" fill="#a5d6a7">"grp_99"</text>
+                    <text x="546" y="296" font-family="JetBrains Mono, monospace" font-size="7" fill="#e4e4ed">,</text>
+                    <text x="470" y="308" font-family="JetBrains Mono, monospace" font-size="7" fill="#e4e4ed">  "name": </text>
+                    <text x="510" y="308" font-family="JetBrains Mono, monospace" font-size="7" fill="#a5d6a7">"Engineering"</text>
+                    <text x="590" y="308" font-family="JetBrains Mono, monospace" font-size="7" fill="#e4e4ed">,</text>
+                    <text x="470" y="320" font-family="JetBrains Mono, monospace" font-size="7" fill="#e4e4ed">  "description": </text>
+                    <text x="538" y="320" font-family="JetBrains Mono, monospace" font-size="7" fill="#a5d6a7">"Engineering team members"</text>
+                    <text x="642" y="320" font-family="JetBrains Mono, monospace" font-size="7" fill="#e4e4ed">,</text>
+                    <text x="470" y="332" font-family="JetBrains Mono, monospace" font-size="7" fill="#e4e4ed">  "memberCount": </text>
+                    <text x="550" y="332" font-family="JetBrains Mono, monospace" font-size="7" fill="#64b5f6">12</text>
+                    <text x="562" y="332" font-family="JetBrains Mono, monospace" font-size="7" fill="#e4e4ed">,</text>
+                    <text x="470" y="344" font-family="JetBrains Mono, monospace" font-size="7" fill="#e4e4ed">  "createdAt": </text>
+                    <text x="530" y="344" font-family="JetBrains Mono, monospace" font-size="7" fill="#a5d6a7">"2025-06-01T00:00:00Z"</text>
+                    <text x="470" y="356" font-family="JetBrains Mono, monospace" font-size="7" fill="#e4e4ed">}</text>
+
+                    <!-- JSON content - second object -->
+                    <text x="470" y="368" font-family="JetBrains Mono, monospace" font-size="7" fill="#e4e4ed">{</text>
+                    <text x="470" y="380" font-family="JetBrains Mono, monospace" font-size="7" fill="#e4e4ed">  "id": </text>
+                    <text x="502" y="380" font-family="JetBrains Mono, monospace" font-size="7" fill="#a5d6a7">"grp_88"</text>
+                    <text x="546" y="380" font-family="JetBrains Mono, monospace" font-size="7" fill="#e4e4ed">,</text>
+                    <text x="470" y="392" font-family="JetBrains Mono, monospace" font-size="7" fill="#e4e4ed">  "name": </text>
+                    <text x="510" y="392" font-family="JetBrains Mono, monospace" font-size="7" fill="#a5d6a7">"Product"</text>
+                    <text x="558" y="392" font-family="JetBrains Mono, monospace" font-size="7" fill="#e4e4ed">,</text>
+                    <text x="470" y="404" font-family="JetBrains Mono, monospace" font-size="7" fill="#e4e4ed">  "description": </text>
+                    <text x="538" y="404" font-family="JetBrains Mono, monospace" font-size="7" fill="#a5d6a7">"Product management team"</text>
+                    <text x="654" y="404" font-family="JetBrains Mono, monospace" font-size="7" fill="#e4e4ed">,</text>
+                    <text x="470" y="416" font-family="JetBrains Mono, monospace" font-size="7" fill="#e4e4ed">  "memberCount": </text>
+                    <text x="550" y="416" font-family="JetBrains Mono, monospace" font-size="7" fill="#64b5f6">5</text>
+                    <text x="556" y="416" font-family="JetBrains Mono, monospace" font-size="7" fill="#e4e4ed">,</text>
+                    <text x="470" y="428" font-family="JetBrains Mono, monospace" font-size="7" fill="#e4e4ed">  "createdAt": </text>
+                    <text x="530" y="428" font-family="JetBrains Mono, monospace" font-size="7" fill="#a5d6a7">"2025-09-15T00:00:00Z"</text>
+                    <text x="470" y="440" font-family="JetBrains Mono, monospace" font-size="7" fill="#e4e4ed">}</text>
+                    <text x="470" y="452" font-family="JetBrains Mono, monospace" font-size="7" fill="#e4e4ed">]</text>
+                  </svg>
+               </div>
 
               <p class="text-text-secondary text-sm mt-4">Click into any spec to see its OpenAPI endpoints rendered with schemas, parameters, and example requests. Understand an API without reading YAML.</p>
             </div>
