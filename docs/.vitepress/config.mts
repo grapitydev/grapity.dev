@@ -1,5 +1,4 @@
 import { defineConfig } from "vitepress";
-import grapityDark from "./theme/grapity-dark.json";
 
 export default defineConfig({
   title: "grapity docs",
@@ -131,8 +130,8 @@ export default defineConfig({
 
   markdown: {
     theme: {
-      dark: grapityDark as any,
-      light: "vitesse-light",
+      dark: "catppuccin-mocha",
+      light: "catppuccin-latte",
     },
   },
 });

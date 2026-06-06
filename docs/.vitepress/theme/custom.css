@@ -38,10 +38,10 @@ html.dark {
   --vp-c-danger-3: #f43f5e;
   --vp-c-danger-soft: rgba(244, 63, 94, 0.14);
 
-  --vp-sidebar-bg-color: #12121a;
-  --vp-code-block-bg: #12121a;
-  --vp-code-copy-code-bg: #1a1a28;
-  --vp-code-copy-code-hover-bg: #2a2a3e;
+  --vp-sidebar-bg-color: #0c0c14;
+  --vp-code-block-bg: #0c0c14;
+  --vp-code-copy-code-bg: #12121a;
+  --vp-code-copy-code-hover-bg: #1e1e2e;
   --vp-code-copy-code-active-text: #e4e4ed;
 }
 
@@ -80,10 +80,10 @@ html:not(.dark) {
   --vp-c-danger-3: #e11d48;
   --vp-c-danger-soft: rgba(225, 29, 72, 0.1);
 
-  --vp-sidebar-bg-color: #f8f8fa;
-  --vp-code-block-bg: #f4f4f8;
-  --vp-code-copy-code-bg: #e8e8ee;
-  --vp-code-copy-code-hover-bg: #d8d8e0;
+  --vp-sidebar-bg-color: #f8f9fa;
+  --vp-code-block-bg: #f8f9fa;
+  --vp-code-copy-code-bg: #f0f0f5;
+  --vp-code-copy-code-hover-bg: #e4e4e7;
   --vp-code-copy-code-active-text: #1a1a2e;
 }
 
@@ -225,13 +225,13 @@ html:not(.dark) .vp-doc blockquote {
 
 /* ── Code blocks ── */
 html.dark .vp-doc div[class*="language-"] {
-  background-color: #12121a;
-  border: 1px solid #2a2a3e;
+  background-color: #0c0c14;
+  border: 1px solid #1e1e2e;
 }
 
 html:not(.dark) .vp-doc div[class*="language-"] {
-  background-color: #f4f4f8;
-  border: 1px solid #e2e2e8;
+  background-color: #f8f9fa;
+  border: 1px solid #e4e4e7;
 }
 
 .vp-doc div[class*="language-"] {
@@ -244,7 +244,12 @@ html:not(.dark) .vp-doc div[class*="language-"] {
   background-color: var(--vp-c-bg-soft);
 }
 
-/* Bash / shell blocks: monochromatic in both modes */
+/* Bash / shell blocks: monochromatic */
+html.dark .vp-doc div[class*="language-bash"] .vp-code span,
+html.dark .vp-doc div[class*="language-sh"] .vp-code span {
+  color: #e4e4ed !important;
+}
+
 html:not(.dark) .vp-doc div[class*="language-bash"] .vp-code span,
 html:not(.dark) .vp-doc div[class*="language-sh"] .vp-code span {
   color: #1a1a2e !important;
