@@ -176,13 +176,7 @@
 }
 
 .problem-card {
-  transition: border-color 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
-}
-
-.problem-card:hover {
-  border-color: rgba(99, 102, 241, 0.3);
-  transform: translateY(-2px);
-  background-color: rgba(18, 18, 26, 0.8);
+  transition: border-color 0.2s ease, background-color 0.2s ease;
 }
 
 .problem-card-highlight {
@@ -199,12 +193,7 @@
 }
 
 .layer-card-upcoming {
-  transition: border-color 0.2s ease, transform 0.15s ease;
-}
-
-.layer-card-upcoming:hover {
-  border-color: rgba(99, 102, 241, 0.2);
-  transform: translateX(2px);
+  transition: border-color 0.2s ease;
 }
 
 /* ─── expandable product cards ─── */
@@ -276,10 +265,6 @@
   transition: border-color 0.2s ease;
 }
 
-.step-card:hover {
-  border-color: rgba(99, 102, 241, 0.3);
-}
-
 .step-connector {
   position: relative;
 }
@@ -308,15 +293,7 @@
 }
 
 .pricing-card {
-  transition: border-color 0.2s ease, transform 0.2s ease;
-}
-
-.pricing-card:hover {
-  transform: translateY(-4px);
-}
-
-.pricing-card:hover {
-  border-color: rgba(255, 255, 255, 0.15);
+  transition: border-color 0.2s ease;
 }
 
 .pricing-card-featured {

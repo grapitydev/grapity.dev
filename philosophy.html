@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Philosophy | grapity</title>
+  <meta name="description" content="Grapity's open source philosophy. Free forever, no paywalls, Apache 2.0. We sell operations, not features.">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            surface: {
+              DEFAULT: '#0a0a0f',
+              50: '#12121a',
+              100: '#1a1a28',
+              200: '#1e1e2e',
+            },
+            accent: {
+              indigo: '#6366f1',
+              cyan: '#06b6d4',
+              green: '#a5f3c4',
+            },
+            text: {
+              primary: '#e4e4ed',
+              secondary: '#8888a0',
+            }
+          },
+          fontFamily: {
+            display: ['Space Grotesk', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body class="bg-surface text-text-primary font-body antialiased">
+
+  <nav class="fixed top-0 left-0 right-0 z-50 border-b border-surface-200/50 bg-surface/80 backdrop-blur-xl">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3 group">
+        <svg class="w-7 h-7" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="nav-g" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#6366f1"/>
+              <stop offset="100%" style="stop-color:#06b6d4"/>
+            </linearGradient>
+          </defs>
+          <path d="M7 24 L16 6 L25 24 L21 24 L16 14 L11 24 Z" fill="url(#nav-g)"/>
+          <circle cx="16" cy="24" r="2.5" fill="url(#nav-g)"/>
+        </svg>
+        <span class="font-display font-semibold text-lg tracking-tight">grapity</span>
+      </a>
+      <div class="flex items-center gap-6">
+        <a href="/docs/getting-started/quickstart" class="text-text-secondary hover:text-text-primary transition-colors text-sm font-medium">Docs</a>
+        <a href="/philosophy" class="text-text-primary transition-colors text-sm font-medium">Philosophy</a>
+        <a href="/#how-it-works" class="text-text-secondary hover:text-text-primary transition-colors text-sm font-medium hidden sm:block">How it works</a>
+        <a href="/#pricing" class="text-text-secondary hover:text-text-primary transition-colors text-sm font-medium hidden sm:block">Pricing</a>
+        <a href="https://github.com/grapitydev" target="_blank" rel="noopener noreferrer" class="text-text-secondary hover:text-text-primary transition-colors flex items-center gap-2">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          <span class="hidden sm:inline font-medium text-sm">GitHub</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="relative min-h-[40vh] flex items-center justify-center overflow-hidden pt-16 pb-2">
+      <div class="absolute inset-0 hero-gradient"></div>
+      <div class="absolute inset-0 grid-overlay"></div>
+      <div class="relative z-10 max-w-3xl mx-auto px-6 text-center">
+        <p class="text-xs font-body font-semibold text-text-secondary uppercase tracking-widest mb-4">Open Source</p>
+        <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-[1.1]">
+          Our Philosophy.
+        </h1>
+        <p class="text-lg sm:text-xl text-text-primary max-w-2xl mx-auto leading-relaxed font-medium">
+          API governance should be free and accessible to every team, regardless of budget.
+        </p>
+      </div>
+    </section>
+
+    <section class="relative py-0">
+      <div class="max-w-3xl mx-auto px-6">
+        <div class="prose prose-invert max-w-none">
+          <p class="text-lg text-text-secondary leading-relaxed mb-12">
+            We believe that API governance should be available to every team, regardless of budget. The layer that validates contracts, enforces versioning, and stops breaking changes from reaching production should not be a premium add-on. That is why Grapity is completely free and open source, with no features locked behind paywalls.
+          </p>
+
+          <p class="text-lg text-text-secondary leading-relaxed mb-12">
+            This is not just how we fund the project. It is how we think software should be built. We have seen too many tools in the API space gate basic governance behind enterprise tiers. Backward compatibility checks, audit trails, and version history should not be luxuries. We chose a different path.
+          </p>
+
+          <h2 class="font-display text-2xl sm:text-3xl font-bold tracking-tight mb-8 mt-16">What This Means</h2>
+
+          <div class="space-y-6 mb-16">
+            <div class="p-6 rounded-xl border border-surface-200 bg-surface-50/50">
+              <h3 class="font-display font-semibold text-lg mb-2 flex items-center gap-3">
+                <svg class="w-5 h-5 text-accent-indigo shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                Free and Open Source
+              </h3>
+              <p class="text-text-secondary leading-relaxed">Every project we build is 100% open source. You can view the code, modify it, learn from it, and use it however you want.</p>
+            </div>
+
+            <div class="p-6 rounded-xl border border-surface-200 bg-surface-50/50">
+              <h3 class="font-display font-semibold text-lg mb-2 flex items-center gap-3">
+                <svg class="w-5 h-5 text-accent-indigo shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                No Features Behind Paywalls
+              </h3>
+              <p class="text-text-secondary leading-relaxed">Every feature we develop goes into the open-source version. There's no "enterprise edition" with the good stuff locked away. What you see is what you get. Everything.</p>
+            </div>
+
+            <div class="p-6 rounded-xl border border-surface-200 bg-surface-50/50">
+              <h3 class="font-display font-semibold text-lg mb-2 flex items-center gap-3">
+                <svg class="w-5 h-5 text-accent-indigo shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                Apache 2.0 License
+              </h3>
+              <p class="text-text-secondary leading-relaxed">We use the Apache 2.0 license, which gives you the freedom to use our software for any purpose. However, we kindly ask that you don't commercially redistribute our work as your own product. The license allows it, but we'd appreciate if you didn't.</p>
+            </div>
+
+            <div class="p-6 rounded-xl border border-surface-200 bg-surface-50/50">
+              <h3 class="font-display font-semibold text-lg mb-2 flex items-center gap-3">
+                <svg class="w-5 h-5 text-accent-indigo shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                Forever Free
+              </h3>
+              <p class="text-text-secondary leading-relaxed">This isn't a temporary strategy or a growth hack. This is how we believe software should be made. These principles will never change.</p>
+            </div>
+          </div>
+
+          <h2 class="font-display text-2xl sm:text-3xl font-bold tracking-tight mb-8 mt-16">We Sell Operations, Not Features</h2>
+
+          <p class="text-lg text-text-secondary leading-relaxed mb-12">
+            This is our core principle. Self-hosted and Cloud run the exact same software. The self-hosted version is the complete product. The Cloud tier is identical. We just run it for you.
+          </p>
+
+          <p class="text-lg text-text-secondary leading-relaxed mb-12">
+            When you pay for Grapity Cloud, you are not buying features. You are buying convenience: managed infrastructure, automated backups, and not having to think about PostgreSQL, TLS, or migrations. The software is identical. The only difference is who operates it.
+          </p>
+
+          <h2 class="font-display text-2xl sm:text-3xl font-bold tracking-tight mb-8 mt-16">How We Sustain Development</h2>
+
+          <p class="text-lg text-text-secondary leading-relaxed mb-12">
+            Making software free doesn't mean development is free. We sustain our work through two main channels:
+          </p>
+
+          <div class="space-y-6 mb-16">
+            <div class="p-6 rounded-xl border border-surface-200 bg-surface-50/50">
+              <h3 class="font-display font-semibold text-lg mb-2 flex items-center gap-3">
+                <svg class="w-5 h-5 text-accent-green shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                Community Support
+              </h3>
+              <p class="text-text-secondary leading-relaxed">If you find our projects valuable, you can support us through GitHub Sponsors. Every contribution helps us dedicate more time to development and support.</p>
+            </div>
+
+            <div class="p-6 rounded-xl border border-surface-200 bg-surface-50/50">
+              <h3 class="font-display font-semibold text-lg mb-2 flex items-center gap-3">
+                <svg class="w-5 h-5 text-accent-cyan shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
+                Cloud Hosting
+              </h3>
+              <p class="text-text-secondary leading-relaxed">For those who prefer not to self-host, we offer a managed Cloud version of our software. You get the same features, we handle the infrastructure, and the revenue helps fund continued development.</p>
+            </div>
+          </div>
+
+          <div class="p-8 rounded-xl border border-surface-200 bg-surface-50/50 text-center mb-16">
+            <p class="text-lg text-text-primary font-medium mb-6">
+              This philosophy guides everything we do at Grapity. Every tool we build, now and in the future, follows the same principles: free, open, and built for the community.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a href="https://github.com/sponsors/grapitydev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-accent-indigo text-white font-semibold text-sm hover:bg-accent-indigo/90 transition-colors">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                Sponsor on GitHub
+              </a>
+              <a href="/#pricing" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-surface-200 text-text-primary font-semibold text-sm hover:bg-surface-50 transition-colors">
+                Cloud Pricing
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-surface-200 py-12">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <svg class="w-6 h-6" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="footer-g" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#6366f1"/>
+                <stop offset="100%" style="stop-color:#06b6d4"/>
+              </linearGradient>
+            </defs>
+            <path d="M7 24 L16 6 L25 24 L21 24 L16 14 L11 24 Z" fill="url(#footer-g)"/>
+            <circle cx="16" cy="24" r="2.5" fill="url(#footer-g)"/>
+          </svg>
+          <span class="font-display font-medium text-sm">grapity</span>
+        </div>
+        <div class="flex items-center gap-6">
+          <a href="/philosophy" class="text-text-secondary hover:text-text-primary transition-colors text-sm">Philosophy</a>
+          <a href="https://github.com/grapitydev" target="_blank" rel="noopener noreferrer" class="text-text-secondary hover:text-text-primary transition-colors flex items-center gap-2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            <span class="text-sm">GitHub</span>
+          </a>
+          <span class="text-text-secondary/40">&middot;</span>
+          <a href="https://x.com/grapitydev" target="_blank" rel="noopener noreferrer" class="text-text-secondary hover:text-text-primary transition-colors flex items-center gap-2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            <span class="text-sm">X</span>
+          </a>
+        </div>
+        <span class="text-text-secondary/40 text-sm">&copy; 2026 grapity</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

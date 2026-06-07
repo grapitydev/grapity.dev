@@ -41,6 +41,8 @@ jobs:
       - name: Copy landing page files
         run: |
           cp index.html dist/
+          mkdir -p dist/philosophy
+          cp philosophy.html dist/philosophy/index.html
           cp -r css dist/
           cp -r assets dist/
           cp CNAME dist/ 2>/dev/null || true
