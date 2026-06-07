@@ -1,10 +1,13 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref, onMounted, onUnmounted, computed } from "vue";
+
+type Classification = "major" | "minor" | "patch";
 
 interface ReleaseInfo {
   name: string;
   version: string;
   url: string;
+  classification: Classification;
 }
 
 const versions = ref<ReleaseInfo[]>([]);
@@ -18,6 +21,19 @@ const repos = [
   { name: "Hub", repo: "hub" },
 ];
 
+function parseSemver(tag: string): { major: number; minor: number; patch: number } {
+  const clean = tag.replace(/^v/, "");
+  const [major, minor, patch] = clean.split(".").map((n) => parseInt(n, 10));
+  return { major: major || 0, minor: minor || 0, patch: patch || 0 };
+}
+
+function classifyVersion(tag: string): Classification {
+  const { minor, patch } = parseSemver(tag);
+  if (minor === 0 && patch === 0) return "major";
+  if (patch === 0) return "minor";
+  return "patch";
+}
+
 async function fetchVersions() {
   try {
     const results = await Promise.all(
@@ -27,11 +43,13 @@ async function fetchVersions() {
         );
         if (!response.ok) throw new Error(`Failed to fetch ${repo}`);
         const data = await response.json();
+        const version = data.tag_name || "unknown";
         return {
           name,
-          version: data.tag_name || "unknown",
+          version,
           url:
             data.html_url || `https://github.com/grapitydev/${repo}/releases`,
+          classification: classifyVersion(version),
         };
       }),
     );
@@ -42,6 +60,8 @@ async function fetchVersions() {
     loading.value = false;
   }
 }
+
+const primaryVersion = computed(() => versions.value[0]);
 
 function toggleDropdown() {
   isOpen.value = !isOpen.value;
@@ -68,12 +88,13 @@ onUnmounted(() => {
   <div class="version-dropdown">
     <button
       class="version-trigger"
+      :class="primaryVersion?.classification"
       @click.stop="toggleDropdown"
       :aria-expanded="isOpen"
     >
       <span v-if="loading" class="version-text">Loading...</span>
       <span v-else-if="error" class="version-text">Unavailable</span>
-      <span v-else class="version-text">{{ versions[0]?.version }}</span>
+      <span v-else class="version-text">{{ primaryVersion?.version }}</span>
       <span class="dropdown-arrow" :class="{ open: isOpen }">▼</span>
     </button>
 
@@ -88,7 +109,9 @@ onUnmounted(() => {
         class="version-item"
       >
         <span class="version-name">{{ v.name }}</span>
-        <span class="version-tag">{{ v.version }}</span>
+        <span class="version-tag" :class="v.classification">
+          {{ v.version }}
+        </span>
       </a>
     </div>
   </div>
@@ -121,8 +144,57 @@ onUnmounted(() => {
 }
 
 .version-trigger:hover {
-  color: #e4e4ed;
   border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Trigger colors by classification */
+.version-trigger.major {
+  color: #6366f1;
+  border-color: rgba(99, 102, 241, 0.3);
+}
+.version-trigger.major:hover {
+  border-color: rgba(99, 102, 241, 0.5);
+}
+
+.version-trigger.minor {
+  color: #3b82f6;
+  border-color: rgba(59, 130, 246, 0.3);
+}
+.version-trigger.minor:hover {
+  border-color: rgba(59, 130, 246, 0.5);
+}
+
+.version-trigger.patch {
+  color: #06b6d4;
+  border-color: rgba(6, 182, 212, 0.3);
+}
+.version-trigger.patch:hover {
+  border-color: rgba(6, 182, 212, 0.5);
+}
+
+/* Light mode trigger colors */
+:global(.light) .version-trigger.major {
+  color: #6366f1;
+  border-color: rgba(99, 102, 241, 0.3);
+}
+:global(.light) .version-trigger.major:hover {
+  border-color: rgba(99, 102, 241, 0.5);
+}
+
+:global(.light) .version-trigger.minor {
+  color: #2563eb;
+  border-color: rgba(37, 99, 235, 0.3);
+}
+:global(.light) .version-trigger.minor:hover {
+  border-color: rgba(37, 99, 235, 0.5);
+}
+
+:global(.light) .version-trigger.patch {
+  color: #06b6d4;
+  border-color: rgba(6, 182, 212, 0.3);
+}
+:global(.light) .version-trigger.patch:hover {
+  border-color: rgba(6, 182, 212, 0.5);
 }
 
 .version-text {
@@ -185,9 +257,35 @@ onUnmounted(() => {
 .version-tag {
   font-size: 12px;
   font-family: var(--vp-font-family-mono);
-  color: var(--vp-c-brand-1);
-  background: var(--vp-c-brand-soft);
   padding: 2px 8px;
   border-radius: 4px;
+}
+
+/* Tag colors by classification - dark mode */
+.version-tag.major {
+  color: #6366f1;
+  background: rgba(99, 102, 241, 0.15);
+}
+.version-tag.minor {
+  color: #3b82f6;
+  background: rgba(59, 130, 246, 0.15);
+}
+.version-tag.patch {
+  color: #06b6d4;
+  background: rgba(6, 182, 212, 0.15);
+}
+
+/* Tag colors by classification - light mode */
+:global(.light) .version-tag.major {
+  color: #6366f1;
+  background: rgba(99, 102, 241, 0.1);
+}
+:global(.light) .version-tag.minor {
+  color: #2563eb;
+  background: rgba(37, 99, 235, 0.1);
+}
+:global(.light) .version-tag.patch {
+  color: #06b6d4;
+  background: rgba(6, 182, 212, 0.1);
 }
 </style>
