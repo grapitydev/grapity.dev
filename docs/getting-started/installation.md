@@ -4,10 +4,10 @@ Choose the method that fits your environment.
 
 ## npm (recommended)
 
-Install all three packages globally:
+Install the Grapity CLI globally:
 
 ```bash
-npm install -g @grapity/cli @grapity/registry @grapity/hub
+npm install -g @grapity/grapity
 ```
 
 Verify the installation:
@@ -15,26 +15,6 @@ Verify the installation:
 ```bash
 grapity --version
 ```
-
-## Bun
-
-If you use Bun as your runtime:
-
-```bash
-bun add -g @grapity/cli @grapity/registry @grapity/hub
-```
-
-## Docker
-
-Run the Registry without installing anything locally:
-
-```bash
-docker run --rm -p 3750:3750 grapity/registry:latest
-```
-
-::: tip
-The Docker image includes only the Registry. For the Hub and CLI, install the npm packages locally or use a multi-service compose setup.
-:::
 
 ## From source
 
