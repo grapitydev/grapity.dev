@@ -23,11 +23,11 @@ Get Grapity running in under five minutes.
 ::: code-group
 
 ```bash [npm]
-npm install -g @grapity/cli @grapity/registry @grapity/hub
+npm install -g @grapity/grapity
 ```
 
 ```bash [bun]
-bun add -g @grapity/cli @grapity/registry @grapity/hub
+bun add -g @grapity/grapity
 ```
 
 :::
