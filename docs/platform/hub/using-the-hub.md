@@ -16,7 +16,7 @@ Open http://localhost:3000 in your browser.
 The home page shows every spec in the Registry in a searchable list.
 
 - **Search** by name or description
-- **Filter** by type (OpenAPI / AsyncAPI), owner, or tags using the sidebar
+- **Filter** by type (OpenAPI), owner, or tags using the sidebar
 - Each card shows the spec name, type, latest version, and classification
 
 ## Spec detail page
@@ -55,7 +55,7 @@ The **Compare** tab lets you select two versions side-by-side and see their comp
 
 ### Raw Spec
 
-The **Raw Spec** tab shows the original OpenAPI or AsyncAPI document as formatted JSON or YAML. Copy it or download it for use with external tools (Swagger UI, Redoc, Postman, etc.).
+The **Raw Spec** tab shows the original OpenAPI document as formatted JSON or YAML. Copy it or download it for use with external tools (Swagger UI, Redoc, Postman, etc.).
 
 ## Direct spec URLs
 
@@ -71,11 +71,11 @@ Or a specific version:
 curl http://localhost:3750/v1/specs/payments-api/versions/1.2.0/spec.json
 ```
 
-These URLs return the correct `Content-Type` header for OpenAPI or AsyncAPI specs.
+These URLs return the correct `Content-Type` header for OpenAPI specs.
 
 ## Dark mode
 
-The Hub respects your system preference for dark or light mode. Toggle it in your OS settings.
+The Hub defaults to dark mode. Use the toggle in the header to switch between dark and light themes.
 
 ## See also
 

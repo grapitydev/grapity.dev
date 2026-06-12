@@ -23,35 +23,36 @@ grapity serve
 
 The Registry starts on port 3750 with an embedded SQLite database. No configuration required. Ideal for single-developer machines and CI pipelines.
 
-### Remote mode (PostgreSQL)
+### Remote mode
 
 ```bash
-grapity serve --remote
+grapity init --remote --url https://api.grapity.dev
 ```
 
-Connects to a PostgreSQL database. Required for team deployments and production environments. The Registry stores spec history, compatibility reports, and consumer metadata.
+The CLI connects to a remote Registry at the configured URL. The remote Registry is operated by your organization or by Grapity Cloud.
 
 ## Architecture
 
 The Registry exposes an HTTP API on port 3750 (configurable). The CLI and Hub communicate with it directly.
 
 ```
-┌─────────────┐     HTTP      ┌──────────┐     SQLite/PostgreSQL
-│  CLI / Hub  │ ◄───────────► │ Registry │ ◄────────────────────►
-└─────────────┘               └──────────┘        Spec history
+┌─────────────┐     HTTP      ┌──────────┐     SQLite
+│  CLI / Hub  │ ◄───────────► │ Registry │ ◄─────────────►
+└─────────────┘               └──────────┘   Spec history
 ```
 
 ## Key endpoints
 
 | Endpoint | Purpose |
 |----------|---------|
-| `POST /specs` | Push a new spec version |
-| `GET /specs/:name` | List all versions of a spec |
-| `GET /specs/:name/:version` | Retrieve a specific version |
-| `GET /specs/:name/:version/compat` | Compatibility report |
-| `GET /health` | Health check |
+| `POST /v1/specs` | Push a new spec version |
+| `GET /v1/specs/:name` | Get spec metadata and latest version |
+| `GET /v1/specs/:name/versions` | List all versions of a spec |
+| `GET /v1/specs/:name/versions/:semver` | Retrieve a specific version |
+| `GET /v1/specs/:name/compat/:semver` | Compatibility report for a version |
+| `GET /v1/health` | Health check |
 
-The full API specification is available at `/openapi.yaml` on any running Registry instance.
+The full API specification is available at `/v1/openapi.yaml` on any running Registry instance.
 
 ## Configuration
 
@@ -70,7 +71,6 @@ For remote mode:
 mode: remote
 remote:
   url: https://api.grapity.dev
-  apiKey: YOUR_KEY
 ```
 
 ## Next steps

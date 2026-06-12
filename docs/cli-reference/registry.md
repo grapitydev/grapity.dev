@@ -29,14 +29,14 @@ grapity registry push <file> --name <name> [options]
 
 | Argument | Description |
 |----------|-------------|
-| `<file>` | Path to the spec file (OpenAPI or AsyncAPI) |
+| `<file>` | Path to the OpenAPI spec file |
 
 ### Options
 
 | Option | Description |
-|--------|-------------|
+|----------|-------------|
 | `--name <name>` | **Required.** Spec name (URL-friendly identifier) |
-| `--type <type>` | Spec type: `openapi` or `asyncapi` |
+| `--type <type>` | Spec type: `openapi` |
 | `--description <desc>` | Description of the spec |
 | `--owner <owner>` | Owner team or individual |
 | `--source-repo <url>` | Source repository URL |
@@ -46,7 +46,6 @@ grapity registry push <file> --name <name> [options]
 | `--force` | Force push even with breaking changes |
 | `--reason <reason>` | Reason for force push (required with `--force`) |
 | `--prerelease` | Push as pre-release version (`0.x`) |
-| `--version <semver>` | Declare explicit target version |
 
 ### Examples
 
@@ -71,12 +70,6 @@ Force push a breaking change:
 ```bash
 grapity registry push ./openapi.yaml --name payments-api \
   --force --reason "security fix CVE-2026-1234"
-```
-
-Declare an intentional major release:
-
-```bash
-grapity registry push ./openapi.yaml --name payments-api --version 2.0.0
 ```
 
 ---
@@ -121,7 +114,7 @@ grapity registry list [options]
 
 | Option | Description |
 |--------|-------------|
-| `--type <type>` | Filter by spec type: `openapi` or `asyncapi` |
+| `--type <type>` | Filter by spec type: `openapi` |
 | `--owner <owner>` | Filter by owner |
 | `--tags <tags>` | Comma-separated tag filter |
 
@@ -166,6 +159,7 @@ grapity registry versions <name> [options]
 | Option | Description | Default |
 |--------|-------------|---------|
 | `--limit <n>` | Maximum versions to return (max 25) | `10` |
+| `--offset <n>` | Number of versions to skip | `0` |
 | `--offset <n>` | Number of versions to skip | `0` |
 
 ### Example
@@ -217,6 +211,30 @@ Pipe to another tool:
 
 ```bash
 grapity registry spec payments-api | yq '.info.title'
+```
+
+---
+
+## grapity registry delete
+
+Delete a spec and all its versions from the registry.
+
+### Usage
+
+```bash
+grapity registry delete <name> [options]
+```
+
+### Options
+
+| Option | Description |
+|--------|-------------|
+| `-f, --force` | Skip confirmation prompt |
+
+### Example
+
+```bash
+grapity registry delete payments-api
 ```
 
 ## See also

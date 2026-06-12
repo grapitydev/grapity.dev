@@ -15,8 +15,14 @@ grapity gateway list
 Push a gateway config file to the registry.
 
 ```bash
-grapity gateway push <config-file>
+grapity gateway push <config-file> [options]
 ```
+
+### Options
+
+| Option | Description |
+|--------|-------------|
+| `--pushed-by <by>` | Pusher identity (user or CI) |
 
 Validates declared routes against the registered spec and stores the config in the registry. If a route does not exist in the linked spec, the push is blocked.
 
@@ -25,10 +31,14 @@ Validates declared routes against the registered spec and stores the config in t
 Show details for a gateway config.
 
 ```bash
-grapity gateway get <name>
+grapity gateway get <name> [options]
 ```
 
-Use `--version <uuid>` to view a specific version.
+### Options
+
+| Option | Description |
+|--------|-------------|
+| `--version <uuid>` | Specific version UUID (defaults to latest) |
 
 ## grapity gateway versions
 
@@ -43,14 +53,34 @@ grapity gateway versions <name>
 Fetch the raw gateway config YAML from the registry.
 
 ```bash
-grapity gateway config <name>
+grapity gateway config <name> [options]
 ```
 
-Use `--version <uuid>` for a specific version, or `--output <file>` to write to a file.
+### Options
+
+| Option | Description |
+|--------|-------------|
+| `--version <uuid>` | Specific version UUID (defaults to latest) |
+| `--output <file>` | Write output to a file instead of stdout |
 
 ## grapity gateway preview
 
 Render decK YAML from a gateway config without running decK.
+
+```bash
+grapity gateway preview [file] [options]
+```
+
+### Options
+
+| Option | Description |
+|--------|-------------|
+| `--env <name>` | **Required.** Target environment name |
+| `--name <name>` | Gateway config name (registry mode) |
+| `--version <uuid>` | Specific version UUID (registry mode, defaults to latest) |
+| `--output <file>` | Write decK YAML to a file instead of stdout |
+
+### Examples
 
 ```bash
 # From a local file
@@ -60,17 +90,24 @@ grapity gateway preview ./payments-gateway.config.yaml --env staging
 grapity gateway preview --name payments-gateway --env staging
 ```
 
-Use `--output <file>` to write the decK YAML to a file.
-
 ## grapity gateway provision
 
 Provision a gateway config to Kong via decK.
 
 ```bash
-grapity gateway provision --name payments-gateway --env staging
+grapity gateway provision --name <name> --env <env> [options]
 ```
 
-Fetches the latest version from the registry, generates decK YAML, and runs `deck gateway diff` against the environment's Kong admin API. Use `--sync` to apply changes. Use `--version <uuid>` to target a specific version.
+### Options
+
+| Option | Description |
+|--------|-------------|
+| `--name <name>` | **Required.** Gateway config name |
+| `--env <name>` | **Required.** Target environment name |
+| `--version <uuid>` | Specific config version (defaults to latest) |
+| `--sync` | Apply changes via `deck sync` (default is `deck diff`) |
+
+Fetches the latest version from the registry, generates decK YAML, and runs `deck gateway diff` against the environment's Kong admin API.
 
 ## grapity gateway logs
 

@@ -16,7 +16,7 @@ Get Grapity running in under five minutes.
 ## Prerequisites
 
 - **Node.js** 20+ or **Bun** 1.3.5+
-- One OpenAPI or AsyncAPI spec file (or use the example below)
+- One OpenAPI spec file (or use the example below)
 
 ## 1. Install the CLI
 

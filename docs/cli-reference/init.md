@@ -19,7 +19,6 @@ grapity init --local|--remote [options]
 | `--local` | Use local mode (SQLite database on this machine) |
 | `--remote` | Use remote mode (connect to a hosted Grapity server) |
 | `--url <url>` | Registry URL (required for remote mode) |
-| `--api-key <key>` | API key (for remote mode authentication) |
 | `--port <port>` | Port for local server (default: `3750`) |
 | `--db <path>` | Path to SQLite database file (for local mode; default: `~/.grapity/registry.db`) |
 
@@ -49,7 +48,7 @@ grapity init --local --port 8080 --db /data/grapity.db
 ### Remote mode (SaaS)
 
 ```bash
-grapity init --remote --url https://api.grapity.dev --api-key YOUR_KEY
+grapity init --remote --url https://api.grapity.dev
 ```
 
 Generated `~/.grapity/config.yaml`:
@@ -58,7 +57,6 @@ Generated `~/.grapity/config.yaml`:
 mode: remote
 remote:
   url: https://api.grapity.dev
-  apiKey: YOUR_KEY
 ```
 
 ## Config file schema
@@ -70,7 +68,6 @@ local:
   sqlitePath: string
 remote:
   url: string
-  apiKey: string
 ```
 
 ::: tip
