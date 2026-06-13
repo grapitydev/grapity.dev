@@ -41,8 +41,14 @@ grapity serve
 Output:
 
 ```text
-Registry ready  ·  http://localhost:3750
-Hub ready       ·  http://localhost:3000
+  ◆  grapity  ·  v0.3.0
+
+  ◆  grapity Registry
+  ·  Port: 3750
+  ·  Database: sqlite
+  ·  Path: /Users/.../.grapity/registry.db
+
+  ●  Server ready  ·  http://localhost:3750
 ```
 
 ### SQLite with custom path

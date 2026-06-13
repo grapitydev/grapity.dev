@@ -2,26 +2,6 @@
 
 Common issues and how to resolve them.
 
-## `grapity serve` fails with "missing dependency"
-
-**Error:**
-
-```text
-missing dependency
-@grapity/registry is required for 'grapity serve'.
-Install it with: npm install -g @grapity/registry
-```
-
-**Cause:** You installed `@grapity/cli` but not `@grapity/registry`.
-
-**Fix:**
-
-```bash
-npm install -g @grapity/registry @grapity/hub
-```
-
----
-
 ## Push blocked with `409 breaking_change`
 
 **Error:**
@@ -70,12 +50,12 @@ grapity init --remote --url https://api.grapity.dev --api-key YOUR_KEY
 index.html not found. Build the project with 'bun run build' first.
 ```
 
-**Cause:** The Hub package was installed from npm but never built. The production server serves files from `dist/`, which does not exist.
+**Cause:** The Hub production assets were not built. `hub/serve` serves files from `dist/hub/`, which does not exist.
 
 **Fix:**
 
 ```bash
-cd node_modules/@grapity/hub
+cd node_modules/@grapity/grapity
 bun install
 bun run build
 ```
@@ -138,6 +118,6 @@ grapity serve --db /tmp/grapity-test.db
 
 If your issue is not listed here:
 
-1. Check the [GitHub Issues](https://github.com/grapitydev/cli/issues) for similar reports
+1. Check the [GitHub Issues](https://github.com/grapitydev/grapity/issues) for similar reports
 2. Run the command with `--help` for usage details
 3. Check the [CLI Reference](/cli-reference/init) and [Architecture](/platform/architecture/backward-compatibility) docs
