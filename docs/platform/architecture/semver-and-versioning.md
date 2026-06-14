@@ -50,7 +50,7 @@ The `classification` field in every version tells you what changed:
 - `minor` — Safe additions detected
 - `patch` — No API surface change (descriptions, examples only)
 
-You can see this in the Hub under the **Compat** tab for any version.
+You can see this in the Hub under the **Changelog** tab for any version.
 
 ## See also
 

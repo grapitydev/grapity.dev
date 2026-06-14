@@ -111,7 +111,7 @@ You will see:
 
 Open http://localhost:3000 in your browser.
 
-You will see `payments-api` in the spec list. Click it to explore endpoints, view the compatibility report, and compare versions.
+You will see `payments-api` in the spec list. Click it to explore endpoints, view request/response schemas and examples, see the required auth scheme and scopes for each endpoint, view the compatibility report, and compare versions.
 
 ## 6. Push a gateway config
 

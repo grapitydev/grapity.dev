@@ -27,14 +27,17 @@ Click any spec to open its detail page. This page has five tabs:
 
 The **Overview** tab renders the OpenAPI spec into an interactive endpoint explorer:
 
-- Endpoint list grouped by tag
+- Endpoint list grouped by resource
 - Each endpoint shows its method, path, summary, and parameters
-- Click an endpoint to expand its request/response schemas
-- Schema properties are shown as a tree with types and descriptions
+- Security requirements per endpoint: scheme name and required scopes, or "No authentication required" for public endpoints
+- Request and response schemas rendered as a collapsible property tree
+- Schema properties show type, format, enum values, and descriptions
+- Request/response examples when present in the spec
+- Generated `curl` command for each endpoint
 
-### Compat
+### Changelog
 
-The **Compat** tab shows the compatibility report for the current version:
+The **Changelog** tab shows the compatibility report for the current version:
 
 - Classification (`initial`, `major`, `minor`, `patch`)
 - List of breaking changes with descriptions and affected paths

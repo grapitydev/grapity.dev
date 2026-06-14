@@ -20,7 +20,7 @@ The contract guardian. Every spec passes through it before it can be consumed.
 
 The developer portal where teams browse, explore, and compare API specs.
 
-- [Using the Hub](/platform/hub/using-the-hub) — Browse specs, diff versions, and explore endpoints
+- [Using the Hub](/platform/hub/using-the-hub) — Browse specs, diff versions, explore OpenAPI endpoints, and see per-endpoint security requirements
 
 ## Gateway
 
