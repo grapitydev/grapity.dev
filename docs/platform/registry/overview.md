@@ -18,10 +18,14 @@ When a version is deprecated, the Registry tracks which consumers depend on it, 
 ### Local mode (SQLite)
 
 ```bash
-grapity serve
+grapity serve --no-auth
 ```
 
-The Registry starts on port 3750 with an embedded SQLite database. No configuration required. Ideal for single-developer machines and CI pipelines.
+The Registry starts on port 3750 with an embedded SQLite database. Pass `--no-auth` for local development without Keycloak. For production-like setups, configure Keycloak auth and omit `--no-auth`.
+
+::: warning
+`--no-auth` disables authentication entirely. It is intended only for local development. Do not use it in production or on any shared network.
+:::
 
 ### Remote mode
 
@@ -53,6 +57,53 @@ The Registry exposes an HTTP API on port 3750 (configurable). The CLI and Hub co
 | `GET /v1/health` | Health check |
 
 The full API specification is available at `/v1/openapi.yaml` on any running Registry instance.
+
+## Authentication
+
+The Registry supports two authentication modes, controlled by `auth.mode` in the server configuration:
+
+- **`none`**: No authentication. All endpoints accept anonymous requests. Use this for local development with `grapity serve --no-auth`.
+- **`keycloak`**: OIDC/JWT bearer tokens issued by Keycloak. The Registry validates tokens against the realm's JWKS endpoint and enforces OAuth2 scopes declared in `openapi.yaml` for each operation.
+
+When Keycloak is enabled, the CLI uses client credentials to fetch access tokens programmatically. The client ID is stored in `~/.grapity/config.yaml`; the client secret is always provided via the environment:
+
+```bash
+export GRAPITY_CLIENT_SECRET="your-client-secret"
+```
+
+::: warning
+Enabling auth makes Keycloak a hard dependency. If Keycloak is unreachable, `grapity serve` will not start. Anonymous requests are rejected with `401`, and requests without the required scopes are rejected with `403`.
+:::
+
+For automation you can also provide a static bearer token:
+
+```bash
+export GRAPITY_TOKEN="eyJ..."
+```
+
+Configure the CLI for Keycloak:
+
+```bash
+grapity init --remote --url https://api.grapity.dev \
+  --auth keycloak \
+  --keycloak-server https://keycloak.example.com \
+  --keycloak-realm grapity \
+  --keycloak-client-id grapity-cli \
+  --keycloak-audience grapity-cli
+```
+
+See [grapity auth](/cli-reference/auth) for checking token status and clearing the cache.
+
+## Gateway integration
+
+Gateway configs are stored and validated by the Registry, but the runtime is outside it:
+
+- **Provisioning requires decK and Kong.** `grapity gateway provision` shells out to `deck` and talks to the Kong Admin API declared in each environment.
+- **Log ingestion requires the Kong `http-log` plugin.** Kong pushes access logs to `/v1/gateway-logs/ingest/:provider/:environment`. The Registry does not pull logs.
+- **Log ingestion is authenticated when auth is enabled.** The ingest endpoint requires a bearer token with the `gateway-logs:write` scope. Configure Kong's `http-log` plugin `headers` to send `Authorization: Bearer <token>`. Grapity does not manage that token for you.
+- **Provisioning is explicit.** Pushing a gateway config to the Registry does not change Kong. You must run `grapity gateway provision --sync` to apply it.
+
+See the [Quickstart](/getting-started/quickstart) for a full local Kong setup.
 
 ## Configuration
 

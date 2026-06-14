@@ -16,8 +16,7 @@ Breaking changes detected. Use force: true with a reason to override, or declare
 **Fix options:**
 
 1. **Fix the spec** — restore removed fields, keep endpoints, or widen enums
-2. **Declare a major release** — `grapity registry push ./spec.yaml --name api --version 2.0.0`
-3. **Force push** — `grapity registry push ./spec.yaml --name api --force --reason "your reason"`
+2. **Force push** — `grapity registry push ./spec.yaml --name api --force --reason "your reason"`
 
 See [Backward Compatibility](/platform/architecture/backward-compatibility) for the full list of blocked and safe changes.
 
@@ -37,7 +36,18 @@ missing flag
 **Fix:**
 
 ```bash
-grapity init --remote --url https://api.grapity.dev --api-key YOUR_KEY
+grapity init --remote --url https://api.grapity.dev \
+  --auth keycloak \
+  --keycloak-server https://keycloak.example.com \
+  --keycloak-realm grapity \
+  --keycloak-client-id grapity-cli \
+  --keycloak-audience grapity-cli
+```
+
+Then set the client secret before running commands:
+
+```bash
+export GRAPITY_CLIENT_SECRET="your-client-secret"
 ```
 
 ---
@@ -111,6 +121,130 @@ kill <PID>
 # Or use a different database file
 grapity serve --db /tmp/grapity-test.db
 ```
+
+---
+
+## `grapity serve` fails with "auth is not configured"
+
+**Error:**
+
+```text
+Auth is not configured.
+Configure it with: grapity init --local --auth keycloak ...
+Or run with: grapity serve --no-auth
+```
+
+**Cause:** Your `~/.grapity/config.yaml` does not contain an `auth` section, but you did not pass `--no-auth`.
+
+**Fix:**
+
+- For local development without auth: `grapity serve --no-auth`
+- For local development with Keycloak: follow the [local Keycloak setup](/cli-reference/init#local-mode-with-keycloak)
+
+---
+
+## `grapity serve` fails with "Keycloak is not reachable"
+
+**Error:**
+
+```text
+Keycloak is not reachable at http://localhost:8080/realms/grapity
+See https://grapity.dev/docs/cli-reference/init#local-mode-with-keycloak to set up a local Keycloak server.
+```
+
+**Cause:** Auth is configured in `~/.grapity/config.yaml`, but the Keycloak server is not running or the realm is not imported.
+
+**Fix:**
+
+```bash
+mkdir -p grapity-examples/keycloak
+curl -L https://grapity.dev/docs/examples/docker-compose.keycloak.yml \
+  -o grapity-examples/docker-compose.keycloak.yml
+curl -L https://grapity.dev/docs/examples/keycloak/realm-export.json \
+  -o grapity-examples/keycloak/realm-export.json
+cd grapity-examples
+docker compose -f docker-compose.keycloak.yml down -v
+docker compose -f docker-compose.keycloak.yml up -d
+```
+
+The `-v` flag is required because Keycloak only imports the realm on first startup.
+
+---
+
+## CLI commands fail with `401 unauthorized`
+
+**Error:**
+
+```text
+unauthorized
+Missing or invalid Authorization header
+```
+
+**Cause:** The Registry requires Keycloak auth, but the CLI could not obtain a token. Common reasons:
+
+- `GRAPITY_CLIENT_SECRET` is not set
+- The Keycloak client is not configured for `client_credentials`
+- The Keycloak server is unreachable
+
+**Fix:**
+
+```bash
+export GRAPITY_CLIENT_SECRET="your-client-secret"
+grapity auth status
+```
+
+If `auth status` fails, verify your Keycloak client has:
+
+- `client_credentials` grant enabled
+- Service account enabled
+- Scopes for the operations you need
+
+---
+
+## CLI commands fail with `403 forbidden`
+
+**Error:**
+
+```text
+forbidden
+Insufficient scopes
+```
+
+**Cause:** The CLI token is valid but does not include the scope required by the operation.
+
+**Fix:** In Keycloak, assign the required scopes to the `grapity-cli` client. For example:
+
+- `grapity registry push` requires `specs:write`
+- `grapity registry list` requires `specs:read`
+
+The exact scopes are declared in `openapi.yaml` under each operation's `security` requirements.
+
+---
+
+## Hub login fails or redirects back with an error
+
+**Cause:** The public Hub client (`grapity-hub`) in Keycloak is misconfigured.
+
+**Fix:** Verify the client has:
+
+- Standard flow enabled
+- PKCE method set to `S256`
+- Valid redirect URIs matching the Hub origin (for example `http://localhost:3000/*`)
+- A valid post-logout redirect URI if you use sign-out
+
+If you changed `realm-export.json`, restart Keycloak with `docker compose down -v && docker compose up -d` to re-import. You can download the latest example files from [Examples](/examples/).
+
+---
+
+## Hub stays signed out after Keycloak redirect
+
+**Cause:** The Hub did not receive or store the token correctly after the callback.
+
+**Fix:**
+
+1. Check the browser console for errors.
+2. Confirm the redirect URI matches exactly what Keycloak expects (trailing slash matters).
+3. Clear site data and sign in again.
 
 ---
 

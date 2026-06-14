@@ -47,11 +47,22 @@ local:
   sqlitePath: ~/.grapity/registry.db
 ```
 
+`grapity init --local` does not enable authentication by default, so the quickstart works without a Keycloak server. For production or team use, enable Keycloak auth with `grapity init --local --auth keycloak ...` and set `GRAPITY_CLIENT_SECRET`. See [grapity init](/cli-reference/init) for details.
+
 ## 3. Start both servers
 
 ```bash
-grapity serve
+grapity serve --no-auth
 ```
+
+By default this starts:
+
+- **Registry** on http://localhost:3750
+- **Hub** on http://localhost:3000
+
+::: warning
+`--no-auth` disables authentication entirely. It is intended only for local development. Do not use it in production or on any shared network.
+:::
 
 You will see:
 
@@ -61,6 +72,8 @@ You will see:
 ```
 
 The Registry stores and validates specs. The Hub is the developer portal.
+
+To run with Keycloak auth instead, follow the [local Keycloak setup](/cli-reference/init#local-mode-with-keycloak) before starting the server.
 
 ## 4. Push your first spec
 
@@ -130,7 +143,14 @@ environments:
           content_type: application/json
           timeout: 10000
           keepalive: 60000
+          # When the Registry uses Keycloak auth, the http-log plugin must send
+          # a valid bearer token with the gateway-logs:write scope. The operator
+          # is responsible for obtaining and rotating that token.
+          headers:
+            Authorization: "Bearer <token>"
 ```
+
+The quickstart uses `--no-auth`, so the `Authorization` header is not required here. If you enable Keycloak auth, you must configure this header.
 
 Then push it:
 
@@ -159,7 +179,7 @@ This renders decK-compatible YAML to stdout. Use `--output deck.yaml` to write t
 
 ## 8. Provision to a local Kong (Optional, 10 min)
 
-This step requires Docker. It completes the full loop: spec → gateway → Kong → traffic → logs.
+This step requires Docker and decK. It completes the full loop: spec → gateway → Kong → traffic → logs.
 
 ### Start Kong locally
 

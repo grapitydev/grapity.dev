@@ -2,6 +2,19 @@
 
 Manage gateway configs and query gateway logs.
 
+## Prerequisites
+
+Some `grapity gateway` commands depend on services and tools that Grapity does not install or start for you:
+
+| Command | Dependencies |
+|---------|-------------|
+| `push`, `list`, `get`, `versions`, `config` | A running Registry (local or remote) |
+| `preview` | A running Registry when using `--name` |
+| `provision` | A running Registry, the `deck` binary on `PATH`, and a reachable Kong Admin API for the target environment |
+| `logs` | A running Registry and Kong pushing logs via the `http-log` plugin |
+
+When the Registry uses Keycloak auth, ensure `GRAPITY_CLIENT_SECRET` is set (or use `GRAPITY_TOKEN`). For log ingestion, Kong's `http-log` plugin must also send a bearer token with the `gateway-logs:write` scope; Grapity does not manage that token for you.
+
 ## grapity gateway list
 
 List all gateway configs stored in the registry.

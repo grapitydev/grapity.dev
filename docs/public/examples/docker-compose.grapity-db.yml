@@ -1,0 +1,19 @@
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: grapity
+      POSTGRES_USER: grapity
+      POSTGRES_PASSWORD: grapity
+    ports:
+      - "5433:5432"
+    volumes:
+      - grapity_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "grapity"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  grapity_postgres_data:

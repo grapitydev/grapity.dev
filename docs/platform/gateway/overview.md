@@ -9,6 +9,17 @@ The Gateway module connects your registered API specs to Kong, generating config
 - **Log ingestion**: Kong pushes access logs to the registry via the `http-log` plugin. The registry normalizes payloads, resolves caller identity from configurable rules, and stores structured gateway logs for querying and analysis.
 - **Versioned configs**: Every push creates a new version of the gateway config. The registry keeps the latest 5 versions, so you can diff or roll back.
 
+## External dependencies
+
+The Registry stores and validates gateway configs, but the runtime is outside Grapity:
+
+- **decK** must be installed and on `PATH` for `grapity gateway provision`.
+- **Kong** must be running and reachable at the `kongAddr` declared in each environment.
+- The **Kong `http-log` plugin** must be configured to POST to `/v1/gateway-logs/ingest/:provider/:environment`.
+- **When the Registry uses Keycloak auth, log ingestion requires a bearer token.** The Kong `http-log` plugin must send an `Authorization` header with a token that has the `gateway-logs:write` scope. The operator is responsible for obtaining and rotating that token. Grapity does not manage it.
+
+Grapity does not start or manage decK, Kong, or Keycloak.
+
 ## How it works
 
 ```
