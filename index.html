@@ -86,45 +86,92 @@
       </defs>
     </svg>
 
-    <section id="hero" class="relative min-h-[50vh] sm:min-h-[75vh] flex items-center justify-center overflow-hidden pt-16 pb-12 sm:pb-0">
+    <section id="hero" class="relative overflow-hidden pt-16 pb-10 sm:pt-20 sm:pb-16">
       <div class="absolute inset-0 hero-gradient"></div>
       <div class="absolute inset-0 grid-overlay"></div>
-      <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
-        <p class="text-xs font-body font-semibold text-text-secondary uppercase tracking-widest mb-4">An open-source API Governance Platform</p>
-        <h1 class="font-display text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-[1.1] flex flex-col sm:flex-row items-center justify-center gap-4">
-          <svg class="anim-sync shrink-0" viewBox="0 0 32 32" width="44" height="44" xmlns="http://www.w3.org/2000/svg">
-            <g class="orbit-group">
-              <circle cx="16" cy="5" r="2.5" fill="#6366f1"/>
-            </g>
-            <g class="orbit-group-rev">
-              <circle cx="16" cy="27" r="2" fill="#06b6d4"/>
-            </g>
-            <circle cx="16" cy="16" r="6" fill="none" stroke="#1e1e2e" stroke-width="1.5"/>
-            <circle cx="16" cy="16" r="6" fill="none" stroke="url(#anim-grad)" stroke-width="1.5" stroke-dasharray="20 18" stroke-linecap="round"/>
-            <circle class="center-dot" cx="16" cy="16" r="2" fill="url(#anim-grad)"/>
-          </svg>
-          <span><span class="gradient-text">Gravity</span> for APIs.</span>
-        </h1>
-        <p class="text-lg sm:text-xl lg:text-2xl text-text-primary max-w-2xl mx-auto mb-12 leading-relaxed font-medium">
-          Ship APIs that won't break your consumers.
-        </p>
-        <div class="max-w-xl mx-auto">
-          <div class="hidden sm:block bg-surface-50/50 rounded-xl border border-surface-200 p-4 sm:p-5 text-left">
-            <div class="flex items-center gap-1.5 mb-3">
-              <span class="w-2.5 h-2.5 rounded-full bg-red-400/80"></span>
-              <span class="w-2.5 h-2.5 rounded-full bg-amber-400/80"></span>
-              <span class="w-2.5 h-2.5 rounded-full bg-green-400/80"></span>
-              <span class="ml-auto text-xs text-text-secondary font-mono">bash</span>
-            </div>
-            <pre class="font-mono text-sm leading-relaxed overflow-x-auto"><code><span class="text-text-secondary">$</span> <span class="text-text-primary">npm install -g</span> <span class="text-text-primary">@grapity/grapity</span>
+      <div class="relative z-10 max-w-7xl mx-auto px-6">
+        <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
 
-<span class="text-text-secondary">$</span> <span class="text-text-primary">grapity serve</span>
-<span class="text-accent-green">●</span> <span class="text-text-secondary">Registry ready</span>  <span class="text-text-secondary">·</span>  <span class="text-accent-cyan">http://localhost:3750</span>
-<span class="text-accent-green">●</span> <span class="text-text-secondary">Hub ready</span>     <span class="text-text-secondary">·</span>  <span class="text-accent-cyan">http://localhost:3000</span></code></pre>
+          <!-- LEFT: words + CTAs + install snippet -->
+          <div class="lg:col-span-5 text-center lg:text-left">
+            <p class="text-xs font-body font-semibold text-text-secondary uppercase tracking-widest mb-4">An open-source API Governance Platform</p>
+            <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-5 leading-[1.05]">
+              <span class="gradient-text">Gravity</span> for APIs.
+            </h1>
+            <p class="text-base sm:text-lg lg:text-xl text-text-primary mb-8 leading-relaxed font-medium">
+              Ship APIs that won't break your consumers.
+            </p>
+
+            <!-- CTAs -->
+            <div class="flex flex-col sm:flex-row gap-3 sm:items-center justify-center lg:justify-start mb-6">
+              <a href="/docs/getting-started/quickstart" class="inline-flex items-center justify-center gap-2 rounded-lg bg-accent-indigo hover:bg-accent-indigo/90 text-white font-display font-semibold px-5 py-3 transition-colors">
+                Get started
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+              </a>
+              <button type="button" data-watch-tour class="inline-flex items-center justify-center gap-2 rounded-lg border border-surface-200 hover:border-accent-indigo/50 hover:bg-surface-50/40 text-text-primary font-display font-semibold px-5 py-3 transition-colors">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                Watch 60s tour
+              </button>
+            </div>
+
+            <!-- Install snippet (single line, copy-clickable) -->
+            <div id="install" class="max-w-md mx-auto lg:mx-0">
+              <button type="button" data-copy="npm install -g @grapity/grapity" class="group w-full flex items-center gap-3 rounded-lg border border-surface-200 bg-surface-50/40 hover:bg-surface-50/70 hover:border-accent-indigo/40 px-4 py-3 font-mono text-sm text-left transition-colors">
+                <span class="text-text-secondary select-none">$</span>
+                <span class="flex-1 text-text-primary truncate">npm install -g @grapity/grapity</span>
+                <span class="text-text-muted group-hover:text-accent-indigo transition-colors shrink-0" data-copy-icon>
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                </span>
+              </button>
+              <p class="text-text-secondary text-xs mt-3 text-center lg:text-left">
+                <a href="/philosophy" class="hover:text-text-primary transition-colors">Free · Self-hosted · Apache 2.0</a> · No signup required
+              </p>
+            </div>
           </div>
-          <p class="text-text-secondary text-sm mt-4 text-center">
-            <a href="/philosophy" class="hover:text-text-primary transition-colors">Free. Self-hosted. Apache 2.0.</a> No signup required.
-          </p>
+
+          <!-- RIGHT: video in macOS-window chrome (matches site's terminal mock style) -->
+          <div class="lg:col-span-7">
+            <div id="tour" class="relative rounded-xl border border-surface-200 bg-surface-50/50 shadow-2xl overflow-hidden">
+              <!-- Window chrome -->
+              <div class="flex items-center gap-1.5 px-4 py-3 border-b border-surface-200 bg-surface-50/70">
+                <span class="w-2.5 h-2.5 rounded-full bg-red-400/80"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-amber-400/80"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-green-400/80"></span>
+                <span class="ml-auto text-xs text-text-secondary font-mono">grapity --tour · 60s</span>
+              </div>
+
+              <!-- Video + end-card overlay -->
+              <div class="relative">
+                <video
+                  id="hero-tour-video"
+                  muted
+                  loop
+                  playsinline
+                  controls
+                  controlslist="nodownload noplaybackrate"
+                  disablepictureinpicture
+                  disableremoteplayback
+                  preload="metadata"
+                  poster="/assets/grapity-pitch-poster.png"
+                  class="w-full block"
+                >
+                  <source src="/assets/grapity-pitch.mp4" type="video/mp4" />
+                  Your browser doesn't support video playback.
+                </video>
+
+                <!-- End-card overlay (shown after the video ends) -->
+                <div id="hero-tour-endcard" class="absolute inset-0 hidden flex-col items-center justify-center gap-5 bg-surface/85 backdrop-blur-sm text-center px-6">
+                  <p class="font-display text-xl sm:text-2xl font-semibold text-text-primary">Ready in two commands.</p>
+                  <button type="button" data-copy="npm install -g @grapity/grapity" class="group flex items-center gap-3 rounded-lg border border-accent-indigo/40 bg-accent-indigo/10 hover:bg-accent-indigo/20 px-5 py-3 font-mono text-sm transition-colors">
+                    <span class="text-accent-indigo">$</span>
+                    <span class="text-text-primary">npm install -g @grapity/grapity</span>
+                    <svg class="w-4 h-4 text-accent-indigo" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                  </button>
+                  <button type="button" id="hero-tour-replay" class="text-text-secondary hover:text-text-primary text-sm transition-colors">↺ Watch again</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -749,9 +796,9 @@
                 <span class="font-display text-2xl font-bold">$0</span>
                 <span class="text-text-secondary text-sm">Free forever. Apache 2.0.</span>
               </div>
-              <a href="/docs/getting-started/quickstart" class="mt-3 inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg border border-surface-200 text-text-primary font-semibold text-sm hover:bg-surface-50 transition-colors w-full">
-                Install now
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+              <a href="/docs/getting-started/quickstart" class="mt-3 inline-flex items-center justify-center gap-2 rounded-lg bg-accent-indigo hover:bg-accent-indigo/90 text-white font-display font-semibold px-5 py-3 transition-colors w-full">
+                Get started
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
               </a>
             </div>
           </div>
@@ -868,6 +915,79 @@
           }, 100);
         }
       }
+    })();
+
+    // Hero tour: watch-tour button, video end-card, replay, copy-to-clipboard.
+    (function () {
+      const video = document.getElementById('hero-tour-video');
+      const endcard = document.getElementById('hero-tour-endcard');
+      const replay = document.getElementById('hero-tour-replay');
+      const watchBtns = document.querySelectorAll('[data-watch-tour]');
+
+      // "Watch 60s tour" CTA: smooth-scroll to the tour and start playback.
+      watchBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const tour = document.getElementById('tour');
+          if (!tour) return;
+          tour.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          if (video) {
+            // Remove loop so the user gets a clean end + end-card.
+            video.loop = false;
+            video.currentTime = 0;
+            video.play().catch(() => {});
+          }
+        });
+      });
+
+      if (video && endcard) {
+        // When the video naturally ends, surface the end-card.
+        video.addEventListener('ended', () => {
+          endcard.classList.remove('hidden');
+          endcard.classList.add('flex');
+        });
+        // Hide end-card if the user scrubs back or plays again.
+        const hideEndcard = () => {
+          endcard.classList.add('hidden');
+          endcard.classList.remove('flex');
+        };
+        video.addEventListener('play', hideEndcard);
+        video.addEventListener('seeked', () => {
+          if (video.currentTime < video.duration - 0.5) hideEndcard();
+        });
+      }
+
+      if (replay && video) {
+        replay.addEventListener('click', () => {
+          video.currentTime = 0;
+          video.play().catch(() => {});
+        });
+      }
+
+      // Copy-to-clipboard for any [data-copy] button. Briefly swap the icon.
+      document.querySelectorAll('[data-copy]').forEach((btn) => {
+        btn.addEventListener('click', async () => {
+          const text = btn.getAttribute('data-copy') || '';
+          try {
+            await navigator.clipboard.writeText(text);
+          } catch (_) {
+            // Fallback: select-and-copy via a hidden textarea.
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            document.body.appendChild(ta);
+            ta.select();
+            try { document.execCommand('copy'); } catch (_) {}
+            document.body.removeChild(ta);
+          }
+          const icon = btn.querySelector('[data-copy-icon] svg, svg');
+          if (!icon) return;
+          const original = icon.outerHTML;
+          icon.outerHTML = '<svg class="w-4 h-4 text-accent-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>';
+          setTimeout(() => {
+            const back = btn.querySelector('svg');
+            if (back) back.outerHTML = original;
+          }, 1400);
+        });
+      });
     })();
   </script>
 

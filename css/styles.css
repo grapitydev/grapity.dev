@@ -208,6 +208,11 @@
   border-color: rgba(99, 102, 241, 0.5);
 }
 
+.layer-card[data-expandable].active,
+.layer-card[data-expandable].active:hover {
+  transform: none;
+}
+
 /* Chevron indicator */
 .card-chevron {
   display: inline-block;
