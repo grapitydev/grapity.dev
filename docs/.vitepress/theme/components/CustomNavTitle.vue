@@ -1,16 +1,7 @@
-<script setup lang="ts">
-function navigateHome() {
-  // Force a full page load to bypass the VitePress SPA router.
-  // Without this, the router intercepts "/" and resolves it as "/docs/"
-  // (the docs root), which redirects back to quickstart.
-  window.location.href = "https://grapity.dev/";
-}
-</script>
-
 <template>
   <a
     href="https://grapity.dev/"
-    @click.prevent.stop="navigateHome"
+    target="_self"
     class="custom-nav-title"
   >
     <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" class="custom-nav-logo">
