@@ -75,12 +75,16 @@ export default defineConfig({
               text: "Registry",
               items: [
                 { text: "Overview", link: "/platform/registry/overview" },
+                { text: "Configuration", link: "/platform/registry/configuration" },
+                { text: "Materialize", link: "/platform/registry/materialize" },
+                { text: "Gateway integration", link: "/platform/registry/gateway" },
               ],
             },
             {
               text: "Hub",
               items: [
-                { text: "Using the Hub", link: "/platform/hub/using-the-hub" },
+                { text: "Overview", link: "/platform/hub/overview" },
+                { text: "Spec detail page", link: "/platform/hub/spec-detail" },
               ],
             },
             {
@@ -99,6 +103,7 @@ export default defineConfig({
             { text: "grapity init", link: "/cli-reference/init" },
             { text: "grapity serve", link: "/cli-reference/serve" },
             { text: "grapity registry", link: "/cli-reference/registry" },
+            { text: "grapity materialize", link: "/cli-reference/materialize" },
             { text: "grapity gateway", link: "/cli-reference/gateway" },
           ],
         },

@@ -47,3 +47,9 @@ Kong plugins can be declared directly in `gateway.config.yaml`. Verified plugins
 ## Log querying
 
 Once logs are flowing, use `grapity gateway logs <config>` to query traffic from the command line, or call the registry REST API directly at `GET /v1/gateway-logs`.
+
+## See also
+
+- [CLI Reference: grapity gateway](/cli-reference/gateway) — Manage gateway configs and logs
+- [grapity serve](/cli-reference/serve) — Start the Registry and Hub
+- [Registry Overview](/platform/registry/overview) — How specs are stored and validated

@@ -8,6 +8,18 @@ Manage CLI authentication when the Registry uses Keycloak.
 grapity auth <command>
 ```
 
+## Description
+
+`grapity auth status` fetches or reuses a cached access token for the configured Keycloak auth and prints its status. It works for both local mode (when the Registry uses Keycloak auth) and remote mode.
+
+The CLI caches tokens in memory until they expire. Use `grapity auth clear` to force a fresh token on the next command.
+
+You can also bypass Keycloak entirely for automation by providing a static token:
+
+```bash
+export GRAPITY_TOKEN="eyJ..."
+```
+
 ## Commands
 
 | Command | Description |
@@ -44,18 +56,6 @@ The Hub authenticates with the browser **Authorization Code + PKCE** flow. You n
 ### Example realm
 
 A working example realm is published at [`/examples/keycloak/realm-export.json`](/examples/keycloak/realm-export.json). It defines both the `grapity-cli` and `grapity-hub` clients plus a default user `demo` / `demo`. Use it with the Keycloak Docker Compose stack at [`/examples/docker-compose.keycloak.yml`](/examples/docker-compose.keycloak.yml).
-
-## Description
-
-`grapity auth status` fetches or reuses a cached access token for the configured Keycloak auth and prints its status. It works for both local mode (when the Registry uses Keycloak auth) and remote mode.
-
-The CLI caches tokens in memory until they expire. Use `grapity auth clear` to force a fresh token on the next command.
-
-You can also bypass Keycloak entirely for automation by providing a static token:
-
-```bash
-export GRAPITY_TOKEN="eyJ..."
-```
 
 ## Examples
 

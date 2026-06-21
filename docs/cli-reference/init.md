@@ -8,49 +8,29 @@ Configure the CLI for local or remote Registry mode.
 grapity init --local|--remote [options]
 ```
 
-## Modes
+## Description
 
 `grapity init` writes `~/.grapity/config.yaml`, which tells all other CLI commands where to find the Registry. You only need to run this once per machine.
 
-### Local mode
+In **local mode**, the CLI talks to a Registry that you start yourself with `grapity serve`. The config stores the local port and database backend.
 
-The CLI talks to a Registry that you start yourself with `grapity serve`. The config stores the local port and database backend.
-
-```bash
-grapity init --local
-```
-
-Use this mode for local development and when self-hosting the Registry on your own infrastructure.
-
-### Remote mode
-
-The CLI talks to a Registry that is already running at a URL you provide. This can be a self-hosted instance or a managed service.
-
-```bash
-grapity init --remote --url https://registry.example.com
-```
-
-You do not run `grapity serve` in remote mode. All commands are sent as HTTP requests to the configured URL.
-
-## Description
-
-For local mode, you can choose SQLite (default) or PostgreSQL. Credentials for PostgreSQL can be passed directly via `--db` or, for production, via the `GRAPITY_DATABASE_URL` environment variable.
+In **remote mode**, the CLI talks to a Registry already running at a URL you provide. This can be a self-hosted instance or a managed service.
 
 ## Options
 
-| Option | Description |
-|--------|-------------|
-| `--local` | Use local mode |
-| `--remote` | Use remote mode (connect to a hosted Grapity server) |
-| `--url <url>` | Registry URL (required for remote mode) |
-| `--port <port>` | Port for local server (default: `3750`) |
-| `--db <path-or-url>` | SQLite path or `postgresql://` URL. Takes precedence over `GRAPITY_DATABASE_URL`. |
-| `--auth <mode>` | Auth mode: `none` or `keycloak` (default: `none`) |
-| `--keycloak-server <url>` | Keycloak base URL, e.g. `https://keycloak.example.com` |
-| `--keycloak-realm <realm>` | Keycloak realm name |
-| `--keycloak-client-id <id>` | Keycloak client ID for CLI client credentials (required with `--auth keycloak`) |
-| `--keycloak-audience <audience>` | Required `aud` claim value for validated tokens |
-| `--keycloak-role-source <source>` | Where to read roles from: `scope` or `realm_access.roles` (default: `scope`) |
+| Option | Description | Default |
+|--------|-------------|---------|
+| `--local` | Use local mode | — |
+| `--remote` | Use remote mode (connect to a hosted Grapity server) | — |
+| `--url <url>` | Registry URL (required for remote mode) | — |
+| `--port <port>` | Port for local server | `3750` |
+| `--db <path-or-url>` | SQLite path or `postgresql://` URL. Takes precedence over `GRAPITY_DATABASE_URL`. | — |
+| `--auth <mode>` | Auth mode: `none` or `keycloak` | `none` |
+| `--keycloak-server <url>` | Keycloak base URL, e.g. `https://keycloak.example.com` | — |
+| `--keycloak-realm <realm>` | Keycloak realm name | — |
+| `--keycloak-client-id <id>` | Keycloak client ID for CLI client credentials (required with `--auth keycloak`) | — |
+| `--keycloak-audience <audience>` | Required `aud` claim value for validated tokens | — |
+| `--keycloak-role-source <source>` | Where to read roles from: `scope` or `realm_access.roles` | `scope` |
 
 ## Examples
 
@@ -152,8 +132,6 @@ export GRAPITY_CLIENT_SECRET="your-client-secret"
 
 ### Local mode with Keycloak
 
-Enabling auth changes what you need to have running and configured before any command works.
-
 1. Start a reachable Keycloak server. Download the example Docker Compose stack:
 
    ```bash
@@ -248,9 +226,7 @@ remote:
     roleSource: scope | realm_access.roles
 ```
 
-::: tip
 The CLI reads this config automatically. You never need to pass `--url` or `--port` to other commands after initialization.
-:::
 
 ## See also
 

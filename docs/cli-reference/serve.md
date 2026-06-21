@@ -14,14 +14,18 @@ grapity serve [options]
 
 All connection configuration (database, Keycloak) is read from `~/.grapity/config.yaml`, which is created by `grapity init`. Use `GRAPITY_DATABASE_URL` to keep database credentials out of the config file.
 
-## Defaults
-
 Running `grapity serve` with no flags starts:
 
 - **Registry** on port `3750`
 - **Hub** on port `3000`
 - **Database**: SQLite at `~/.grapity/registry.db`
 - **Auth**: enabled if configured in `~/.grapity/config.yaml`; otherwise the command fails unless you pass `--no-auth`
+
+`grapity serve` requires a config file. Run `grapity init` first. It is for local mode only and refuses to start when `mode: remote`.
+
+::: warning
+`--no-auth` disables authentication entirely. It is intended only for local development. Do not use it in production or on any shared network.
+:::
 
 ## Options
 
@@ -31,17 +35,6 @@ Running `grapity serve` with no flags starts:
 | `--hub-port <port>` | Port for the Hub developer portal | `3000` |
 | `--no-hub` | Skip starting the developer portal | (starts hub) |
 | `--no-auth` | Start without authentication | (uses auth config) |
-
-## Behavior
-
-- `grapity serve` requires a config file. Run `grapity init` first.
-- `grapity serve` is for local mode only. It refuses to start when `mode: remote`.
-- Authentication is enabled by default if configured. If no auth config exists, the command fails unless you pass `--no-auth`.
-- If Keycloak is configured but unreachable, the command fails and prints the Docker Compose command to start it.
-
-::: warning
-`--no-auth` disables authentication entirely. It is intended only for local development. Do not use it in production or on any shared network.
-:::
 
 ## External dependencies
 
@@ -77,11 +70,22 @@ Output:
   ●  Server ready  ·  http://localhost:3750
 ```
 
-::: warning
-`--no-auth` disables authentication entirely. It is intended only for local development. Do not use it in production or on any shared network.
-:::
-
 ### Default local mode with Keycloak auth
+
+Start the local Keycloak stack first:
+
+```bash
+mkdir -p grapity-examples/keycloak
+curl -L https://grapity.dev/docs/examples/docker-compose.keycloak.yml \
+  -o grapity-examples/docker-compose.keycloak.yml
+curl -L https://grapity.dev/docs/examples/keycloak/realm-export.json \
+  -o grapity-examples/keycloak/realm-export.json
+cd grapity-examples
+docker compose -f docker-compose.keycloak.yml down -v
+docker compose -f docker-compose.keycloak.yml up -d
+```
+
+Then configure and start grapity:
 
 ```bash
 grapity init --local --auth keycloak \
@@ -106,29 +110,6 @@ Output:
 
   ●  Server ready  ·  http://localhost:3750
 ```
-
-Start the local Keycloak stack first:
-
-```bash
-mkdir -p grapity-examples/keycloak
-curl -L https://grapity.dev/docs/examples/docker-compose.keycloak.yml \
-  -o grapity-examples/docker-compose.keycloak.yml
-curl -L https://grapity.dev/docs/examples/keycloak/realm-export.json \
-  -o grapity-examples/keycloak/realm-export.json
-cd grapity-examples
-docker compose -f docker-compose.keycloak.yml down -v
-docker compose -f docker-compose.keycloak.yml up -d
-```
-
-### Registry and Hub without authentication
-
-```bash
-grapity serve --no-auth
-```
-
-::: warning
-`--no-auth` disables authentication entirely. It is intended only for local development. Do not use it in production or on any shared network.
-:::
 
 ### Registry only
 

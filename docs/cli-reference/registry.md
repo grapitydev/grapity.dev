@@ -2,7 +2,17 @@
 
 Manage specs in the Grapity Registry.
 
-## Subcommands
+## Usage
+
+```bash
+grapity registry <command> [options]
+```
+
+## Description
+
+Use `grapity registry` to publish, validate, inspect, and delete API specs in the Grapity Registry.
+
+## Commands
 
 | Command | Description |
 |---------|-------------|
@@ -12,8 +22,7 @@ Manage specs in the Grapity Registry.
 | `get <name>` | Get spec metadata and latest version |
 | `versions <name>` | List all versions of a spec |
 | `spec <name>` | Fetch the raw spec document |
-
----
+| `delete <name>` | Delete a spec and all its versions |
 
 ## grapity registry push
 
@@ -33,19 +42,19 @@ grapity registry push <file> --name <name> [options]
 
 ### Options
 
-| Option | Description |
-|----------|-------------|
-| `--name <name>` | **Required.** Spec name (URL-friendly identifier) |
-| `--type <type>` | Spec type: `openapi` |
-| `--description <desc>` | Description of the spec |
-| `--owner <owner>` | Owner team or individual |
-| `--source-repo <url>` | Source repository URL |
-| `--tags <tags>` | Comma-separated tags |
-| `--git-ref <ref>` | Git commit SHA |
-| `--pushed-by <by>` | Pusher identity (user or CI) |
-| `--force` | Force push even with breaking changes |
-| `--reason <reason>` | Reason for force push (required with `--force`) |
-| `--prerelease` | Push as pre-release version (`0.x`) |
+| Option | Description | Default |
+|--------|-------------|---------|
+| `--name <name>` | **Required.** Spec name (URL-friendly identifier) | — |
+| `--type <type>` | Spec type: `openapi` | `openapi` |
+| `--description <desc>` | Description of the spec | — |
+| `--owner <owner>` | Owner team or individual | — |
+| `--source-repo <url>` | Source repository URL | — |
+| `--tags <tags>` | Comma-separated tags | — |
+| `--git-ref <ref>` | Git commit SHA | — |
+| `--pushed-by <by>` | Pusher identity (user or CI) | — |
+| `--force` | Force push even with breaking changes | false |
+| `--reason <reason>` | Reason for force push (required with `--force`) | — |
+| `--prerelease` | Push as pre-release version (`0.x`) | false |
 
 ### Examples
 
@@ -72,8 +81,6 @@ grapity registry push ./openapi.yaml --name payments-api \
   --force --reason "security fix CVE-2026-1234"
 ```
 
----
-
 ## grapity registry validate
 
 Validate a spec against the latest version in the Registry without storing anything.
@@ -86,9 +93,9 @@ grapity registry validate <file> --against <name>
 
 ### Options
 
-| Option | Description |
-|--------|-------------|
-| `--against <name>` | **Required.** Spec name to validate against |
+| Option | Description | Default |
+|--------|-------------|---------|
+| `--against <name>` | **Required.** Spec name to validate against | — |
 
 ### Example
 
@@ -97,8 +104,6 @@ grapity registry validate ./openapi.yaml --against payments-api
 ```
 
 Output shows whether the spec is valid and lists any breaking or safe changes.
-
----
 
 ## grapity registry list
 
@@ -112,19 +117,17 @@ grapity registry list [options]
 
 ### Options
 
-| Option | Description |
-|--------|-------------|
-| `--type <type>` | Filter by spec type: `openapi` |
-| `--owner <owner>` | Filter by owner |
-| `--tags <tags>` | Comma-separated tag filter |
+| Option | Description | Default |
+|--------|-------------|---------|
+| `--type <type>` | Filter by spec type: `openapi` | — |
+| `--owner <owner>` | Filter by owner | — |
+| `--tags <tags>` | Comma-separated tag filter | — |
 
 ### Example
 
 ```bash
 grapity registry list --type openapi --owner platform-team
 ```
-
----
 
 ## grapity registry get
 
@@ -142,8 +145,6 @@ grapity registry get <name>
 grapity registry get payments-api
 ```
 
----
-
 ## grapity registry versions
 
 List all versions of a spec, newest first.
@@ -160,15 +161,12 @@ grapity registry versions <name> [options]
 |--------|-------------|---------|
 | `--limit <n>` | Maximum versions to return (max 25) | `10` |
 | `--offset <n>` | Number of versions to skip | `0` |
-| `--offset <n>` | Number of versions to skip | `0` |
 
 ### Example
 
 ```bash
 grapity registry versions payments-api --limit 5
 ```
-
----
 
 ## grapity registry spec
 
@@ -213,8 +211,6 @@ Pipe to another tool:
 grapity registry spec payments-api | yq '.info.title'
 ```
 
----
-
 ## grapity registry delete
 
 Delete a spec and all its versions from the registry.
@@ -227,9 +223,9 @@ grapity registry delete <name> [options]
 
 ### Options
 
-| Option | Description |
-|--------|-------------|
-| `-f, --force` | Skip confirmation prompt |
+| Option | Description | Default |
+|--------|-------------|---------|
+| `-f, --force` | Skip confirmation prompt | false |
 
 ### Example
 
@@ -240,4 +236,5 @@ grapity registry delete payments-api
 ## See also
 
 - [grapity init](/cli-reference/init) — Configure the CLI
+- [grapity materialize](/cli-reference/materialize) — Fetch a registered spec into the current repository
 - [grapity serve](/cli-reference/serve) — Start the Registry server

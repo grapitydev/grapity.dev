@@ -58,6 +58,22 @@ The Registry exposes an HTTP API on port 3750 (configurable). The CLI and Hub co
 
 The full API specification is available at `/v1/openapi.yaml` on any running Registry instance.
 
+## Direct spec URLs
+
+You can fetch any spec directly via the Registry API without opening the Hub:
+
+```bash
+curl http://localhost:3750/v1/specs/payments-api/spec.yaml
+```
+
+Or a specific version:
+
+```bash
+curl http://localhost:3750/v1/specs/payments-api/versions/1.2.0/spec.json
+```
+
+These URLs return the correct `Content-Type` header for OpenAPI specs.
+
 ## Authentication
 
 The Registry supports two authentication modes, controlled by `auth.mode` in the server configuration:
@@ -70,10 +86,6 @@ When Keycloak is enabled, the CLI uses client credentials to fetch access tokens
 ```bash
 export GRAPITY_CLIENT_SECRET="your-client-secret"
 ```
-
-::: warning
-Enabling auth makes Keycloak a hard dependency. If Keycloak is unreachable, `grapity serve` will not start. Anonymous requests are rejected with `401`, and requests without the required scopes are rejected with `403`.
-:::
 
 For automation you can also provide a static bearer token:
 
@@ -94,38 +106,11 @@ grapity init --remote --url https://api.grapity.dev \
 
 See [grapity auth](/cli-reference/auth) for checking token status and clearing the cache.
 
-## Gateway integration
-
-Gateway configs are stored and validated by the Registry, but the runtime is outside it:
-
-- **Provisioning requires decK and Kong.** `grapity gateway provision` shells out to `deck` and talks to the Kong Admin API declared in each environment.
-- **Log ingestion requires the Kong `http-log` plugin.** Kong pushes access logs to `/v1/gateway-logs/ingest/:provider/:environment`. The Registry does not pull logs.
-- **Log ingestion is authenticated when auth is enabled.** The ingest endpoint requires a bearer token with the `gateway-logs:write` scope. Configure Kong's `http-log` plugin `headers` to send `Authorization: Bearer <token>`. Grapity does not manage that token for you.
-- **Provisioning is explicit.** Pushing a gateway config to the Registry does not change Kong. You must run `grapity gateway provision --sync` to apply it.
-
-See the [Quickstart](/getting-started/quickstart) for a full local Kong setup.
-
-## Configuration
-
-The Registry reads configuration from `~/.grapity/config.yaml`:
-
-```yaml
-mode: local
-local:
-  port: 3750
-  sqlitePath: ~/.grapity/registry.db
-```
-
-For remote mode:
-
-```yaml
-mode: remote
-remote:
-  url: https://api.grapity.dev
-```
-
 ## Next steps
 
 - [Installation options](/getting-started/installation)
 - [CLI Reference: grapity registry](/cli-reference/registry)
+- [Registry Configuration](/platform/registry/configuration)
+- [Materialize](/platform/registry/materialize)
+- [Registry Gateway Integration](/platform/registry/gateway)
 - [Backward Compatibility](/platform/architecture/backward-compatibility)
