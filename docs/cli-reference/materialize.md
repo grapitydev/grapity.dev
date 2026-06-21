@@ -6,7 +6,6 @@ Fetch registered specs from the Grapity Registry into the current repository.
 
 ```bash
 grapity materialize [name] [options]
-grapity materialize --check
 ```
 
 ## Description
