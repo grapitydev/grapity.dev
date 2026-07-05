@@ -41,7 +41,7 @@ version: "1"
 
 specs:
   - name: payments-api
-    semver: "1.2.0"
+    semver: 1.2.0
     output: ./grapity/specs/payments-api.yaml
     format: yaml
 
