@@ -13,6 +13,10 @@ bash scripts/post-build.sh dist/docs
 
 echo "Copying landing page files..."
 cp index.html dist/
+mkdir -p dist/privacy
+cp privacy.html dist/privacy/index.html
+mkdir -p dist/terms
+cp terms.html dist/terms/index.html
 mkdir -p dist/philosophy
 cp philosophy.html dist/philosophy/index.html
 cp -r css dist/

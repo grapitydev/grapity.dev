@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Service | grapity</title>
+  <meta name="description" content="Grapity Terms of Service for the try demo and website.">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            surface: {
+              DEFAULT: '#0a0a0f',
+              50: '#12121a',
+              100: '#1a1a28',
+              200: '#1e1e2e',
+            },
+            accent: {
+              indigo: '#6366f1',
+              cyan: '#06b6d4',
+              green: '#a5f3c4',
+            },
+            text: {
+              primary: '#e4e4ed',
+              secondary: '#8888a0',
+            }
+          },
+          fontFamily: {
+            display: ['Space Grotesk', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body class="bg-surface text-text-primary font-body antialiased">
+
+  <nav class="fixed top-0 left-0 right-0 z-50 border-b border-surface-200/50 bg-surface/80 backdrop-blur-xl">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3 group">
+        <svg class="w-7 h-7" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="nav-g" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#6366f1"/>
+              <stop offset="100%" style="stop-color:#06b6d4"/>
+            </linearGradient>
+          </defs>
+          <path d="M7 24 L16 6 L25 24 L21 24 L16 14 L11 24 Z" fill="url(#nav-g)"/>
+          <circle cx="16" cy="24" r="2.5" fill="url(#nav-g)"/>
+        </svg>
+        <span class="font-display font-semibold text-lg tracking-tight">grapity</span>
+      </a>
+      <div class="flex items-center gap-6">
+        <a href="/docs/getting-started/quickstart" class="text-text-secondary hover:text-text-primary transition-colors text-sm font-medium">Docs</a>
+        <a href="/philosophy" class="text-text-secondary hover:text-text-primary transition-colors text-sm font-medium">Philosophy</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="relative min-h-[40vh] flex items-center justify-center overflow-hidden pt-16 pb-2">
+      <div class="absolute inset-0 hero-gradient"></div>
+      <div class="absolute inset-0 grid-overlay"></div>
+      <div class="relative z-10 max-w-3xl mx-auto px-6 text-center">
+        <p class="text-xs font-body font-semibold text-text-secondary uppercase tracking-widest mb-4">Legal</p>
+        <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-[1.1]">
+          Terms of Service
+        </h1>
+        <p class="text-lg sm:text-xl text-text-primary max-w-2xl mx-auto leading-relaxed font-medium">
+          Last updated: 7 July 2026
+        </p>
+      </div>
+    </section>
+
+    <section class="relative py-0">
+      <div class="max-w-3xl mx-auto px-6 pb-16">
+        <div class="prose prose-invert max-w-none">
+
+          <p class="text-lg text-text-secondary leading-relaxed mb-12">
+            These Terms of Service ("Terms") govern your use of the Grapity website and the hosted demo service at <code>try.grapity.dev</code>. By using the service, you agree to these Terms.
+          </p>
+
+          <h2 class="font-display text-2xl sm:text-3xl font-bold tracking-tight mb-4 mt-16">1. Operator</h2>
+          <p class="text-lg text-text-secondary leading-relaxed mb-12">
+            The service is operated by <strong>Marcos Segovia Fernandez</strong>, reachable at <a href="mailto:contact@grapity.dev" class="text-accent-indigo hover:underline">contact@grapity.dev</a>.
+          </p>
+
+          <h2 class="font-display text-2xl sm:text-3xl font-bold tracking-tight mb-4 mt-16">2. Service description</h2>
+          <p class="text-lg text-text-secondary leading-relaxed mb-12">
+            Grapity is an open-source API governance platform. The <code>try.grapity.dev</code> service provides temporary, free demo instances so users can evaluate the software. Demo instances are isolated, last up to two hours, and are not intended for production data or workloads.
+          </p>
+
+          <h2 class="font-display text-2xl sm:text-3xl font-bold tracking-tight mb-4 mt-16">3. Eligibility</h2>
+          <p class="text-lg text-text-secondary leading-relaxed mb-12">
+            There is no minimum age restriction. However, by using the service you confirm that you are authorized to enter into these Terms and that you will not use the service for any illegal purpose.
+          </p>
+
+          <h2 class="font-display text-2xl sm:text-3xl font-bold tracking-tight mb-4 mt-16">4. Acceptable use</h2>
+          <p class="text-lg text-text-secondary leading-relaxed mb-6">
+            You may use the service only for lawful, non-abusive purposes. Prohibited activities include:
+          </p>
+          <ul class="list-disc pl-6 text-text-secondary leading-relaxed mb-12">
+            <li>Attacking, scanning, or attempting to compromise the service or other users' instances.</li>
+            <li>Using the demo to host, store, or transmit illegal, harmful, or infringing content.</li>
+            <li>Attempting to bypass rate limits or access controls.</li>
+            <li>Automating account creation or demo provisioning in a way that interferes with the service.</li>
+          </ul>
+
+          <h2 class="font-display text-2xl sm:text-3xl font-bold tracking-tight mb-4 mt-16">5. Account approval</h2>
+          <p class="text-lg text-text-secondary leading-relaxed mb-12">
+            New demo accounts may be reviewed before approval. We reserve the right to approve, decline, or revoke access at any time, with or without cause.
+          </p>
+
+          <h2 class="font-display text-2xl sm:text-3xl font-bold tracking-tight mb-4 mt-16">6. No warranty</h2>
+          <p class="text-lg text-text-secondary leading-relaxed mb-12">
+            The service is provided "as is" without warranties of any kind, express or implied. Demo instances are experimental and may contain bugs, downtime, or data loss. Do not rely on them for production or sensitive data.
+          </p>
+
+          <h2 class="font-display text-2xl sm:text-3xl font-bold tracking-tight mb-4 mt-16">7. Limitation of liability</h2>
+          <p class="text-lg text-text-secondary leading-relaxed mb-12">
+            To the extent permitted by law, the operator shall not be liable for any damages arising from the use or inability to use the service. Since the service is free, no monetary damages are payable. This limitation does not apply to liability that cannot be excluded under applicable law.
+          </p>
+
+          <h2 class="font-display text-2xl sm:text-3xl font-bold tracking-tight mb-4 mt-16">8. Termination</h2>
+          <p class="text-lg text-text-secondary leading-relaxed mb-12">
+            We may suspend or terminate your access at any time, with or without notice. You may delete your account and data at any time using the "Delete my account" option in the demo panel or by contacting us.
+          </p>
+
+          <h2 class="font-display text-2xl sm:text-3xl font-bold tracking-tight mb-4 mt-16">9. Intellectual property</h2>
+          <p class="text-lg text-text-secondary leading-relaxed mb-12">
+            Grapity's open-source software is licensed under the Apache License 2.0. These Terms do not grant any additional rights to the software or its trademarks.
+          </p>
+
+          <h2 class="font-display text-2xl sm:text-3xl font-bold tracking-tight mb-4 mt-16">10. Governing law and jurisdiction</h2>
+          <p class="text-lg text-text-secondary leading-relaxed mb-12">
+            These Terms are governed by the laws of Switzerland. The exclusive place of jurisdiction for any disputes arising from these Terms is Aargau, Switzerland.
+          </p>
+
+          <h2 class="font-display text-2xl sm:text-3xl font-bold tracking-tight mb-4 mt-16">11. Changes</h2>
+          <p class="text-lg text-text-secondary leading-relaxed mb-12">
+            We may update these Terms from time to time. The latest version will be posted at this URL. Continued use of the service after changes constitutes acceptance.
+          </p>
+
+          <h2 class="font-display text-2xl sm:text-3xl font-bold tracking-tight mb-4 mt-16">12. Contact</h2>
+          <p class="text-lg text-text-secondary leading-relaxed mb-12">
+            For questions about these Terms, contact <a href="mailto:contact@grapity.dev" class="text-accent-indigo hover:underline">contact@grapity.dev</a>.
+          </p>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-surface-200 py-12">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <svg class="w-6 h-6" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="footer-g" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#6366f1"/>
+                <stop offset="100%" style="stop-color:#06b6d4"/>
+              </linearGradient>
+            </defs>
+            <path d="M7 24 L16 6 L25 24 L21 24 L16 14 L11 24 Z" fill="url(#footer-g)"/>
+            <circle cx="16" cy="24" r="2.5" fill="url(#footer-g)"/>
+          </svg>
+          <span class="font-display font-medium text-sm">grapity</span>
+        </div>
+        <div class="flex items-center gap-6">
+          <a href="/philosophy" class="text-text-secondary hover:text-text-primary transition-colors text-sm">Philosophy</a>
+          <a href="/privacy" class="text-text-secondary hover:text-text-primary transition-colors text-sm">Privacy</a>
+          <a href="/terms" class="text-text-primary transition-colors text-sm">Terms</a>
+          <a href="https://github.com/grapitydev" target="_blank" rel="noopener noreferrer" class="text-text-secondary hover:text-text-primary transition-colors flex items-center gap-2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            <span class="text-sm">GitHub</span>
+          </a>
+          <a href="https://x.com/grapitydev" target="_blank" rel="noopener noreferrer" class="text-text-secondary hover:text-text-primary transition-colors flex items-center gap-2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            <span class="text-sm">X</span>
+          </a>
+        </div>
+        <span class="text-text-secondary/40 text-sm">&copy; 2026 grapity</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
