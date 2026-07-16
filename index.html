@@ -5,6 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>grapity | Gravity for your APIs</title>
   <meta name="description" content="Ship APIs that won't break your consumers.">
+  <link rel="canonical" href="https://www.grapity.dev/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.grapity.dev/">
+  <meta property="og:title" content="grapity | Gravity for your APIs">
+  <meta property="og:description" content="Ship APIs that won't break your consumers.">
+  <meta property="og:image" content="https://www.grapity.dev/assets/grapity-pitch-poster.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@grapitydev">
+  <meta name="twitter:title" content="grapity | Gravity for your APIs">
+  <meta name="twitter:description" content="Ship APIs that won't break your consumers.">
+  <meta name="twitter:image" content="https://www.grapity.dev/assets/grapity-pitch-poster.png">
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -108,10 +119,10 @@
                 Get started
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
               </a>
-              <button type="button" data-watch-tour class="inline-flex items-center justify-center gap-2 rounded-lg border border-surface-200 hover:border-accent-indigo/50 hover:bg-surface-50/40 text-text-primary font-display font-semibold px-5 py-3 transition-colors">
-                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                Watch 60s tour
-              </button>
+              <a href="https://try.grapity.dev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 rounded-lg border border-accent-indigo/50 bg-accent-indigo/10 hover:bg-accent-indigo/20 text-text-primary font-display font-semibold px-5 py-3 transition-colors">
+                Try a free demo
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+              </a>
             </div>
 
             <!-- Install snippet (single line, copy-clickable) -->
@@ -145,7 +156,6 @@
                 <video
                   id="hero-tour-video"
                   muted
-                  loop
                   playsinline
                   controls
                   controlslist="nodownload noplaybackrate"
@@ -839,8 +849,9 @@
                 <span class="text-text-secondary text-sm">+$1.99 per additional API / mo</span>
                 <span class="text-text-secondary text-sm">+$0.99 per additional user / mo</span>
               </div>
-              <a href="mailto:contact@grapity.dev" class="mt-3 inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg border border-surface-200 text-text-primary font-semibold text-sm hover:bg-surface-50 transition-colors w-full">
-                Get in touch
+              <a href="https://try.grapity.dev" target="_blank" rel="noopener noreferrer" class="mt-3 inline-flex items-center justify-center gap-2 rounded-lg bg-accent-indigo hover:bg-accent-indigo/90 text-white font-display font-semibold px-5 py-3 transition-colors w-full">
+                Try a free demo
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
               </a>
             </div>
           </div>
@@ -849,6 +860,7 @@
         <div class="max-w-2xl mx-auto mt-12 text-center">
           <p class="text-text-secondary text-sm">
             We sell operations, not features. Self-hosted and Cloud run the exact same software. The only difference is who operates it.
+            Want a dedicated instance? <a href="mailto:contact@grapity.dev" class="text-accent-indigo hover:underline">Get in touch</a>.
           </p>
         </div>
       </div>
@@ -872,6 +884,7 @@
           <span class="font-display font-medium text-sm">grapity</span>
         </div>
         <div class="flex items-center gap-6">
+          <a href="/docs/getting-started/quickstart/" class="text-text-secondary hover:text-text-primary transition-colors text-sm">Docs</a>
           <a href="/philosophy" class="text-text-secondary hover:text-text-primary transition-colors text-sm">Philosophy</a>
           <a href="/privacy" class="text-text-secondary hover:text-text-primary transition-colors text-sm">Privacy</a>
           <a href="/terms" class="text-text-secondary hover:text-text-primary transition-colors text-sm">Terms</a>
@@ -919,27 +932,11 @@
       }
     })();
 
-    // Hero tour: watch-tour button, video end-card, replay, copy-to-clipboard.
+    // Hero tour: video end-card, replay, copy-to-clipboard.
     (function () {
       const video = document.getElementById('hero-tour-video');
       const endcard = document.getElementById('hero-tour-endcard');
       const replay = document.getElementById('hero-tour-replay');
-      const watchBtns = document.querySelectorAll('[data-watch-tour]');
-
-      // "Watch 60s tour" CTA: smooth-scroll to the tour and start playback.
-      watchBtns.forEach((btn) => {
-        btn.addEventListener('click', () => {
-          const tour = document.getElementById('tour');
-          if (!tour) return;
-          tour.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          if (video) {
-            // Remove loop so the user gets a clean end + end-card.
-            video.loop = false;
-            video.currentTime = 0;
-            video.play().catch(() => {});
-          }
-        });
-      });
 
       if (video && endcard) {
         // When the video naturally ends, surface the end-card.
