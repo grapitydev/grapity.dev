@@ -11,15 +11,15 @@ brew install grapitydev/tap/grapity
 ## apt (Debian/Ubuntu)
 
 ```bash
-curl -fsSL https://grapitydev.github.io/packages/gpg.key | sudo gpg --dearmor -o /usr/share/keyrings/grapity.gpg
-echo "deb [signed-by=/usr/share/keyrings/grapity.gpg] https://grapitydev.github.io/packages/apt stable main" | sudo tee /etc/apt/sources.list.d/grapity.list
+curl -fsSL https://packages.grapity.dev/gpg.key | sudo gpg --dearmor -o /usr/share/keyrings/grapity.gpg
+echo "deb [signed-by=/usr/share/keyrings/grapity.gpg] https://packages.grapity.dev/apt stable main" | sudo tee /etc/apt/sources.list.d/grapity.list
 sudo apt update && sudo apt install grapity
 ```
 
 ## dnf (Fedora/RHEL)
 
 ```bash
-sudo dnf config-manager addrepo --from-repofile=https://grapitydev.github.io/packages/dnf/grapity.repo
+sudo dnf config-manager addrepo --from-repofile=https://packages.grapity.dev/dnf/grapity.repo
 sudo dnf install grapity
 ```
 
@@ -30,13 +30,13 @@ Append to `/etc/pacman.conf`:
 ```ini
 [grapity]
 SigLevel = Required DatabaseOptional
-Server = https://grapitydev.github.io/packages/pacman/$arch
+Server = https://packages.grapity.dev/pacman/$arch
 ```
 
 Then trust the release key and install:
 
 ```bash
-curl -fsSL https://grapitydev.github.io/packages/gpg.key | sudo pacman-key --add -
+curl -fsSL https://packages.grapity.dev/gpg.key | sudo pacman-key --add -
 sudo pacman-key --lsign-key contact@grapity.dev
 sudo pacman -Sy grapity
 ```
