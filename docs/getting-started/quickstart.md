@@ -15,22 +15,52 @@ Get Grapity running in under five minutes.
 
 ## Prerequisites
 
-- **Node.js** 20+ or **Bun** 1.3.5+
+- None for Homebrew and system packages (the binary is self-contained)
+- **Node.js** 20+ only if you install via npm
 - One OpenAPI spec file (or use the example below)
 
 ## 1. Install the CLI
 
 ::: code-group
 
+```bash [Quick install]
+# macOS + Linux: auto-detects Homebrew, apt, dnf or pacman
+# (falls back to a checksum-verified binary). Windows: use npm.
+curl -fsSL https://packages.grapity.dev/install.sh | sh
+```
+
+```bash [Homebrew]
+brew install grapitydev/tap/grapity
+```
+
+```bash [apt]
+curl -fsSL https://packages.grapity.dev/gpg.key | sudo gpg --dearmor -o /usr/share/keyrings/grapity.gpg
+echo "deb [signed-by=/usr/share/keyrings/grapity.gpg] https://packages.grapity.dev/apt stable main" | sudo tee /etc/apt/sources.list.d/grapity.list
+sudo apt update && sudo apt install grapity
+```
+
+```bash [dnf]
+sudo dnf config-manager addrepo --from-repofile=https://packages.grapity.dev/dnf/grapity.repo
+sudo dnf install grapity
+```
+
+```bash [pacman]
+# Append to /etc/pacman.conf:
+# [grapity]
+# SigLevel = Required DatabaseOptional
+# Server = https://packages.grapity.dev/pacman/$arch
+curl -fsSL https://packages.grapity.dev/gpg.key | sudo pacman-key --add -
+sudo pacman-key --lsign-key contact@grapity.dev
+sudo pacman -Sy grapity
+```
+
 ```bash [npm]
 npm install -g @grapity/grapity
 ```
 
-```bash [bun]
-bun add -g @grapity/grapity
-```
-
 :::
+
+See [Installation](/getting-started/installation) for direct binary downloads and source builds.
 
 ## 2. Initialize local mode
 

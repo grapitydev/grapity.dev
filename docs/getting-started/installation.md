@@ -2,13 +2,47 @@
 
 Choose the method that fits your environment.
 
+## Quick install (recommended)
+
+macOS and Linux:
+
+```bash
+curl -fsSL https://packages.grapity.dev/install.sh | sh
+```
+
+The installer detects your OS and package manager and installs through it, so updates arrive via normal system upgrades:
+
+| Environment | What happens |
+|---|---|
+| macOS with Homebrew | `brew install grapitydev/tap/grapity` |
+| macOS without Homebrew | Checksum-verified binary into `/usr/local/bin` |
+| Debian/Ubuntu (apt) | Adds the signed grapity apt repo, installs `grapity` |
+| Fedora/RHEL (dnf) | Adds the signed grapity dnf repo, installs `grapity` |
+| Arch (pacman) | Adds the signed grapity pacman repo, installs `grapity` |
+| Other Linux | Checksum-verified binary into `/usr/local/bin` (or `~/.local/bin` without sudo) |
+| Windows | Not supported by the script — use [npm](#npm) or run it inside WSL |
+
+To review the script before running it:
+
+```bash
+curl -fsSL https://packages.grapity.dev/install.sh -o install.sh
+less install.sh
+sh install.sh
+```
+
+Overrides: `GRAPITY_VERSION=v0.10.0` (pin a version), `GRAPITY_BIN_DIR=~/.local/bin` (binary install location), `GRAPITY_FORCE_BINARY=1` (skip package managers).
+
 ## Homebrew (macOS and Linux)
 
 ```bash
 brew install grapitydev/tap/grapity
 ```
 
-## apt (Debian/Ubuntu)
+## Manual repository setup
+
+The methods below configure the same signed repositories the installer uses, step by step.
+
+### apt (Debian/Ubuntu)
 
 ```bash
 curl -fsSL https://packages.grapity.dev/gpg.key | sudo gpg --dearmor -o /usr/share/keyrings/grapity.gpg
@@ -16,14 +50,14 @@ echo "deb [signed-by=/usr/share/keyrings/grapity.gpg] https://packages.grapity.d
 sudo apt update && sudo apt install grapity
 ```
 
-## dnf (Fedora/RHEL)
+### dnf (Fedora/RHEL)
 
 ```bash
 sudo dnf config-manager addrepo --from-repofile=https://packages.grapity.dev/dnf/grapity.repo
 sudo dnf install grapity
 ```
 
-## pacman (Arch)
+### pacman (Arch)
 
 Append to `/etc/pacman.conf`:
 
@@ -48,6 +82,18 @@ Install the Grapity CLI globally (requires Node.js 20+):
 ```bash
 npm install -g @grapity/grapity
 ```
+
+## Direct binary
+
+Download a self-contained binary from [GitHub Releases](https://github.com/grapitydev/grapity/releases) (`grapity-darwin-arm64`, `grapity-darwin-x64`, `grapity-linux-x64`, `grapity-linux-arm64`) and put it on your `PATH`:
+
+```bash
+curl -fsSL https://github.com/grapitydev/grapity/releases/latest/download/grapity-darwin-arm64 -o grapity
+chmod +x grapity
+sudo mv grapity /usr/local/bin/
+```
+
+No update channel with this method; download again to upgrade.
 
 ## From source
 
