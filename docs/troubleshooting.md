@@ -8,7 +8,7 @@ Common issues and how to resolve them.
 
 ```text
 breaking_change
-Breaking changes detected. Use force: true with a reason to override, or declare an explicit major version.
+Breaking changes detected. Use force: true with a reason to override.
 ```
 
 **Cause:** Your spec contains changes that break backward compatibility with the previous version.

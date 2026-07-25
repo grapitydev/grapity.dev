@@ -72,7 +72,7 @@ Or a specific version:
 curl http://localhost:3750/v1/specs/payments-api/versions/1.2.0/spec.json
 ```
 
-These URLs return the correct `Content-Type` header for OpenAPI specs.
+These URLs return the correct `Content-Type` header for OpenAPI specs. The served document's `info.version` is always the Registry-assigned version: it is rewritten at push time, so the document stays consistent with the version in the URL.
 
 ## Authentication
 

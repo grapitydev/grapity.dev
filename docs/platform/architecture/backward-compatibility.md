@@ -35,12 +35,12 @@ When you run `grapity registry push`, the Registry:
 3. Classifies each delta as breaking or safe
 4. Assigns a semver bump based on the classification
 
-If breaking changes are found and you have not declared an explicit major version, the push is blocked with HTTP `409`:
+If breaking changes are found, the push is blocked with HTTP `409`:
 
 ```json
 {
   "error": "breaking_change",
-  "message": "Breaking changes detected. Use force: true with a reason to override, or declare an explicit major version.",
+  "message": "Breaking changes detected. Use force: true with a reason to override.",
   "statusCode": 409,
   "compatReport": {
     "previousVersion": "1.0.0",
@@ -66,17 +66,7 @@ You have two options when a push is blocked:
 
 Restore the removed field, widen the enum, or keep the endpoint. Then push again.
 
-### Option 2: Declare an intentional major release
-
-Include an explicit target version in your push:
-
-```bash
-grapity registry push ./openapi.yaml --name payments-api --version 2.0.0
-```
-
-When the declared version is a major bump and breaking changes are detected, the Registry accepts it as an intentional major release.
-
-### Option 3: Force push (emergency only)
+### Option 2: Force push (emergency only)
 
 ```bash
 grapity registry push ./openapi.yaml --name payments-api --force --reason "security fix CVE-2026-1234"

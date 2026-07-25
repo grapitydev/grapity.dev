@@ -1,10 +1,10 @@
 # Semver & Versioning
 
-Grapity auto-assigns semantic versions based on compatibility analysis. You can also declare an explicit version for intentional major releases.
+Grapity auto-assigns semantic versions based on compatibility analysis. The Registry is the sole authority on version assignment; you cannot declare an explicit target version.
 
 ## Auto-assigned versions
 
-On every push, the Registry classifies the change and bumps the version accordingly.
+On every push, the Registry classifies the change and bumps the version accordingly. The assigned version is also written into the document itself: the Registry rewrites `info.version` in the stored spec to match it, so the version you see in the Hub, in `grapity registry spec` output, and in any downloaded copy always agrees with the Registry's version. The `info.version` value in your local file is discarded on push.
 
 | Change classification | Release bump | Pre-release bump |
 |------------------------|-------------|-----------------|
@@ -26,20 +26,6 @@ Rules:
 - Pre-release is only allowed when the spec does not exist yet, or the previous version is also pre-release.
 - Once a spec has a release version (`1.0.0+`), it **cannot** go back to pre-release. Graduation is one-way.
 - In pre-release (`0.x`), breaking changes bump **minor**, following semver convention for `0.x` versions.
-
-## Explicit version declaration
-
-Declare the intended target semver to signal an intentional major release:
-
-```bash
-grapity registry push ./openapi.yaml --name payments-api --version 2.0.0
-```
-
-| Scenario | Result |
-|----------|--------|
-| Declared major + breaking changes detected | Accepted as intentional major release |
-| Declared minor/patch + breaking changes detected | Blocked with `409` (wrong version type) |
-| No version declared | Auto-assigned from compat classification |
 
 ## Version classification
 
