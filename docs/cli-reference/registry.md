@@ -20,6 +20,7 @@ Use `grapity registry` to publish, validate, inspect, and delete API specs in th
 | `validate <file>` | Validate a spec without storing it |
 | `list` | List all specs |
 | `get <name>` | Get spec metadata and latest version |
+| `update <name>` | Update spec metadata (visibility) |
 | `versions <name>` | List all versions of a spec |
 | `spec <name>` | Fetch the raw spec document |
 | `delete <name>` | Delete a spec and all its versions |
@@ -50,6 +51,7 @@ grapity registry push <file> --name <name> [options]
 | `--owner <owner>` | Owner team or individual | — |
 | `--source-repo <url>` | Source repository URL | — |
 | `--tags <tags>` | Comma-separated tags | — |
+| `--visibility <visibility>` | Spec visibility: `private` (authenticated reads only) or `public` (anonymous reads allowed). On an existing spec, supplying it updates visibility; omitting it leaves it unchanged | `private` on first push |
 | `--git-ref <ref>` | Git commit SHA | — |
 | `--pushed-by <by>` | Pusher identity (user or CI) | — |
 | `--force` | Force push even with breaking changes | false |
@@ -143,6 +145,36 @@ grapity registry get <name>
 
 ```bash
 grapity registry get payments-api
+```
+
+## grapity registry update
+
+Update mutable spec metadata without creating a new version. Currently supports changing visibility to publish or unpublish anonymous read access.
+
+### Usage
+
+```bash
+grapity registry update <name> --visibility <visibility>
+```
+
+### Options
+
+| Option | Description | Default |
+|--------|-------------|---------|
+| `--visibility <visibility>` | **Required.** New visibility: `private` or `public` | — |
+
+### Examples
+
+Publish a spec so anyone can read it without a token:
+
+```bash
+grapity registry update payments-api --visibility public
+```
+
+Make it private again:
+
+```bash
+grapity registry update payments-api --visibility private
 ```
 
 ## grapity registry versions

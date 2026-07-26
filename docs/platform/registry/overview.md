@@ -106,6 +106,25 @@ grapity init --remote --url https://api.grapity.dev \
 
 See [grapity auth](/cli-reference/auth) for checking token status and clearing the cache.
 
+## Public specs and anonymous reads
+
+Even in `keycloak` mode, individual specs can be published for anonymous read access. Every spec carries a `visibility` field, `private` (default) or `public`:
+
+- **Private**: all reads require a token with `specs:read`. Anonymous requests receive `404`, identical to an unknown spec, so names cannot be enumerated.
+- **Public**: anonymous callers can read the spec's metadata, versions, raw document, and compatibility reports. The list endpoint shows only public specs to anonymous callers.
+
+Writes always require authentication regardless of visibility.
+
+```bash
+# publish at push time
+grapity registry push ./openapi.yaml --name payments-api --visibility public
+
+# or publish later without creating a new version
+grapity registry update payments-api --visibility public
+```
+
+Combined with the Hub's anonymous browsing, this is how a public developer portal works: the registry enforces Keycloak on every request and only ever serves public specs anonymously, while the Hub renders them to anyone and keeps private specs behind sign-in.
+
 ## Next steps
 
 - [Installation options](/getting-started/installation)

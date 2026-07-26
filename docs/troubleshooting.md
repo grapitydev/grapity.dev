@@ -217,7 +217,7 @@ Insufficient scopes
 - `grapity registry push` requires `specs:write`
 - `grapity registry list` requires `specs:read`
 
-The exact scopes are declared in `openapi.yaml` under each operation's `security` requirements.
+The exact scopes are declared in `specs/grapity-registry.yaml` under each operation's `security` requirements.
 
 ---
 

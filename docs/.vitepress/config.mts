@@ -46,6 +46,7 @@ export default defineConfig({
           items: [
             { text: "Quickstart", link: "/getting-started/quickstart" },
             { text: "Installation", link: "/getting-started/installation" },
+            { text: "GitHub Actions CI", link: "/getting-started/github-actions" },
           ],
         },
       ],
