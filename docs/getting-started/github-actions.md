@@ -76,6 +76,7 @@ Pin the action to a release tag for reproducibility, for example `grapitydev/gra
 | `client-secret` | yes | CI client secret |
 | `audience` | no | Keycloak audience |
 | `visibility` | no | `private` or `public` (push only) |
+| `prerelease` | no | `true` publishes 0.x pre-release versions (push only) |
 | `git-ref` | no | Defaults to `github.sha` |
 | `pushed-by` | no | Defaults to `github.actor` |
 | `cli-version` | no | CLI version to install (default `latest`) |
@@ -86,6 +87,7 @@ Pin the action to a release tag for reproducibility, for example `grapitydev/gra
 - **Forks**: pull requests from forks do not receive repository secrets, so validation only runs for branches in your own repository. This is a GitHub limitation, not a Grapity one.
 - **Breaking changes**: a breaking push is blocked with `409` and fails the job. Emergency overrides stay manual: run `grapity registry push --force --reason "..."` yourself, which records the reason in the audit log.
 - **Public APIs**: add `visibility: public` to the push step to make the spec readable without a token, which is what powers a public Hub portal.
+- **Pre-release APIs**: add `prerelease: "true"` to the push step to keep versions in the 0.x line (`0.1.0`, then minor bumps) while your API is unstable. Removing it later graduates the spec to `1.0.0` on the next push.
 
 ## See also
 

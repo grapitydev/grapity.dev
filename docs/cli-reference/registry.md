@@ -107,6 +107,8 @@ grapity registry validate ./openapi.yaml --against payments-api
 
 Output shows whether the spec is valid and lists any breaking or safe changes.
 
+The command exits `1` when the spec is invalid or contains blocked breaking changes, so it can gate CI jobs. Sunset-eligible removals still exit `0`.
+
 ## grapity registry list
 
 List all specs in the Registry.
