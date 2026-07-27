@@ -83,7 +83,7 @@ Pin the action to a release tag for reproducibility, for example `grapitydev/gra
 
 ## Notes
 
-- **First registration**: `validate` compares against an existing spec, so the very first merge (which registers the spec) runs the push job only. Subsequent pull requests validate against it.
+- **First registration**: when no spec exists for `name` yet, `validate` checks the schema and reports an `initial` classification instead of failing, so the very first pull request and merge pass the gate before anything is registered.
 - **Forks**: pull requests from forks do not receive repository secrets, so validation only runs for branches in your own repository. This is a GitHub limitation, not a Grapity one.
 - **Breaking changes**: a breaking push is blocked with `409` and fails the job. Emergency overrides stay manual: run `grapity registry push --force --reason "..."` yourself, which records the reason in the audit log.
 - **Public APIs**: add `visibility: public` to the push step to make the spec readable without a token, which is what powers a public Hub portal.

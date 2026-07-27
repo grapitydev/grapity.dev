@@ -105,7 +105,7 @@ grapity registry validate <file> --against <name>
 grapity registry validate ./openapi.yaml --against payments-api
 ```
 
-Output shows whether the spec is valid and lists any breaking or safe changes.
+Output shows whether the spec is valid and lists any breaking or safe changes. When no spec exists for `--against` yet, the content is validated structurally and reported as an `initial` version, mirroring what a first push would accept.
 
 The command exits `1` when the spec is invalid or contains blocked breaking changes, so it can gate CI jobs. Sunset-eligible removals still exit `0`.
 
