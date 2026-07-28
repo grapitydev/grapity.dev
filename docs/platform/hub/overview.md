@@ -16,7 +16,7 @@ Open http://localhost:3000 in your browser.
 The home page shows every spec in the Registry in a searchable list.
 
 - **Search** by name or description
-- **Filter** by type (OpenAPI), owner, or tags using the sidebar
+- **Filter** by type (OpenAPI), classification, track (release / pre-release), owner, or tags using the sidebar
 - Each card shows the spec name, type, latest version, and classification
 
 ## Dark mode
