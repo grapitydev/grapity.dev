@@ -29,6 +29,8 @@ Use `grapity registry` to publish, validate, inspect, and delete API specs in th
 
 Push a spec file to the Registry. Validates structure, checks backward compatibility, assigns a semver, and stores the result.
 
+Pushes are idempotent: if the content is identical to the latest version, the Registry registers nothing and reports `no changes` with the current version. A `--visibility` change supplied in the same push still applies without creating a version.
+
 ### Usage
 
 ```bash
@@ -85,7 +87,7 @@ grapity registry push ./openapi.yaml --name payments-api \
 
 ## grapity registry validate
 
-Validate a spec against the latest version in the Registry without storing anything.
+Validate a spec against the latest version in the Registry without storing anything. When the content is identical to the latest version, the result reports `unchanged` and the CLI prints `No changes detected`, matching what an idempotent push would do.
 
 ### Usage
 

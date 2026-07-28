@@ -5,7 +5,7 @@ Validate API changes on every pull request and publish new spec versions on merg
 ## What it does
 
 - **On pull requests**: runs `grapity registry validate` against your registry. Breaking changes fail the check, and the compatibility report appears in the job summary.
-- **On merge to main**: runs `grapity registry push`. The registry diffs against the previous version, blocks or accepts, assigns the semver, and stamps `info.version` into the stored document.
+- **On merge to main**: runs `grapity registry push`. The registry diffs against the previous version, blocks or accepts, assigns the semver, and stamps `info.version` into the stored document. Identical content registers nothing, so re-running the pipeline never creates duplicate versions.
 
 ## Prerequisites
 
