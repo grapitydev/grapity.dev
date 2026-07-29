@@ -9,6 +9,10 @@ Registered specs can be pulled into any repository with `grapity materialize`. T
 
 `grapity materialize` resolves the spec through the CLI auth, writes the pinned version to `grapity.yaml`, and records resolved/latest metadata in `grapity-lock.json`. It warns when the pinned version is no longer the latest registry version, so repos can detect drift in CI.
 
+## Drift detection in CI
+
+`grapity materialize --check` compares the lockfile against the live registry without writing files. A ready-to-copy GitHub Actions workflow that runs the check on every pull request and reports drift as a sticky PR comment is available in the grapity repository at [`examples/materialize-check/`](https://github.com/grapitydev/grapity/tree/main/examples/materialize-check).
+
 ## Configuration file
 
 `grapity.yaml` declares which specs the repository consumes. It is created automatically on first materialize and can be edited by hand.

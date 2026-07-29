@@ -31,6 +31,7 @@ This command does not generate code. Use your existing language tooling (for exa
 | `--fail-on-stale` | Exit with an error when the resolved version is not the latest | false |
 | `--config <path>` | Path to `grapity.yaml` | `./grapity.yaml` |
 | `--check` | Verify lockfile specs are still the latest registry versions | false |
+| `--json` | With `--check`, print results as JSON for CI consumption | false |
 
 ## Configuration file
 
@@ -81,6 +82,30 @@ grapity materialize --check
 ```bash
 grapity materialize --check --fail-on-stale
 ```
+
+### JSON output for CI pipelines
+
+```bash
+grapity materialize --check --json
+```
+
+Prints a machine-readable summary:
+
+```json
+{
+  "stale": true,
+  "specs": [
+    { "name": "payments-api", "resolved": "1.2.0", "latest": "1.3.0", "stale": true },
+    { "name": "users-api", "resolved": "2.0.0", "latest": "2.0.0", "stale": false }
+  ]
+}
+```
+
+When the `GITHUB_ACTIONS` environment variable is set, `--check` additionally emits `::warning::` annotations for stale specs, so drift appears inline in the GitHub checks UI.
+
+## CI integration
+
+A ready-to-copy GitHub Actions workflow that runs the check on every pull request and reports drift as a sticky PR comment lives in the grapity repository at [`examples/materialize-check/`](https://github.com/grapitydev/grapity/tree/main/examples/materialize-check). It uses `--json` output to build the comment and warns by default (`--fail-on-stale` makes it blocking).
 
 ## Lockfile
 
