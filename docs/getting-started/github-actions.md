@@ -2,6 +2,8 @@
 
 Validate API changes on every pull request and publish new spec versions on merge, without running CLI commands by hand. The `grapitydev/grapity` repository ships a composite action that wraps the CLI: `grapitydev/grapity/actions/registry`.
 
+A ready-to-copy workflow using this action (validate on pull requests, push on merge, with every variable and secret listed in the file header) lives in the grapity repository at [`examples/producer/contract.yml`](https://github.com/grapitydev/grapity/blob/main/examples/producer/contract.yml).
+
 ## What it does
 
 - **On pull requests**: runs `grapity registry validate` against your registry. Breaking changes fail the check, and the compatibility report appears in the job summary.

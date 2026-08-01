@@ -2,6 +2,15 @@
 
 These example files are referenced by the CLI documentation. Download them and adapt them to your environment.
 
+## GitHub Actions workflows
+
+Ready-to-copy CI workflows live in the grapity repository, each with a commented setup header listing the variables and secrets to configure:
+
+| Directory | Purpose |
+|-----------|---------|
+| [`examples/producer/`](https://github.com/grapitydev/grapity/tree/main/examples/producer) | Validate the spec on pull requests, push new versions on merge |
+| [`examples/consumer/`](https://github.com/grapitydev/grapity/tree/main/examples/consumer) | Report spec drift on pull requests as a sticky PR comment |
+
 ## Docker Compose stacks
 
 | File | Purpose | Docs |

@@ -11,7 +11,7 @@ Registered specs can be pulled into any repository with `grapity materialize`. T
 
 ## Drift detection in CI
 
-`grapity materialize --check` compares the lockfile against the live registry without writing files. A ready-to-copy GitHub Actions workflow that runs the check on every pull request and reports drift as a sticky PR comment is available in the grapity repository at [`examples/materialize-check/`](https://github.com/grapitydev/grapity/tree/main/examples/materialize-check).
+`grapity materialize --check` compares the lockfile against the live registry without writing files. A ready-to-copy GitHub Actions workflow that runs the check on every pull request and reports drift as a sticky PR comment is available in the grapity repository at [`examples/consumer/`](https://github.com/grapitydev/grapity/tree/main/examples/consumer).
 
 ## Configuration file
 
