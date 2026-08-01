@@ -105,7 +105,7 @@ When the `GITHUB_ACTIONS` environment variable is set, `--check` additionally em
 
 ## CI integration
 
-A ready-to-copy GitHub Actions workflow that runs the check on every pull request and reports drift as a sticky PR comment lives in the grapity repository at [`examples/consumer/`](https://github.com/grapitydev/grapity/tree/main/examples/consumer). It uses `--json` output to build the comment and warns by default (`--fail-on-stale` makes it blocking).
+A ready-to-copy GitHub Actions workflow that runs the check on every pull request and reports drift as a sticky PR comment lives in the grapity repository at [`examples/consumer/`](https://github.com/grapitydev/grapity/tree/main/examples/consumer). It calls the [`grapitydev/grapity/actions/grapity`](/getting-started/github-actions) composite action with `command: check`, which wraps `--check --json`, and warns by default (`fail-on-stale: "true"` makes it blocking).
 
 ## Lockfile
 
